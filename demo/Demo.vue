@@ -36,9 +36,7 @@ body {
   color: #666;
   text-align: center;
 }
-</style>
 
-<style scoped>
 a {
   color: inherit;
   text-decoration: none;
