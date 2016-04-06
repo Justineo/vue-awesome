@@ -10,6 +10,11 @@
   fill: currentColor;
 }
 
+.fa-icon.auto-scale {
+  position: relative;
+  top: .125em;
+}
+
 .fa-icon.flip-horizontal {
   transform: scale(-1, 1);
 }
@@ -46,13 +51,10 @@ export default {
     },
     scale: {
       type: Number,
-      default: 1,
+      default: 0,
       coerce: function (val) {
         val = Number(val)
         return isNaN(val) ? undefined : val;
-      },
-      validator: function (val) {
-        return Number(val) > 0
       }
     },
     spin: Boolean,
@@ -68,7 +70,8 @@ export default {
       return {
         spin: this.spin,
         'flip-horizontal': this.flip === 'horizontal',
-        'flip-vertical': this.flip === 'vertical'
+        'flip-vertical': this.flip === 'vertical',
+        'auto-scale': this.scale === 0
       }
     },
     icon: function () {
@@ -78,10 +81,10 @@ export default {
       return `0 0 ${this.icon.width} ${this.icon.height}`
     },
     width: function () {
-      return this.icon.width / 112 * this.scale
+      return this.scale === 0 ? '1em' : this.icon.width / 112 * this.scale
     },
     height: function () {
-      return this.icon.height / 112  * this.scale
+      return this.scale === 0 ? '1em' : this.icon.height / 112  * this.scale
     }
   }
 }
