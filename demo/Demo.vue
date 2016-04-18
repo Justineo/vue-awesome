@@ -19,7 +19,8 @@
   <p><icon name="signal" flip="horizontal"></icon></p>
   <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"signal"</span> <span class="attr">flip</span>=<span class="val">"horizontal"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
-  <h2>Label<br><small>(<code>aria-label</code>)</small></h2>
+  <h2>Label</h2>
+  <p><small>Accessible for screen readers, etc.</small></p>
   <p><icon name="code" label="Source Code"></icon></p>
   <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"code"</span> <span class="attr">label</span>=<span class="val">"Source Code"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
@@ -86,11 +87,6 @@ h2 {
   font-size: 1.2em;
 }
 
-h2 small {
-  font-size: 0.6em;
-  color: #7f8c8d;
-}
-
 .desc {
   margin-bottom: 4em;
   color: #7f8c8d;
@@ -98,6 +94,11 @@ h2 small {
 
 figure .fa-icon {
   display: block;
+}
+
+p small {
+  font-size: 0.8em;
+  color: #7f8c8d;
 }
 
 p .fa-icon {

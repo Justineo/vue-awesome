@@ -1,5 +1,5 @@
 <template>
-  <svg class="fa-icon" :class.once="clazz" :aria-label="label" :width="width" :height="height" :view-box.camel="box">
+  <svg version="1.1" class="fa-icon" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :width="width" :height="height" :view-box.camel="box">
     <path :d="icon.d" />
   </svg>
 </template>

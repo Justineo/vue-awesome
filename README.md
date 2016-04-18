@@ -79,7 +79,7 @@ $ npm run dev
 
 Open `http://localhost:8080/demo` to see the demo.
 
-## Related Project
+## Related projects
 
 * [Vue-Octicon](https://github.com/Justineo/vue-octicon) by the same author of Vue-Awesome.
 * SVG files are generated using [fa2svg](https://github.com/riobard/font-awesome-svg) by [@riobard](https://github.com/riobard).
