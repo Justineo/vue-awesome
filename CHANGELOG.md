@@ -1,3 +1,6 @@
+0.2.2
+* Fixed the problem that `dist` is not updated after last version.
+
 0.2.1
 * `scale` now works well with CSS `em` sizes.
 
