@@ -1,3 +1,6 @@
+0.3.0
+* Supported registering custom icons.
+
 0.2.2
 * Fixed the problem that `dist` is not updated after last version.
 

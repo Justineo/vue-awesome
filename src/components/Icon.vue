@@ -35,6 +35,9 @@
 <script>
 import ICONS from '../assets/icons'
 
+// can register custom icons
+let icons = ICONS
+
 export default {
   props: {
     name: {
@@ -90,6 +93,11 @@ export default {
       return {
         fontSize: this.scale + 'em'
       }
+    }
+  },
+  register: function (custom) {
+    for (let name in custom) {
+      icons[name] = custom[name]
     }
   }
 }
