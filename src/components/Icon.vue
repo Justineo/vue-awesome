@@ -75,7 +75,7 @@ export default {
       }
     },
     icon: function () {
-      return ICONS[this.name]
+      return icons[this.name]
     },
     box: function () {
       return `0 0 ${this.icon.width} ${this.icon.height}`
