@@ -81,10 +81,10 @@ export default {
       return `0 0 ${this.icon.width} ${this.icon.height}`
     },
     width: function () {
-      return this.icon.width / 112 * this.scale
+      return this.icon ? this.icon.width / 112 * this.scale : 0
     },
     height: function () {
-      return this.icon.height / 112  * this.scale
+      return this.icon ? this.icon.height / 112  * this.scale : 0
     },
     style: function () {
       if (this.scale === 1) {
