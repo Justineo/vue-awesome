@@ -1,37 +1,39 @@
 <template>
-  <figure id="logo" @mouseenter="toggle" @mouseleave="toggle" @click="change" :title="logo"><icon :name="logo" scale="4"></icon></figure>
-  <h1><a href="https://github.com/Justineo/vue-awesome">Vue-Awesome</a></h1>
-  <p class="desc">Font Awesome component for Vue.js, using inline SVG.</p>
+  <main>
+    <figure id="logo" @mouseenter="toggle" @mouseleave="toggle" @click="change" :title="logo"><icon :name="logo" scale="4"></icon></figure>
+    <h1><a href="https://github.com/Justineo/vue-awesome">Vue-Awesome</a></h1>
+    <p class="desc">Font Awesome component for Vue.js, using inline SVG.</p>
 
-  <h2>Basic</h2>
-  <p><icon name="flag"></icon></p>
-  <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"flag"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <h2>Basic</h2>
+    <p><icon name="flag"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"flag"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
-  <h2>Scale</h2>
-  <p><icon name="language" scale="3"></icon></p>
-  <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"language"</span> <span class="attr">scale</span>=<span class="val">"3"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <h2>Scale</h2>
+    <p><icon name="language" scale="3"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"language"</span> <span class="attr">scale</span>=<span class="val">"3"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
-  <h2>Spin</h2>
-  <p><icon name="refresh" spin></icon></p>
-  <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"refresh"</span> <span class="attr">spin</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <h2>Spin</h2>
+    <p><icon name="refresh" spin></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"refresh"</span> <span class="attr">spin</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
-  <h2>Flip</h2>
-  <p><icon name="signal" flip="horizontal"></icon></p>
-  <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"signal"</span> <span class="attr">flip</span>=<span class="val">"horizontal"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <h2>Flip</h2>
+    <p><icon name="signal" flip="horizontal"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"signal"</span> <span class="attr">flip</span>=<span class="val">"horizontal"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
-  <h2>Label</h2>
-  <p><small>Accessible for screen readers, etc.</small></p>
-  <p><icon name="code" label="Source Code"></icon></p>
-  <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"code"</span> <span class="attr">label</span>=<span class="val">"Source Code"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <h2>Label</h2>
+    <p><small>Accessible for screen readers, etc.</small></p>
+    <p><icon name="code" label="Source Code"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"code"</span> <span class="attr">label</span>=<span class="val">"Source Code"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
-  <h2>Custom icons</h2>
-  <p><small>You can register your own icons.</small></p>
-  <p><icon name="taobao"></icon></p>
-  <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"taobao"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <h2>Custom icons</h2>
+    <p><small>You can register your own icons.</small></p>
+    <p><icon name="taobao"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"taobao"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
-  <footer>
-    <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
-  </footer>
+    <footer>
+      <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
+    </footer>
+  </main>
 </template>
 
 <style>
@@ -157,29 +159,30 @@ footer a:hover {
 </style>
 
 <script>
-import icons from '../src/assets/icons';
-const keys = Object.keys(icons);
+import Icon from '../src/components/Icon.vue'
+import '../src/icons'
+const keys = Object.keys(Icon.icons);
 
 function randomIcon() {
   return keys[Math.floor(Math.random() * keys.length)];
 }
 
 export default {
-  data: function () {
+  data() {
     return {
       logo: randomIcon(),
       running: true
     }
   },
   methods: {
-    change: function () {
+    change() {
       this.logo = randomIcon()
     },
     toggle: function () {
       this.running = !this.running
     }
   },
-  ready: function () {
+  mounted() {
     setInterval(() => {
       if (this.running) {
         this.change()

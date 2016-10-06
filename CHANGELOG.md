@@ -1,3 +1,8 @@
+2.0.0
+* Switch to Vue.js dependency to `2.0`.
+* Added support for users to specify used icons to reduce bundle size.
+* Bump major version to 2.
+
 0.3.0
 * Supported registering custom icons.
 

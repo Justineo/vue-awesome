@@ -2,9 +2,15 @@
 
 > Font Awesome component for Vue.js, using inline SVG.
 
-Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` and depends on [Vue.js](https://vuejs.org/) `v1.0.17`+.
+Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
 
 ## Installation
+
+### npm (**Recommended**)
+
+```bash
+$ npm install vue-awesome
+```
 
 ### manual
 
@@ -12,12 +18,6 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 
 ```html
 <script src="path/to/vue-awesome/dist/vue-awesome.js"></script>
-```
-
-### npm 
-
-```bash
-$ npm install vue-awesome
 ```
 
 ### bower
@@ -38,16 +38,32 @@ $ bower install vue-awesome
 <icon name="repo-forked" label="Forked Repository"></icon>
 ```
 
-### CommonJS
+### ES Modules with vue-loader (**Recommended**)
 
 ```js
-var Vue = require('path/to/vue')
+import Vue from 'vue'
+import Icon from 'path/to/vue-awesome/src/components/Icon.vue'
+
+// Pick one way betweem the 2 following ways
+
+// only import the icons you use to reduce bundle size
+import 'path/to/vue-awesome/src/icons/flag'
+
+// or import all icons if you don't care about bundle size
+import 'path/to/vue-awesome/src/icons'
+```
+
+
+### CommonJS with NPM
+
+```js
+var Vue = require('vue')
 
 // requiring the UMD module
-var Icon = require('path/to/vue-awesome/dist/vue-awesome')
+var Icon = require('vue-awesome')
 
 // or with vue-loader you can require the src directly
-var Icon = require('path/to/vue-awesome/src/components/Icon.vue')
+var Icon = require('vue-awesome/src/components/Icon.vue')
 
 // register component to use
 ```
@@ -57,7 +73,7 @@ var Icon = require('path/to/vue-awesome/src/components/Icon.vue')
 ```js
 require.config({
   paths: {
-    'vue-awesome': 'path/to/vue-conticon/dist/vue-awesome'
+    'vue-awesome': 'path/to/vue-awesome'
   }
 })
 
@@ -79,12 +95,17 @@ $ npm run dev
 
 Open `http://localhost:8080/demo` to see the demo.
 
+### Updating icons
+
+Don't touch files in `src/icons` but Update `assets/icons.json` instead and run `npm run icons` to re-generate icon module files.
+
 ## Customize
 
 You can register custom icons like this:
 
 ```js
-var Icon = require('path/to/vue-awesome/src/components/Icon.vue')
+// ES Modules with vue-loader
+import Icon from 'vue-awesome/src/components/Icon.vue'
 
 Icon.register({
   taobao: {

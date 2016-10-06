@@ -1,5 +1,5 @@
 <template>
-  <svg version="1.1" class="fa-icon" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :width="width" :height="height" :view-box.camel="box" :style="style">
+  <svg version="1.1" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :width="width" :height="height" :viewBox="box" :style="style">
     <path :d="icon.d" />
   </svg>
 </template>
@@ -33,10 +33,9 @@
 </style>
 
 <script>
-import ICONS from '../assets/icons'
+import { warn } from '../util'
 
-// can register custom icons
-let icons = ICONS
+let icons = {}
 
 export default {
   props: {
@@ -44,20 +43,10 @@ export default {
       type: String,
       required: true,
       validator: function (val) {
-        return val in ICONS;
+        return val in icons
       }
     },
-    scale: {
-      type: Number,
-      default: 1,
-      coerce: function (val) {
-        val = Number(val)
-        return isNaN(val) ? undefined : val;
-      },
-      validator: function (val) {
-        return Number(val) > 0
-      }
-    },
+    scale: [Number, String],
     spin: Boolean,
     flip: {
       validator: function (val) {
@@ -67,38 +56,49 @@ export default {
     label: String
   },
   computed: {
-    clazz: function () {
+    normalizedScale() {
+      let scale = this.scale
+      scale = typeof scale === 'undefined' ? 1 : Number(scale)
+      if (isNaN(scale) || scale <= 0) {
+        warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
+        return 1
+      }
+      return scale
+    },
+    clazz() {
       return {
+        'fa-icon': true,
         spin: this.spin,
         'flip-horizontal': this.flip === 'horizontal',
         'flip-vertical': this.flip === 'vertical'
       }
     },
-    icon: function () {
+    icon() {
       return icons[this.name]
     },
-    box: function () {
+    box() {
       return `0 0 ${this.icon.width} ${this.icon.height}`
     },
-    width: function () {
-      return this.icon.width / 112 * this.scale
+    width() {
+      return this.icon.width / 112 * this.normalizedScale
     },
-    height: function () {
-      return this.icon.height / 112  * this.scale
+    height() {
+      return this.icon.height / 112  * this.normalizedScale
     },
-    style: function () {
-      if (this.scale === 1) {
+    style() {
+      if (this.normalizedScale === 1) {
         return false
       }
       return {
-        fontSize: this.scale + 'em'
+        fontSize: this.normalizedScale + 'em'
       }
     }
   },
-  register: function (custom) {
-    for (let name in custom) {
-      icons[name] = custom[name]
+  register: function (data) {
+    for (let name in data) {
+      icons[name] = data[name]
     }
-  }
+  },
+  icons
 }
 </script>
