@@ -6,10 +6,16 @@ Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awe
 
 ## Installation
 
-### npm (**Recommended**)
+### NPM (Recommended)
 
 ```bash
 $ npm install vue-awesome
+```
+
+### bower
+
+```bash
+$ bower install vue-awesome
 ```
 
 ### manual
@@ -18,12 +24,6 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 
 ```html
 <script src="path/to/vue-awesome/dist/vue-awesome.js"></script>
-```
-
-### bower
-
-```bash
-$ bower install vue-awesome
 ```
 
 ## Usage
@@ -38,19 +38,19 @@ $ bower install vue-awesome
 <icon name="repo-forked" label="Forked Repository"></icon>
 ```
 
-### ES Modules with vue-loader (**Recommended**)
+### ES Modules with NPM & vue-loader (Recommended)
 
 ```js
 import Vue from 'vue'
-import Icon from 'path/to/vue-awesome/src/components/Icon.vue'
+import Icon from 'vue-awesome/src/components/Icon.vue'
 
 // Pick one way betweem the 2 following ways
 
 // only import the icons you use to reduce bundle size
-import 'path/to/vue-awesome/src/icons/flag'
+import 'vue-awesome/src/icons/flag'
 
 // or import all icons if you don't care about bundle size
-import 'path/to/vue-awesome/src/icons'
+import 'vue-awesome/src/icons'
 ```
 
 
@@ -97,9 +97,9 @@ Open `http://localhost:8080/demo` to see the demo.
 
 ### Updating icons
 
-Don't touch files in `src/icons` but Update `assets/icons.json` instead and run `npm run icons` to re-generate icon module files.
+Don't touch files in `src/icons` but update `assets/icons.json` instead and run `npm run icons` to re-generate icon module files.
 
-## Customize
+## Registering custom icons
 
 You can register custom icons like this:
 
