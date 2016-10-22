@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "icons": "node build/icons.js",
     "prepublish": "npm run icons && npm run build && cp -r ./src/* . && rm index.js",
-    "publish": "rm -rf ./components && rm util.js"
+    "publish": "rm -rf ./components && rm -rf ./icons && rm util.js"
   },
   "keywords": [
     "Font Awesome",

@@ -55,8 +55,11 @@ import 'vue-awesome/icons'
 // register component to use
 ```
 
+**Heads up**
 
-### CommonJS with NPM
+if you are using `vue-cli` to create your project, the `webpack` template may exclude `node_modules` from files to be transpiled by Babel. Change the `exclude` value from `/node_modules/` to `/node_modules(?!\/vue-awesome\/` to fix the problem.**
+
+### CommonJS with NPM without ES Next support
 
 ```js
 var Vue = require('vue')
@@ -66,12 +69,6 @@ var Icon = require('vue-awesome')
 
 // or with vue-loader you can require the src directly
 var Icon = require('vue-awesome/components/Icon.vue')
-
-// only import the icons you use to reduce bundle size
-require('vue-awesome/icons/flag')
-
-// or import all icons if you don't care about bundle size
-require('vue-awesome/icons')
 
 // register component to use
 ```
