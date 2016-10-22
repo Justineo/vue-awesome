@@ -83,7 +83,7 @@ export default {
       return this.icon.width / 112 * this.normalizedScale
     },
     height() {
-      return this.icon.height / 112  * this.normalizedScale
+      return this.icon.height / 112 * this.normalizedScale
     },
     style() {
       if (this.normalizedScale === 1) {

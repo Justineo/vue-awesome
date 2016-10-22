@@ -1,12 +1,14 @@
 {
   "name": "vue-awesome",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Font Awesome component for Vue.js, using inline SVG.",
   "main": "dist/vue-awesome.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "icons": "node build/icons.js"
+    "icons": "node build/icons.js",
+    "prepublish": "npm run icons && npm run build && cp -r ./src/* . && rm index.js",
+    "publish": "rm -rf ./components && rm util.js"
   },
   "keywords": [
     "Font Awesome",

@@ -42,15 +42,17 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 
 ```js
 import Vue from 'vue'
-import Icon from 'vue-awesome/src/components/Icon.vue'
+import Icon from 'vue-awesome/components/Icon.vue'
 
 // Pick one way betweem the 2 following ways
 
 // only import the icons you use to reduce bundle size
-import 'vue-awesome/src/icons/flag'
+import 'vue-awesome/icons/flag'
 
 // or import all icons if you don't care about bundle size
-import 'vue-awesome/src/icons'
+import 'vue-awesome/icons'
+
+// register component to use
 ```
 
 
@@ -63,7 +65,13 @@ var Vue = require('vue')
 var Icon = require('vue-awesome')
 
 // or with vue-loader you can require the src directly
-var Icon = require('vue-awesome/src/components/Icon.vue')
+var Icon = require('vue-awesome/components/Icon.vue')
+
+// only import the icons you use to reduce bundle size
+require('vue-awesome/icons/flag')
+
+// or import all icons if you don't care about bundle size
+require('vue-awesome/icons')
 
 // register component to use
 ```
@@ -105,7 +113,7 @@ You can register custom icons like this:
 
 ```js
 // ES Modules with vue-loader
-import Icon from 'vue-awesome/src/components/Icon.vue'
+import Icon from 'vue-awesome/components/Icon.vue'
 
 Icon.register({
   taobao: {
