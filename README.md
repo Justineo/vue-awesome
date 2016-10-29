@@ -57,7 +57,7 @@ import 'vue-awesome/icons'
 
 **Heads up**
 
-if you are using `vue-cli` to create your project, the `webpack` template may exclude `node_modules` from files to be transpiled by Babel. Change the `exclude` value from `/node_modules/` to `/node_modules(?!\/vue-awesome\/)/` to fix the problem.
+if you are using `vue-cli` to create your project, the `webpack` template may exclude `node_modules` from files to be transpiled by Babel. Change the `exclude` value from `/node_modules/` to `/node_modules(?![\\/]vue-awesome[\\/])/` to fix the problem.
 
 ### CommonJS with NPM without ES Next support
 
