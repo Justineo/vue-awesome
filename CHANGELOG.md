@@ -1,3 +1,7 @@
+2.0.3
+* Added Font-Awesome -> SVG -> JSON build process integration.
+* Update Font-Awesome to `4.7.0`.
+
 2.0.2
 * Updated readme and build.
 

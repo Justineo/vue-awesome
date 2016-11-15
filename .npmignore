@@ -5,3 +5,4 @@ src
 .gitignore
 bower.json
 webpack.config.js
+assets
