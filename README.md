@@ -91,6 +91,23 @@ require(['vue-awesome'], function (Icon) {
 
 The component class is exposed as `window.VueAwesome`.
 
+## Styling
+
+### Dynamic sizing
+
+You can make the icons scale dynamically according to your `font-size` by adding the following CSS:
+
+```css
+.fa-icon {
+  width: auto;
+  height: 1em; /* or any other relative font sizes */
+}
+```
+
+### Colors
+
+The icon color is inherited from the font color of the parent element by default. You can easily change it to any other color by specifying the `color` property.
+
 ## Local development
 
 ```bash
