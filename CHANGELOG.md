@@ -1,3 +1,6 @@
+2.1.0
+* Added support for stacked icons.
+
 2.0.3
 * Added Font-Awesome -> SVG -> JSON build process integration.
 * Update Font-Awesome to `4.7.0`.

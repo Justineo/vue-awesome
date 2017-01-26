@@ -36,6 +36,12 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 <icon name="sync" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
 <icon name="repo-forked" label="Forked Repository"></icon>
+
+<!-- stacked icons -->
+<icon label="No Photos">
+  <icon name="camera"></icon>
+  <icon name="ban" scale="2" class="alert"></icon>
+</icon>
 ```
 
 ### ES Modules with NPM & vue-loader (Recommended)

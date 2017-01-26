@@ -25,6 +25,19 @@
     <p><icon name="code" label="Source Code"></icon></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"code"</span> <span class="attr">label</span>=<span class="val">"Source Code"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
+    <h2>Stacked icons</h2>
+    <p><small>Use stacked icons like in FontAwesome. Even more powerful.</small></p>
+    <p>
+      <icon label="No Photo">
+        <icon name="camera"></icon>
+        <icon name="ban" scale="2" flip="horizontal" class="alert"></icon>
+      </icon>
+    </p>
+    <figure><pre><code>&lt;icon <span class="attr">label</span>=<span class="val">"No Photos"</span>&gt;
+  &lt;icon <span class="attr">name</span>=<span class="val">"camera"</span>&gt;&lt;/icon&gt;
+  &lt;icon <span class="attr">name</span>=<span class="val">"ban"</span> <span class="attr">scale</span>=<span class="val">"2"</span> <span class="attr">class</span>=<span class="val">"alert"</span>&gt;&lt;/icon&gt;
+&lt;/icon&gt;</code></pre></figure>
+
     <h2>Custom icons</h2>
     <p><small>You can register your own icons.</small></p>
     <p><icon name="taobao"></icon></p>
@@ -108,15 +121,12 @@ p small {
   color: #7f8c8d;
 }
 
-p .fa-icon {
-  vertical-align: middle;
-}
-
 pre {
   display: inline-block;
   padding: 0.8em;
   background-color: #f9f9f9;
   box-shadow: 0 1px 2px rgba(0,0,0,0.125);
+  text-align: left;
   line-height: 1.1;
   color: #2973b7;
 }
@@ -155,6 +165,11 @@ footer a {
 footer a:hover {
   padding-bottom: 3px;
   border-bottom: 3px solid #42b983;
+}
+
+.alert {
+  color: #c33;
+  opacity: .8;
 }
 </style>
 
