@@ -30,7 +30,7 @@
     <p>
       <icon label="No Photo">
         <icon name="camera"></icon>
-        <icon name="ban" scale="2" flip="horizontal" class="alert"></icon>
+        <icon name="ban" scale="2" class="alert"></icon>
       </icon>
     </p>
     <figure><pre><code>&lt;icon <span class="attr">label</span>=<span class="val">"No Photos"</span>&gt;

@@ -61,9 +61,27 @@ import 'vue-awesome/icons'
 // register component to use
 ```
 
-**Heads up**
+#### Heads up
 
-if you are using `vue-cli` to create your project, the `webpack` template may exclude `node_modules` from files to be transpiled by Babel. Change the `exclude` value from `/node_modules/` to `/node_modules(?![\\/]vue-awesome[\\/])/` to fix the problem.
+If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
+
+```diff
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        include: [
+-          path.join(projectRoot, 'src')
++          path.join(projectRoot, 'src'),
++          path.join(projectRoot, 'node_modules/vue-awesome')
+        ],
+-        exclude: /node_modules/
++        exclude: /node_modules(?![\\/]vue-awesome[\\/])/
+      },
+```
+
+Further more, do not forget to import icons you want to use if you are using `vue-awesome/components/Icon`.
+
+If you tried this and cannot find similar situation in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) but still cannot make it work, please feel free to [file a new issue](https://github.com/Justineo/vue-awesome/issues/new).
 
 ### CommonJS with NPM without ES Next support
 
