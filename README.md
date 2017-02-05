@@ -59,6 +59,7 @@ import 'vue-awesome/icons/flag'
 import 'vue-awesome/icons'
 
 // register component to use
+Vue.component('icon', Icon)
 ```
 
 #### Heads up
