@@ -30,12 +30,12 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 
 ```html
 <!-- basic -->
-<icon name="repo"></icon>
+<icon name="beer"></icon>
 
 <!-- with options -->
 <icon name="sync" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
-<icon name="repo-forked" label="Forked Repository"></icon>
+<icon name="code-fork" label="Forked Repository"></icon>
 
 <!-- stacked icons -->
 <icon label="No Photos">
