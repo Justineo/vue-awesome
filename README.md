@@ -48,7 +48,6 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 
 ```js
 import Vue from 'vue'
-import Icon from 'vue-awesome/components/Icon.vue'
 
 // Pick one way betweem the 2 following ways
 
@@ -58,8 +57,18 @@ import 'vue-awesome/icons/flag'
 // or import all icons if you don't care about bundle size
 import 'vue-awesome/icons'
 
-// register component to use
+// register component with one of 2 methods:
+// globally (in your main .js file)
+import Icon from 'vue-awesome/components/Icon.vue'
 Vue.component('icon', Icon)
+
+// OR locally (in your component file)
+import Icon from 'vue-awesome/components/Icon.vue'
+export default {
+  components: {
+    Icon
+  }
+}
 ```
 
 #### Heads up
