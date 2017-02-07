@@ -4,6 +4,8 @@
 
 Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
 
+Check out the demo [here](https://justineo.github.io/vue-awesome/demo/).
+
 ## Installation
 
 ### NPM (Recommended)
@@ -49,7 +51,7 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 ```js
 import Vue from 'vue'
 
-// Pick one way betweem the 2 following ways
+/* Pick one way between the 2 following ways */
 
 // only import the icons you use to reduce bundle size
 import 'vue-awesome/icons/flag'
@@ -57,12 +59,13 @@ import 'vue-awesome/icons/flag'
 // or import all icons if you don't care about bundle size
 import 'vue-awesome/icons'
 
-// register component with one of 2 methods:
+/* Register component with one of 2 methods */
+
 // globally (in your main .js file)
 import Icon from 'vue-awesome/components/Icon.vue'
 Vue.component('icon', Icon)
 
-// OR locally (in your component file)
+// or locally (in your component file)
 import Icon from 'vue-awesome/components/Icon.vue'
 export default {
   components: {
