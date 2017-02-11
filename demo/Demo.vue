@@ -171,6 +171,47 @@ footer a:hover {
   color: #c33;
   opacity: .8;
 }
+
+@media (max-width: 640px) {
+  body {
+    padding-top: 0;
+    text-align: left;
+  }
+
+  #logo {
+    margin: 0 auto;
+    transform: scale(.6);
+  }
+
+  #logo:hover {
+    margin: -10px auto;
+  }
+
+  h1,
+  p {
+    padding-left: 25px;
+  }
+
+  h1 {
+    border-left: 5px solid #2c3e50;
+  }
+
+  h2 {
+    padding-left: 20px;
+    border-left: 5px solid rgba(0, 0, 0, 0.1);
+  }
+
+  figure {
+    margin: 1em 0;
+  }
+
+  pre {
+    display: block;
+    box-shadow: none;
+    overflow-x: auto;
+    font-size: 0.9em;
+  }
+}
 </style>
 
 <script>
