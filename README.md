@@ -94,6 +94,16 @@ If you are using `vue-cli` to create your project and you want to use the untran
       },
 ```
 
+For Webpack2:
+```diff
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+-       include: [resolve('src'), resolve('test')]
++       include: [resolve('src'), resolve('test'), resolve('node_modules/vue-awesome')]
+      }
+```
+
 Further more, do not forget to import icons you want to use if you are using `vue-awesome/components/Icon`.
 
 If you tried this and cannot find similar situation in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) but still cannot make it work, please feel free to [file a new issue](https://github.com/Justineo/vue-awesome/issues/new).
