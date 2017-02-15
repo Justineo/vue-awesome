@@ -69,4 +69,18 @@ var build = merge(base, {
   }
 })
 
-module.exports = [demo, build]
+var buildCommonJs = merge(base, {
+  entry: './src/index.js',
+  output: {
+    path: './lib',
+    filename: 'vue-awesome.js',
+    libraryTarget: 'commonjs2'
+  }
+})
+
+
+if (process.env.NODE_ENV === 'commonjs') {
+  module.exports = [buildCommonJs];
+} else {
+  module.exports = [demo, build];
+}
