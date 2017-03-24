@@ -189,7 +189,7 @@ footer a:hover {
 
   h1,
   p {
-    padding-left: 25px;
+    padding: 0 25px;
   }
 
   h1 {

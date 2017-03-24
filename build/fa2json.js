@@ -18,7 +18,9 @@ fs.readdirSync(svgDir).forEach(function (file) {
     icons[name] = {
         width: parseInt(sizeMatch[1], 10),
         height: parseInt(sizeMatch[2], 10),
-        d: dMatch[1]
+        paths: [{
+            d: dMatch[1]
+        }]
     };
 });
 

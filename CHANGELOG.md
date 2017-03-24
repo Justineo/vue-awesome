@@ -1,3 +1,9 @@
+2.2.1
+* Move animation to `<svg>` to make them work in IE10+.
+
+2.2.0
+* Added support for registering multiple paths with different styles (eg. multi-colored icons).
+
 2.1.0
 * Added support for stacked icons.
 

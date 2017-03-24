@@ -1,6 +1,10 @@
 <template>
   <svg version="1.1" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :x="x" :y="y" :width="width" :height="height" :viewBox="box" :style="style">
-    <slot><path v-if="icon" :d="icon.d" /></slot>
+    <slot>
+      <template v-if="icon">
+        <path v-for="path in icon.paths" v-bind="path"/>
+      </template>
+    </slot>
   </svg>
 </template>
 
@@ -10,19 +14,15 @@
   fill: currentColor;
 }
 
-.fa-icon > path {
-  transform-origin: 50% 50%;
-}
-
-.fa-flip-horizontal > path {
+.fa-flip-horizontal {
   transform: scale(-1, 1);
 }
 
-.fa-flip-vertical > path {
+.fa-flip-vertical {
   transform: scale(1, -1);
 }
 
-.fa-spin > path {
+.fa-spin {
   animation: fa-spin 1s 0s infinite linear;
 }
 
@@ -143,7 +143,14 @@ export default {
   },
   register (data) {
     for (let name in data) {
-      icons[name] = data[name]
+      let icon = data[name]
+      if (!icon.paths) {
+        icon.paths = []
+      }
+      if (icon.d) {
+        icon.paths.push({ d: icon.d })
+      }
+      icons[name] = icon
     }
   },
   icons
