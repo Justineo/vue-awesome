@@ -1,3 +1,6 @@
+2.2.3
+* Fix the issue caused by webpack 2.2 with `babel-plugin-add-module-export`.
+
 2.2.2
 * Switch to webpack 2 and fix compiled version.
 

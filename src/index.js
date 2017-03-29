@@ -1,4 +1,2 @@
-import './icons'
-import Icon from './components/Icon.vue'
-
-export default Icon
+require('./icons');
+module.exports = require('./components/Icon.vue')
