@@ -1,3 +1,6 @@
+2.2.2
+* Switch to webpack 2 and fix compiled version.
+
 2.2.1
 * Move animation to `<svg>` to make them work in IE10+.
 
