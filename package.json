@@ -1,6 +1,6 @@
 {
   "name": "vue-awesome",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Font Awesome component for Vue.js, using inline SVG.",
   "main": "dist/vue-awesome.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "font-awesome-svg": "^0.4.0",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.6",
-    "webpack": "^2.2.0",
+    "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2",
     "webpack-merge": "^0.14.1"
   }

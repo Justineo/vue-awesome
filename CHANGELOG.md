@@ -1,3 +1,6 @@
+2.2.4
+* Remove unused icon files.
+
 2.2.3
 * Fix the issue caused by webpack 2.2 with `babel-plugin-add-module-export`.
 
