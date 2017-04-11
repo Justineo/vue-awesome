@@ -35,7 +35,7 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 <icon name="beer"></icon>
 
 <!-- with options -->
-<icon name="sync" scale="2" spin></icon>
+<icon name="refresh" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
 <icon name="code-fork" label="Forked Repository"></icon>
 
