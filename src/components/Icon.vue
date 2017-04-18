@@ -41,7 +41,8 @@
 </style>
 
 <script>
-import { warn } from '../util'
+import Vue from 'vue'
+
 let icons = {}
 
 export default {
@@ -51,7 +52,12 @@ export default {
       type: String,
       validator (val) {
         if (val) {
-          return val in icons
+          if (!(val in icons)) {
+            Vue.util.warn(`Invalid prop: prop "icon" is referring to an unregistered icon "${val}".` +
+              `\nPlesase make sure you have imported this icon before using it.`, this)
+            return false
+          }
+          return true
         }
         return null
       }
@@ -80,7 +86,7 @@ export default {
       let scale = this.scale
       scale = typeof scale === 'undefined' ? 1 : Number(scale)
       if (isNaN(scale) || scale <= 0) {
-        warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
+        Vue.util.warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
         return this.outerScale
       }
       return scale * this.outerScale

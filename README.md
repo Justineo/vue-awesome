@@ -74,7 +74,7 @@ export default {
 }
 ```
 
-#### Heads up
+#### Heads up (before `v2.2.5`)
 
 If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
 

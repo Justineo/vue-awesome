@@ -1,3 +1,7 @@
+2.2.5
+* Use `Vue.util.warn` directly.
+* Added warning for referring to unregistered icons.
+
 2.2.4
 * Remove unused icon files.
 

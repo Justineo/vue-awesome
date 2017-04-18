@@ -4,7 +4,7 @@ var merge = require('webpack-merge')
 
 var base = {
   resolveLoader: {
-    modules: [path.join(__dirname, 'node_modules')],
+    modules: [path.join(__dirname, 'node_modules')]
   },
   module: {
     rules: [
