@@ -1,3 +1,6 @@
+2.2.6
+* Mark Vue as an external dependency in webpack config.
+
 2.2.5
 * Use `Vue.util.warn` directly.
 * Added warning for referring to unregistered icons.

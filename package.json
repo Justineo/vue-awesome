@@ -1,6 +1,6 @@
 {
   "name": "vue-awesome",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Font Awesome component for Vue.js, using inline SVG.",
   "main": "dist/vue-awesome.js",
   "scripts": {
