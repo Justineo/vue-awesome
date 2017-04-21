@@ -61,12 +61,12 @@ import 'vue-awesome/icons'
 
 /* Register component with one of 2 methods */
 
+import Icon from 'vue-awesome' // 'vue-awesome/components/Icon.vue' for Webpack 1
+
 // globally (in your main .js file)
-import Icon from 'vue-awesome/components/Icon.vue'
 Vue.component('icon', Icon)
 
 // or locally (in your component file)
-import Icon from 'vue-awesome/components/Icon.vue'
 export default {
   components: {
     Icon

@@ -1,3 +1,10 @@
+2.2.8
+* Swith build tool to rollup.
+* Provide `module` in `package.json`.
+
+2.2.7
+* Hot fix for last version. Use `console.warn` temporarily.
+
 2.2.6
 * Mark Vue as an external dependency in webpack config.
 

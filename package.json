@@ -1,14 +1,17 @@
 {
   "name": "vue-awesome",
-  "version": "2.2.6",
+  "version": "2.2.8",
   "description": "Font Awesome component for Vue.js, using inline SVG.",
   "main": "dist/vue-awesome.js",
+  "module": "index.js",
+  "repository": "Justineo/vue-awesome",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "demo": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "rollup -c",
     "icons": "node build/fa2json.js && node build/icons.js",
     "fa2json": "node build/fa2json.js",
-    "prepublish": "npm run icons && npm run build && cp -r ./src/* . && rm index.js",
+    "prepublish": "npm run icons && npm run demo && npm run build && cp -r ./src/* . && rm index.js",
     "publish": "rm -rf ./components && rm -rf ./icons"
   },
   "keywords": [
@@ -29,6 +32,9 @@
     "file-loader": "^0.9.0",
     "font-awesome": "^4.7.0",
     "font-awesome-svg": "^0.4.0",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-uglify": "^1.0.2",
+    "rollup-plugin-vue": "^2.3.1",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.2",
