@@ -138,7 +138,7 @@ export default {
     let height = 0
     this.$children.forEach(child => {
       width = Math.max(width, child.width)
-      height= Math.max(height, child.height)
+      height = Math.max(height, child.height)
     })
     this.childrenWidth = width
     this.childrenHeight = height

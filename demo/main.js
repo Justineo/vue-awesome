@@ -13,7 +13,8 @@ Icon.register({
 })
 
 new Vue({
-  el: '#demo',
+  name: 'app',
+  el: '#app',
   components: {
     demo: Demo
   },
