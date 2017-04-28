@@ -2,7 +2,12 @@
   <svg version="1.1" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :x="x" :y="y" :width="width" :height="height" :viewBox="box" :style="style">
     <slot>
       <template v-if="icon">
-        <path v-for="path in icon.paths" v-bind="path"/>
+        <template v-if="icon.paths">
+          <path v-for="path in icon.paths" v-bind="path"/>
+        </template>
+        <template v-if="icon.polygons">
+          <polygon v-for="polygon in icon.polygons" v-bind="polygon"/>
+        </template>
       </template>
     </slot>
   </svg>
@@ -150,12 +155,21 @@ export default {
   register (data) {
     for (let name in data) {
       let icon = data[name]
+
       if (!icon.paths) {
         icon.paths = []
       }
       if (icon.d) {
         icon.paths.push({ d: icon.d })
       }
+
+      if (!icon.polygons) {
+        icon.polygons = []
+      }
+      if (icon.points) {
+        icon.polygons.push({ points: icon.points })
+      }
+
       icons[name] = icon
     }
   },
