@@ -42,6 +42,9 @@
     <p><small>You can register your own icons.</small></p>
     <p><icon name="taobao"></icon></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"taobao"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    
+    <p><icon name="html5_logo"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"html5_logo"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <footer>
       <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
