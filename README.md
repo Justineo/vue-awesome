@@ -74,41 +74,6 @@ export default {
 }
 ```
 
-#### Heads up (before `v2.2.5`)
-
-If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
-
-For Webpack1:
-
-```diff
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        include: [
--          path.join(projectRoot, 'src')
-+          path.join(projectRoot, 'src'),
-+          path.join(projectRoot, 'node_modules/vue-awesome')
-        ],
--        exclude: /node_modules/
-+        exclude: /node_modules(?![\\/]vue-awesome[\\/])/
-      },
-```
-
-For Webpack2:
-
-```diff
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
--       include: [resolve('src'), resolve('test')]
-+       include: [resolve('src'), resolve('test'), resolve('node_modules/vue-awesome')]
-      }
-```
-
-Further more, do not forget to import icons you want to use if you are using `vue-awesome/components/Icon`.
-
-If you tried this and cannot find similar situation in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) but still cannot make it work, please feel free to [file a new issue](https://github.com/Justineo/vue-awesome/issues/new).
-
 ### CommonJS with NPM without ES Next support
 
 ```js
@@ -182,10 +147,10 @@ You can register custom icons like this:
 import Icon from 'vue-awesome/components/Icon.vue'
 
 Icon.register({
-  taobao: {
-    width: 1792,
-    height: 1374,
-    d: 'M312,313 C401,313 473,249 473,169 C473,90 401,25 312,25 C223,25 151,90 151,169 C151,249 223,313 312,313 L312,313 Z M178,372 L77,527 L264,644 C264,644 389,707 330,827 C274,940 2,1188 2,1188 L246,1340 C414,974 404,1023 446,891 C489,757 499,654 425,580 C330,485 319,476 178,372 L178,372 Z M1760,331 C1760,331 1708,-81 806,174 C844,107 863,63 863,63 L638,0 C638,0 547,296 385,435 C385,435 542,525 540,522 C585,478 625,432 660,388 C696,372 731,357 765,343 C723,419 656,531 588,602 L683,685 C683,685 748,622 819,547 L899,547 L899,686 L585,686 L585,796 L899,796 L899,1062 C895,1061 891,1061 887,1061 C853,1059 798,1054 778,1020 C752,980 771,905 772,859 L555,859 L547,863 C547,863 468,1219 777,1211 C1065,1219 1231,1131 1310,1070 L1342,1188 L1520,1114 L1399,819 L1255,863 L1282,965 C1245,992 1202,1013 1156,1028 L1156,796 L1462,796 L1462,686 L1156,686 L1156,547 L1464,547 L1464,437 L917,437 C956,389 987,345 996,317 L900,291 C1309,145 1537,170 1535,410 L1535,1042 C1535,1042 1559,1259 1310,1244 L1176,1215 L1144,1343 C1144,1343 1725,1508 1772,1062 C1820,615 1760,331 1760,331 L1760,331 Z'
+  baidu: {
+    width: 23.868,
+    height: 26,
+    d: 'M3.613 13.701c2.827-.608 2.442-3.986 2.357-4.725-.138-1.139-1.477-3.128-3.296-2.971C.386 6.21.052 9.515.052 9.515c-.309 1.528.74 4.793 3.561 4.186zm3.002 5.875c-.083.238-.268.846-.107 1.375.315 1.187 1.346 1.24 1.346 1.24h1.48v-3.619H7.749c-.713.213-1.057.767-1.134 1.004zM8.86 8.035c1.562 0 2.823-1.797 2.823-4.019C11.683 1.796 10.421 0 8.86 0 7.301 0 6.036 1.796 6.036 4.016c0 2.222 1.265 4.019 2.824 4.019zm6.724.265c2.087.271 3.429-1.956 3.695-3.644.272-1.686-1.074-3.644-2.552-3.98-1.48-.339-3.329 2.032-3.497 3.578-.2 1.89.271 3.778 2.354 4.046zm5.114 9.923s-3.229-2.498-5.113-5.198c-2.555-3.981-6.185-2.361-7.399-.337-1.209 2.024-3.093 3.305-3.36 3.644-.271.334-3.9 2.293-3.095 5.871.806 3.576 3.635 3.508 3.635 3.508s2.085.205 4.504-.336c2.42-.537 4.503.134 4.503.134s5.652 1.893 7.199-1.751c1.545-3.645-.874-5.535-.874-5.535zm-9.671 5.423H7.352c-1.587-.316-2.219-1.4-2.299-1.584-.078-.188-.528-1.059-.29-2.539.686-2.219 2.642-2.379 2.642-2.379h1.956V14.74l1.666.025v8.881zm6.844-.025h-4.229c-1.639-.423-1.716-1.587-1.716-1.587v-4.677l1.716-.027v4.203c.104.447.661.529.661.529h1.742v-4.705h1.825v6.264zm5.986-12.486c0-.808-.671-3.239-3.159-3.239-2.492 0-2.825 2.295-2.825 3.917 0 1.548.131 3.71 3.227 3.641 3.096-.068 2.757-3.507 2.757-4.319z'
   }
 })
 ```
@@ -194,83 +159,105 @@ Icon.register({
 
 If your svg has more than one path or polygon, and/or you want to have a predefined style, you can register like this:
 
-#### Paths:
+#### Paths
 
 ```js
 // ES Modules with vue-loader
 import Icon from 'vue-awesome/components/Icon.vue'
 
 Icon.register({
-  html5_logo: {
-    width: 1792,
-    height: 1272,
+  webpack: {
+    width: 1200,
+    height: 1200,
     paths: [
       {
-        d: 'M27.383,386.266 L0.313,82.646 L297.763,82.646 L270.665,386.217 L148.856,419.986 L27.383,386.266 Z M27.383,386.266',
-        style: 'fill:#E44F26'
+        style: 'fill:#8ED6FB',
+        d: 'M1035.6 879.3l-418.1 236.5V931.6L878 788.3l157.6 91zm28.6-25.9V358.8l-153 88.3V765l153 88.4zm-901.5 25.9l418.1 236.5V931.6L320.3 788.3l-157.6 91zm-28.6-25.9V358.8l153 88.3V765l-153 88.4zM152 326.8L580.8 84.2v178.1L306.1 413.4l-2.1 1.2-152-87.8zm894.3 0L617.5 84.2v178.1l274.7 151.1 2.1 1.2 152-87.8z'
       },
       {
-        d: 'M149.038,394.175 L247.465,366.887 L270.623,107.471 L149.038,107.471 L149.038,394.175 Z M149.038,394.175',
-        style: 'fill:#F1662A'
-      },
-      {
-        d: 'M149.038,220.08 L99.763,220.08 L96.359,181.948 L149.038,181.948 L149.038,144.709 L148.909,144.709 L55.663,144.709 L56.555,154.7 L65.707,257.316 L149.038,257.316 L149.038,220.08 Z M149.038,220.08',
-        style: 'fill:#EBEBEB'
-      },
-      {
-        d: 'M149.038,316.788 L148.875,316.834 L107.403,305.635 L104.751,275.937 L84.6,275.937 L67.371,275.937 L72.588,334.404 L148.866,355.58 L149.038,355.532 L149.038,316.788 Z M149.038,316.788',
-        style: 'fill:#EBEBEB'
-      },
-      {
-        d: 'M148.909,144.709 L148.909,167.837 L148.909,181.856 L148.909,181.948 L238.736,181.948 L238.856,181.948 L239.603,173.578 L241.299,154.7 L242.19,144.709 L148.909,144.709 Z M148.909,144.709',
-        style: 'fill:#FFFFFF'
-      },
-      {
-        d: 'M148.909,220.08 L148.909,257.316 L194.763,257.316 L190.441,305.61 L148.909,316.82 L148.909,355.562 L225.249,334.404 L225.808,328.114 L234.559,230.079 L235.467,220.08 L225.433,220.08 L148.909,220.08 Z M148.909,220.08',
-        style: 'fill:#FFFFFF'
+        style: 'fill:#1C78C0',
+        d: 'M580.8 889.7l-257-141.3v-280l257 148.4v272.9zm36.7 0l257-141.3v-280l-257 148.4v272.9zm-18.3-283.6zM341.2 436l258-141.9 258 141.9-258 149-258-149z'
       }
     ]
   }
 })
 ```
 
-#### Polygons:
+#### Polygons
 
 ```js
 // ES Modules with vue-loader
 import Icon from 'vue-awesome/components/Icon.vue'
 
 Icon.register({
-  es6_logo: {
-    width: 1792,
-    height: 1272,
+  vue: {
+    width: 256,
+    height: 221,
     polygons: [
       {
-        style: 'fill:#FFCC33',
-        points: '27.07,386.156 0,82.536 297.45,82.536 270.352,386.107 148.543,419.877'
+        style: 'fill:#41B883',
+        points: '0,0 128,220.8 256,0 204.8,0 128,132.48 50.56,0 0,0'
       },
       {
-        style:'fill:#F8DC3D',
-        points: '148.725,394.064 247.153,366.777 270.311,107.361 148.725,107.361'
-      },
-      {
-        style: 'fill:#FFFFFF',
-        points: '148.93,209.97 148.93,247.207 194.783,257.207 190.461,305.5 148.93,316.711 148.93,355.453 225.27,334.295 225.828,328.004 235.486,229.97'
-      },
-      {
-        style: 'fill:#FFFFFF',
-        points: '224.926,142.736 148.586,121.578 148.586,160.32 224.967,181.838'
-      },
-      {
-        style: 'fill:#EBEBEB',
-        points: '149.059,209.97 100.803,219.97 107.078,171.505 148.551,160.306 148.715,160.352 148.715,121.608 148.543,121.56 72.264,142.736 62.424,219.97 62.406,219.97 62.412,220.049 62.406,220.104 62.418,220.104 65.727,257.207 65.908,257.207 72.607,334.295 148.887,355.471 149.059,355.422 149.059,316.678 148.895,316.725 107.422,305.525 103.277,257.207 149.059,247.207'
+        style: 'fill:#35495E',
+        points: '50.56,0 128,133.12 204.8,0 157.44,0 128,51.2 97.92,0 50.56,0'
       }
     ]
   }
 })
 ```
 
-Default icon size should be `1792x1792` and will be normalized to `16x16`.
+#### Raw SVG
+
+```js
+// ES Modules with vue-loader
+import Icon from 'vue-awesome/components/Icon.vue'
+
+Icon.register({
+  'html5-c': {
+    width: 512,
+    height: 512,
+    raw: '<path fill="#E34F26" d="M71,460 L30,0 481,0 440,460 255,512"/><path fill="#EF652A" d="M256,472 L405,431 440,37 256,37"/><path fill="#EBEBEB" d="M256,208 L181,208 176,150 256,150 256,94 255,94 114,94 115,109 129,265 256,265zM256,355 L255,355 192,338 188,293 158,293 132,293 139,382 255,414 256,414z"/><path fill="#FFF" d="M255,208 L255,265 325,265 318,338 255,355 255,414 371,382 372,372 385,223 387,208 371,208zM255,94 L255,129 255,150 255,150 392,150 392,150 392,150 393,138 396,109 397,94z"/>'
+  }
+})
+```
+
+#### Heads up for older versions
+
+If you are using Vue-Awesome version before `2.2.5`, please make sure you are following these instructions below:
+
+If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
+
+For Webpack1:
+
+```diff
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        include: [
+-          path.join(projectRoot, 'src')
++          path.join(projectRoot, 'src'),
++          path.join(projectRoot, 'node_modules/vue-awesome')
+        ],
+-        exclude: /node_modules/
++        exclude: /node_modules(?![\\/]vue-awesome[\\/])/
+      },
+```
+
+For Webpack2:
+
+```diff
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+-       include: [resolve('src'), resolve('test')]
++       include: [resolve('src'), resolve('test'), resolve('node_modules/vue-awesome')]
+      }
+```
+
+Further more, do not forget to import icons you want to use if you are using `vue-awesome/components/Icon`.
+
+If you tried this and cannot find similar situation in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) but still cannot make it work, please feel free to [file a new issue](https://github.com/Justineo/vue-awesome/issues/new).
 
 ## Related projects
 

@@ -40,11 +40,13 @@
 
     <h2>Custom icons</h2>
     <p><small>You can register your own icons.</small></p>
-    <p><icon name="taobao"></icon></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"taobao"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <p><icon name="baidu"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"baidu"</span>&gt;&lt;/icon&gt;</code></pre></figure>
     
-    <p><icon name="html5_logo"></icon></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"html5_logo"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <h2>Advanced use</h2>
+    <p><small>Register your own icons in multiple ways, with multiple colors.</small></p>
+    <p><icon name="webpack"></icon> <icon name="vue"></icon> <icon name="html5-c"></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"html5-c"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <footer>
       <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
@@ -106,7 +108,7 @@ h1, h2 {
 }
 
 h2 {
-  margin-top: 2em;
+  margin-top: 3em;
   font-size: 1.2em;
 }
 
@@ -126,6 +128,7 @@ p small {
 
 pre {
   display: inline-block;
+  margin: 0;
   padding: 0.8em;
   background-color: #f9f9f9;
   box-shadow: 0 1px 2px rgba(0,0,0,0.125);
@@ -222,26 +225,26 @@ import Icon from '../src/components/Icon.vue'
 import '../src/icons'
 const keys = Object.keys(Icon.icons);
 
-function randomIcon() {
+function randomIcon () {
   return keys[Math.floor(Math.random() * keys.length)];
 }
 
 export default {
-  data() {
+  data () {
     return {
       logo: randomIcon(),
       running: true
     }
   },
   methods: {
-    change() {
+    change () {
       this.logo = randomIcon()
     },
     toggle: function () {
       this.running = !this.running
     }
   },
-  mounted() {
+  mounted () {
     setInterval(() => {
       if (this.running) {
         this.change()

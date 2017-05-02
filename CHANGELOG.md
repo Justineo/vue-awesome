@@ -1,3 +1,7 @@
+2.3.0
+* Added new ways to register icon.
+* Clearify custom icon registration in documentation.
+
 2.2.8
 * Swith build tool to rollup.
 * Provide `module` in `package.json`.

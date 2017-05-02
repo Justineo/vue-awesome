@@ -1,14 +1,13 @@
 <template>
   <svg version="1.1" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :x="x" :y="y" :width="width" :height="height" :viewBox="box" :style="style">
     <slot>
-      <template v-if="icon">
-        <template v-if="icon.paths">
-          <path v-for="path in icon.paths" v-bind="path"/>
-        </template>
-        <template v-if="icon.polygons">
-          <polygon v-for="polygon in icon.polygons" v-bind="polygon"/>
-        </template>
+      <template v-if="icon && icon.paths">
+        <path v-for="path in icon.paths" v-bind="path"/>
       </template>
+      <template v-if="icon && icon.polygons">
+        <polygon v-for="polygon in icon.polygons" v-bind="polygon"/>
+      </template>
+      <template v-if="icon && icon.raw"><g v-html="icon.raw"></g></template>
     </slot>
   </svg>
 </template>
@@ -117,11 +116,18 @@ export default {
       }
       return `0 0 ${this.width} ${this.height}`
     },
+    ratio () {
+      if (!this.icon) {
+        return 1
+      }
+      let { width, height } = this.icon
+      return Math.max(width, height) / 16
+    },
     width () {
-      return this.childrenWidth || this.icon && this.icon.width / 112 * this.normalizedScale || 0
+      return this.childrenWidth || this.icon && this.icon.width / this.ratio * this.normalizedScale || 0
     },
     height () {
-      return this.childrenHeight || this.icon && this.icon.height / 112 * this.normalizedScale || 0
+      return this.childrenHeight || this.icon && this.icon.height / this.ratio * this.normalizedScale || 0
     },
     style () {
       if (this.normalizedScale === 1) {
