@@ -43,10 +43,10 @@
     <p><icon name="baidu"></icon></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"baidu"</span>&gt;&lt;/icon&gt;</code></pre></figure>
     
-    <h2>Advanced use</h2>
-    <p><small>Register your own icons in multiple ways, with multiple colors.</small></p>
+    <h2>Multi-color icons</h2>
+    <p><small>Register icons in more advanced ways to unleash the full power of SVG.</small></p>
     <p><icon name="webpack"></icon> <icon name="vue"></icon> <icon name="html5-c"></icon></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"html5-c"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <p>See <a href="https://github.com/Justineo/vue-awesome#more-advanced-cases">readme</a> for further instructions.</p>
 
     <footer>
       <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
@@ -66,6 +66,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p a {
+  color: #42b983;
+  font-weight: 600;
 }
 
 #logo {
