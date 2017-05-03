@@ -1,3 +1,6 @@
+2.3.1
+* Fixed the problem that styles are missing for precompiled version ([#35](https://github.com/Justineo/vue-awesome/issues/35)).
+
 2.3.0
 * Added new ways to register icon.
 * Clearify custom icon registration in documentation.

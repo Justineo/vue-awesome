@@ -14,7 +14,10 @@ export default {
   moduleName: 'VueAwesome',
   dest: 'dist/vue-awesome.js',
   plugins: [
-    vue({compileTemplate: true}),
+    vue({
+      compileTemplate: true,
+      css: true
+    }),
     buble(),
     uglify()
   ]
