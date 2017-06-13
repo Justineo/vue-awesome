@@ -1,3 +1,6 @@
+2.3.2
+* Replace publish npm scripts with shell commands to prevent failure upon npm install.
+
 2.3.1
 * Fixed the problem that styles are missing for precompiled version ([#35](https://github.com/Justineo/vue-awesome/issues/35)).
 

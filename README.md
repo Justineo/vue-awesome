@@ -209,6 +209,8 @@ Icon.register({
 
 #### Raw SVG
 
+**You need to include [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml) before you use this feature.**
+
 ```js
 // ES Modules with vue-loader
 import Icon from 'vue-awesome/components/Icon.vue'
@@ -222,7 +224,7 @@ Icon.register({
 })
 ```
 
-#### Heads up for older versions
+### Heads up for older versions
 
 If you are using Vue-Awesome version before `2.2.5`, please make sure you are following these instructions below:
 
