@@ -144,13 +144,15 @@ export default {
       return this.childrenHeight || this.icon && this.icon.height / this.ratio * this.normalizedScale || 0
     },
     style () {
-      if (this.normalizedScale === 1) {
-        return false
-      }
-      return {
-        fontSize: this.normalizedScale + 'em',
+      let styles = {
         fill: this.color
       }
+
+      if (this.normalizedScale !== 1) {
+        styles.fontSize = this.normalizedScale + 'em'
+      }
+
+      return styles
     }
   },
   mounted () {
