@@ -1,5 +1,16 @@
 <template>
-  <svg version="1.1" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :x="x" :y="y" :width="width" :height="height" :viewBox="box" :style="style">
+  <svg
+    version="1.1"
+    :class="clazz"
+    :role="label ? 'img' : 'presentation'"
+    :aria-label="label"
+    :x="x"
+    :y="y"
+    :width="width"
+    :height="height"
+    :viewBox="box"
+    :style="style"
+  >
     <slot>
       <template v-if="icon && icon.paths">
         <path v-for="path in icon.paths" v-bind="path"/>
@@ -15,7 +26,6 @@
 <style>
 .fa-icon {
   display: inline-block;
-  fill: currentColor;
 }
 
 .fa-flip-horizontal {
@@ -74,7 +84,11 @@ export default {
         return val === 'horizontal' || val === 'vertical'
       }
     },
-    label: String
+    label: String,
+    color: {
+      type: String,
+      default: '#000'
+    }
   },
   data () {
     return {
@@ -134,7 +148,8 @@ export default {
         return false
       }
       return {
-        fontSize: this.normalizedScale + 'em'
+        fontSize: this.normalizedScale + 'em',
+        fill: this.color
       }
     }
   },
