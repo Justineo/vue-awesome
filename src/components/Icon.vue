@@ -72,6 +72,10 @@ export default {
     },
     scale: [Number, String],
     spin: Boolean,
+    rotate: {
+      type: Number,
+      default: 0
+    },
     inverse: Boolean,
     pulse: Boolean,
     flip: {
@@ -137,9 +141,12 @@ export default {
     },
     style () {
       if (this.normalizedScale === 1) {
-        return false
+        return {
+          transform: 'rotate(' + this.rotate + 'deg)'
+        }
       }
       return {
+        transform: 'rotate(' + this.rotate + 'deg)',
         fontSize: this.normalizedScale + 'em'
       }
     }
