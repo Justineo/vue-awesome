@@ -34,6 +34,10 @@
   color: #fff;
 }
 
+.fa-pulse {
+  animation: fa-spin 1s infinite steps(8);
+}
+
 @keyframes fa-spin {
   0% {
     transform: rotate(0deg);
@@ -68,7 +72,12 @@ export default {
     },
     scale: [Number, String],
     spin: Boolean,
+    rotate: {
+      type: Number,
+      default: 0
+    },
     inverse: Boolean,
+    pulse: Boolean,
     flip: {
       validator (val) {
         return val === 'horizontal' || val === 'vertical'
@@ -101,7 +110,8 @@ export default {
         'fa-spin': this.spin,
         'fa-flip-horizontal': this.flip === 'horizontal',
         'fa-flip-vertical': this.flip === 'vertical',
-        'fa-inverse': this.inverse
+        'fa-inverse': this.inverse,
+        'fa-pulse': this.pulse
       }
     },
     icon () {
@@ -131,9 +141,12 @@ export default {
     },
     style () {
       if (this.normalizedScale === 1) {
-        return false
+        return {
+          transform: 'rotate(' + this.rotate + 'deg)'
+        }
       }
       return {
+        transform: 'rotate(' + this.rotate + 'deg)',
         fontSize: this.normalizedScale + 'em'
       }
     }
