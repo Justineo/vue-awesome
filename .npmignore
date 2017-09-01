@@ -1,8 +1,8 @@
 build
 demo
 src
-.babelrc
-.gitignore
-bower.json
-webpack.config.js
 assets
+index.html
+.*
+*.config.js
+*.sh
