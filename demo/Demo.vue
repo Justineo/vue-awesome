@@ -16,6 +16,10 @@
     <p><icon name="refresh" spin></icon></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"refresh"</span> <span class="attr">spin</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
+    <h2>Pulse</h2>
+    <p><icon name="spinner" pulse></icon></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"spinner"</span> <span class="attr">pulse</span>&gt;&lt;/icon&gt;</code></pre></figure>
+
     <h2>Flip</h2>
     <p><icon name="signal" flip="horizontal"></icon></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"signal"</span> <span class="attr">flip</span>=<span class="val">"horizontal"</span>&gt;&lt;/icon&gt;</code></pre></figure>
@@ -228,10 +232,10 @@ footer a:hover {
 <script>
 import Icon from '../src/components/Icon.vue'
 import '../src/icons'
-const keys = Object.keys(Icon.icons);
+const keys = Object.keys(Icon.icons)
 
 function randomIcon () {
-  return keys[Math.floor(Math.random() * keys.length)];
+  return keys[Math.floor(Math.random() * keys.length)]
 }
 
 export default {
