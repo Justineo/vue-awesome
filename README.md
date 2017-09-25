@@ -1,6 +1,6 @@
 # Vue-Awesome
 
-> Font Awesome component for Vue.js, using inline SVG.
+> Awesome SVG icon component for Vue.js, built-in with Font Awesome icons.
 
 Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
 
