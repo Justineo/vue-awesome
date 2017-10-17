@@ -106,6 +106,41 @@ require(['vue-awesome'], function (Icon) {
 
 The component class is exposed as `window.VueAwesome`.
 
+## Heads up
+
+If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
+
+For Webpack1:
+
+```diff
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        include: [
+-          path.join(projectRoot, 'src')
++          path.join(projectRoot, 'src'),
++          path.join(projectRoot, 'node_modules/vue-awesome')
+        ],
+-        exclude: /node_modules/
++        exclude: /node_modules(?![\\/]vue-awesome[\\/])/
+      },
+```
+
+For Webpack2:
+
+```diff
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+-       include: [resolve('src'), resolve('test')]
++       include: [resolve('src'), resolve('test'), resolve('node_modules/vue-awesome')]
+      }
+```
+
+Further more, do not forget to import icons you want to use if you are using `vue-awesome/components/Icon`.
+
+If you tried this and cannot find similar situation in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) but still cannot make it work, please feel free to [file a new issue](https://github.com/Justineo/vue-awesome/issues/new).
+
 ## Styling
 
 ### Dynamic sizing
@@ -227,43 +262,6 @@ Icon.register({
   }
 })
 ```
-
-### Heads up for older versions
-
-If you are using Vue-Awesome version before `2.2.5`, please make sure you are following these instructions below:
-
-If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
-
-For Webpack1:
-
-```diff
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        include: [
--          path.join(projectRoot, 'src')
-+          path.join(projectRoot, 'src'),
-+          path.join(projectRoot, 'node_modules/vue-awesome')
-        ],
--        exclude: /node_modules/
-+        exclude: /node_modules(?![\\/]vue-awesome[\\/])/
-      },
-```
-
-For Webpack2:
-
-```diff
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
--       include: [resolve('src'), resolve('test')]
-+       include: [resolve('src'), resolve('test'), resolve('node_modules/vue-awesome')]
-      }
-```
-
-Further more, do not forget to import icons you want to use if you are using `vue-awesome/components/Icon`.
-
-If you tried this and cannot find similar situation in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) but still cannot make it work, please feel free to [file a new issue](https://github.com/Justineo/vue-awesome/issues/new).
 
 ## Related projects
 
