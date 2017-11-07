@@ -108,9 +108,11 @@ The component class is exposed as `window.VueAwesome`.
 
 ## Heads up
 
-If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
+### Importing the souce version
 
-For Webpack1:
+If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size, which is recommended), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
+
+For webpack@1.x:
 
 ```diff
       {
@@ -126,7 +128,7 @@ For Webpack1:
       },
 ```
 
-For Webpack2:
+For webpack@2+:
 
 ```diff
       {
@@ -137,9 +139,41 @@ For Webpack2:
       }
 ```
 
-Further more, do not forget to import icons you want to use if you are using `vue-awesome/components/Icon`.
+If you are using bare webpack config, just do similar modifications make it work.
 
-If you tried this and cannot find similar situation in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) but still cannot make it work, please feel free to [file a new issue](https://github.com/Justineo/vue-awesome/issues/new).
+### Using with Nuxt.js
+
+When using Vue-Awesome on the server side with Nuxt.js, it may prompt `Unexpected token import` because Nuxt.js has configured an `external` option by default, which prevent files under `node_modules` from being bundled into the server bundle with only a few exceptions. We need to add `vue-awesome` into the `whitelist` as follows:
+
+```js
+// Don't forget to
+// npm i --save-dev webpack-node-externals
+const nodeExternals = require('webpack-node-externals')
+
+module.exports = {
+  // ...
+  build: {
+    extend (config, { isServer }) {
+      // ...
+      if (isServer) {
+        config.externals = [
+          nodeExternals({
+            // default value for `whitelist` is
+            // [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
+            whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
+          })
+        ]
+      }
+    }
+  }
+}
+```
+
+### Misc
+
+If you are using `vue-awesome/components/Icon` (instead of the whole bundled version), Vue-Awesome won't import a single icon by default. Do not forget to import icons you want to use.
+
+If these caveats don't help and there are no proper workarounds in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue), please feel free to [file a new one](https://github.com/Justineo/vue-awesome/issues/new).
 
 ## Styling
 
