@@ -1,13 +1,22 @@
 <template>
-  <svg version="1.1" :class="clazz" :role="label ? 'img' : 'presentation'" :aria-label="label" :x="x" :y="y" :width="width" :height="height" :viewBox="box" :style="style">
+  <svg version="1.1"
+    :class="klass"
+    :role="label ? 'img' : 'presentation'"
+    :aria-label="label"
+    :x="x"
+    :y="y"
+    :width="width"
+    :height="height"
+    :viewBox="box"
+    :style="style">
     <slot>
       <template v-if="icon && icon.paths">
-        <path v-for="path in icon.paths" v-bind="path"/>
+        <path v-for="(path, i) in icon.paths" :key="`path-${i}`" v-bind="path"/>
       </template>
       <template v-if="icon && icon.polygons">
-        <polygon v-for="polygon in icon.polygons" v-bind="polygon"/>
+        <polygon v-for="(polygon, i) in icon.polygons" :key="`polygon-${i}`" v-bind="polygon"/>
       </template>
-      <template v-if="icon && icon.raw"><g v-html="icon.raw"></g></template>
+      <template v-if="icon && icon.raw"><g v-html="raw"></g></template>
     </slot>
   </svg>
 </template>
@@ -49,8 +58,6 @@
 </style>
 
 <script>
-import Vue from 'vue'
-
 let icons = {}
 
 export default {
@@ -61,13 +68,14 @@ export default {
       validator (val) {
         if (val) {
           if (!(val in icons)) {
-            Vue.util.warn(`Invalid prop: prop "icon" is referring to an unregistered icon "${val}".` +
-              `\nPlesase make sure you have imported this icon before using it.`, this)
+            console.warn(`Invalid prop: prop "name" is referring to an unregistered icon "${val}".` +
+              `\nPlesase make sure you have imported this icon before using it.`)
             return false
           }
           return true
         }
-        return null
+        console.warn(`Invalid prop: prop "name" is required.`)
+        return false
       }
     },
     scale: [Number, String],
@@ -95,12 +103,12 @@ export default {
       let scale = this.scale
       scale = typeof scale === 'undefined' ? 1 : Number(scale)
       if (isNaN(scale) || scale <= 0) {
-        Vue.util.warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
+        console.warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
         return this.outerScale
       }
       return scale * this.outerScale
     },
-    clazz () {
+    klass () {
       return {
         'fa-icon': true,
         'fa-spin': this.spin,
@@ -142,6 +150,29 @@ export default {
       return {
         fontSize: this.normalizedScale + 'em'
       }
+    },
+    raw () {
+      // generate unique id for each icon's SVG element with ID
+      if (!this.icon || !this.icon.raw) {
+        return null
+      }
+      let raw = this.icon.raw
+      let ids = {}
+      raw = raw.replace(/\s(?:xml:)?id=["']?([^"')\s]+)/g, (match, id) => {
+        let uniqueId = getId()
+        ids[id] = uniqueId
+        return ` id="${uniqueId}"`
+      })
+      raw = raw.replace(/#(?:([^'")\s]+)|xpointer\(id\((['"]?)([^')]+)\2\)\))/g, (match, rawId, _, pointerId) => {
+        let id = rawId || pointerId
+        if (!id || !ids[id]) {
+          return match
+        }
+
+        return `#${ids[id]}`
+      })
+
+      return raw
     }
   },
   mounted () {
@@ -186,5 +217,10 @@ export default {
     }
   },
   icons
+}
+
+let cursor = 0xd4937
+function getId () {
+  return `fa-${(cursor++).toString(16)}`
 }
 </script>

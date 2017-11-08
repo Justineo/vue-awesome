@@ -1,3 +1,6 @@
+2.3.4
+* `id`s are now unique under `raw` mode.
+
 2.3.2
 * Replaced publish npm scripts with shell commands to prevent failure upon npm install.
 * Added `pulse` prop.
