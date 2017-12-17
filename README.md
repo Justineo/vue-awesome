@@ -141,6 +141,18 @@ For webpack 2+:
 
 If you are using bare webpack config, just do similar modifications make it work.
 
+### Unit Testing with Jest
+
+Make sure to whitelist `vue-awesome` from the `transformIgnorePattern`. Add following configuation in `test/unit/jest.conf.js`:
+
+```diff
++ transformIgnorePatterns: [
++   '/node_modules(?![\\\\/]vue-awesome[\\\\/])/'
++ ],
+```
+
+*Don't import all icons if you don't want to make unit testing slow because this will transform all icons from ES module and thus slow down the test process.*
+
 ### Using with Nuxt.js
 
 When using Vue-Awesome on the server side with Nuxt.js, it may prompt `Unexpected token import` because Nuxt.js has configured an `external` option by default, which prevent files under `node_modules` from being bundled into the server bundle with only a few exceptions. We need to add `vue-awesome` into the `whitelist` as follows:
