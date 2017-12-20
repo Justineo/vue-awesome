@@ -69,7 +69,7 @@ export default {
         if (val) {
           if (!(val in icons)) {
             console.warn(`Invalid prop: prop "name" is referring to an unregistered icon "${val}".` +
-              `\nPlesase make sure you have imported this icon before using it.`)
+              `\nPlease make sure you have imported this icon before using it.`)
             return false
           }
           return true
