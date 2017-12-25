@@ -8,7 +8,8 @@
     :width="width"
     :height="height"
     :viewBox="box"
-    :style="style">
+    :style="style"
+    @click="$emit('click')">
     <slot>
       <template v-if="icon && icon.paths">
         <path v-for="(path, i) in icon.paths" :key="`path-${i}`" v-bind="path"/>
