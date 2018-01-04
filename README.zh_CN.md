@@ -1,12 +1,12 @@
 # Vue-Awesome
 
-> Awesome SVG icon component for Vue.js, built-in with Font Awesome icons.
+> 基于 Vue.js 的强大 SVG 图表组件。已内置 Font Awesome 图标。
 
-Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
+Vue-Awesome 基于 [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` 构建，依赖 [Vue.js](https://vuejs.org/) `v2.0.1`+。
 
-Check out the demo [here](https://justineo.github.io/vue-awesome/demo/).
+查看[此处](https://justineo.github.io/vue-awesome/demo/)的 demo 一睹为快。
 
-## Installation
+## 安装
 
 ### NPM (Recommended)
 
@@ -20,53 +20,53 @@ $ npm install vue-awesome
 $ bower install vue-awesome
 ```
 
-### manual
+### 手动安装
 
-Just download `dist/vue-awesome.js` and include it in your HTML file:
+直接下载 `dist/vue-awesome.js` 并在 HTML 文件中引入：
 
 ```html
 <script src="path/to/vue-awesome/dist/vue-awesome.js"></script>
 ```
 
-## Usage
+## 使用方法
 
 ```html
-<!-- basic -->
+<!-- 基础用法 -->
 <icon name="beer"></icon>
 
-<!-- with options -->
+<!-- 添加选项 -->
 <icon name="refresh" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
 <icon name="code-fork" label="Forked Repository"></icon>
 
-<!-- stacked icons -->
+<!-- 堆叠图标 -->
 <icon label="No Photos">
   <icon name="camera"></icon>
   <icon name="ban" scale="2" class="alert"></icon>
 </icon>
 ```
 
-### ES Modules with NPM & vue-loader (Recommended)
+### 用 npm 与 vue-loader 基于 ES Module 引入（推荐用法）
 
 ```js
 import Vue from 'vue'
 
-/* Pick one way between the 2 following ways */
+/* 在下面两种方式中任选一种 */
 
-// only import the icons you use to reduce bundle size
+// 仅引入用到的图标以减小打包体积
 import 'vue-awesome/icons/flag'
 
-// or import all icons if you don't care about bundle size
+// 或者在不关心打包体积时一次引入全部图标
 import 'vue-awesome/icons'
 
-/* Register component with one of 2 methods */
+/* 任选一种注册组件的方式 */
 
 import Icon from 'vue-awesome/components/Icon'
 
-// globally (in your main .js file)
+// 全局注册（在 `main .js` 文件中）
 Vue.component('icon', Icon)
 
-// or locally (in your component file)
+// 或局部注册（在组件文件中）
 export default {
   components: {
     Icon
@@ -74,13 +74,13 @@ export default {
 }
 ```
 
-#### ⚠️ Heads up
+#### ⚠️ 注意事项
 
-##### Importing the souce version
+##### 引入源码版本
 
-If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size, which is recommended), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
+如果你正在使用 vue-cli 来创建项目并且希望使用未经转译的组件（引入 `vue-echarts/components/Icon` 而非直接引入 `vue-awesome`）来减小打包尺寸（是推荐用法），那么 Vue 的 `webpack` 模板可能会把 `node_modules` 中的文件排除在 Babel 转译范围以外。要解决此问题，需要按下述的方式修改 `build/webpack.base.conf.js`：
 
-For webpack 1.x:
+对于 webpack 1.x：
 
 ```diff
       {
@@ -107,11 +107,11 @@ For webpack 2+:
       }
 ```
 
-If you are using bare webpack config, just do similar modifications make it work.
+如果你正直接配置使用 webpack，那么也请做类似的修改使其能够正常工作。
 
-##### Unit Testing with Jest
+##### 使用 Jest 进行单元测试
 
-Make sure to whitelist `vue-awesome` from the `transformIgnorePattern`. Add following configuation in `test/unit/jest.conf.js`:
+请确保已将 `vue-awesome` 从 `transformIgnorePattern` 中排除。在 `test/unit/jest.conf.js` 中加入如下配置：
 
 ```diff
 + transformIgnorePatterns: [
@@ -119,20 +119,21 @@ Make sure to whitelist `vue-awesome` from the `transformIgnorePattern`. Add foll
 + ],
 ```
 
-*Don't import all icons if you don't want to make unit testing slow because this will transform all icons from ES module and thus slow down the test process.*
+*如果不想让单元测试变得很慢，那么请不要引入所有图标。因为每个图标都会从 ES module 格式进行转译，从而使整个测试过程变得缓慢。*
 
-### CommonJS with NPM without ES Next support
+### 在没有 ES Next 支持环境下用 npm 以 CommonJS 方式引入
 
 ```js
 var Vue = require('vue')
 
-// requiring the UMD module
+// 引入 UMD 模块
 var Icon = require('vue-awesome')
 
-// or with vue-loader you can require the src directly
+// 或者在使用 vue-loader 时可以直接引入源码版本
 var Icon = require('vue-awesome/components/Icon')
 
-// register component to use
+// 注册组件后即可使用
+Vue.component('icon', Icon)
 ```
 
 ### AMD
@@ -145,26 +146,26 @@ require.config({
 })
 
 require(['vue-awesome'], function (Icon) {
-  // register component to use
+  // 注册组件后即可使用
   Vue.component('icon', Icon)
 })
 ```
 
-### Global variable
+### 全局变量
 
-The component class is exposed as `window.VueAwesome`.
+组件将通过 `window.VueAwesome` 变量暴露接口：
 
 ```js
-// register component to use
+// 注册组件后即可使用
 Vue.component('icon', VueAwesome)
 ```
 
-### Using with Nuxt.js
+### 在 Nuxt.js 中使用
 
-When using Vue-Awesome on the server side with Nuxt.js, it may prompt `Unexpected token import` because Nuxt.js has configured an `external` option by default, which prevent files under `node_modules` from being bundled into the server bundle with only a few exceptions. We need to add `vue-awesome` into the `whitelist` as follows:
+在 Nuxt.js 的服务端中使用 Vue-Awesome 时，可能会报 `Unexpected token import` 的错误。这是因为 Nuxt.js 默认配置了 `externals` 选项，会使得 `node_modules` 目录下的绝大多数文件被排除在服务端打包代码以外。需要按如下方式将 `vue-awesome` 加入 `whitelist` 选项：
 
 ```js
-// Don't forget to
+// 别忘了运行
 // npm i --save-dev webpack-node-externals
 const nodeExternals = require('webpack-node-externals')
 
@@ -176,7 +177,7 @@ module.exports = {
       if (isServer) {
         config.externals = [
           nodeExternals({
-            // default value for `whitelist` is
+            // `whitelist` 选项的默认值是
             // [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
             whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
           })
@@ -187,51 +188,53 @@ module.exports = {
 }
 ```
 
-### Misc
+### 其它
 
-If you are using `vue-awesome/components/Icon` (instead of the whole bundled version), Vue-Awesome won't import a single icon by default. Do not forget to import icons you want to use.
+如果你正在使用 `vue-awesome/components/Icon`（而非整体打包的版本），Vue-Awesome 默认是不会引入任何图标的。别忘了自行引入你想使用的图标。
 
-If these caveats don't help and there are no proper workarounds in [earlier issues](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue), please feel free to [file a new one](https://github.com/Justineo/vue-awesome/issues/new).
+如果这些信息仍然无法帮助你解决问题，且[之前的 issue](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) 中也没有合适的解决方案，请尽管[创建新 issue]((https://github.com/Justineo/vue-awesome/issues/new)。
 
-## Styling
+## 设定样式
 
-### Dynamic sizing
+### 动态尺寸
 
 You can make the icons scale dynamically according to your `font-size` by adding the following CSS:
+
+可以添加以下 CSS 代码来让图标根据当前的 `font-size` 动态调整尺寸：
 
 ```css
 .fa-icon {
   width: auto;
-  height: 1em; /* or any other relative font sizes */
+  height: 1em; /* 或任意其它字体大小相对值 */
 
-  /* You would have to include the following two lines to make this work in Safari */
+  /* 要在 Safari 中正常工作，需要再引入如下两行代码 */
   max-width: 100%;
   max-height: 100%;
 }
 ```
 
-### Colors
+### 颜色
 
-The icon color is inherited from the font color of the parent element by default. You can easily change it to any other color by specifying the `color` property.
+默认情况下，图标颜色继承自父元素的文字颜色。可以通过指定 `color` 属性来方便地进行修改。
 
-## Local development
+## 本地开发
 
 ```bash
 $ npm i
 $ npm run dev
 ```
 
-Open `http://localhost:8080/demo` to see the demo.
+打开 `http://localhost:8080/demo` 来查看 demo。
 
-### Updating icons
+### 更新图标
 
-Don't touch files in `src/icons` but update `assets/svg/*` instead and run `npm run icons` to re-generate icon module files.
+请勿修改 `src/icons` 中的文件，而应在更新 `assets/svg/*` 后运行 `npm run icons` 来重新生成图标模块文件。
 
-## Registering custom icons
+## 注册自定义图标
 
-### Simple case
+### 简单情况
 
-You can register custom icons like this:
+可以用如下方式注册自定义图标：
 
 ```js
 import Icon from 'vue-awesome/components/Icon'
@@ -245,11 +248,11 @@ Icon.register({
 })
 ```
 
-### More advanced cases
+### 复杂一些的情况
 
-If your SVG file has more than one path or polygon, and/or you want to have a predefined style, you can register like this:
+如果你的 SVG 文件有多个路径或多边形，以及/或者你想预定义一些样式，可以用如下方式进行注册：
 
-#### Paths
+#### 路径
 
 ```js
 import Icon from 'vue-awesome/components/Icon'
@@ -272,7 +275,7 @@ Icon.register({
 })
 ```
 
-#### Polygons
+#### 多边形
 
 ```js
 import Icon from 'vue-awesome/components/Icon'
@@ -295,9 +298,9 @@ Icon.register({
 })
 ```
 
-#### Raw SVG
+#### 原始 SVG
 
-**You need to include [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml) before you use this feature.**
+**在使用此功能钱，你需要引入 [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml)。**
 
 ```js
 import Icon from 'vue-awesome/components/Icon'
