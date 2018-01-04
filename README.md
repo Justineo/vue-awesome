@@ -2,13 +2,15 @@
 
 > Awesome SVG icon component for Vue.js, built-in with Font Awesome icons.
 
+> [🇨🇳 中文版](./README.zh_CN.md)
+
 Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
 
 Check out the demo [here](https://justineo.github.io/vue-awesome/demo/).
 
 ## Installation
 
-### NPM (Recommended)
+### npm (Recommended)
 
 ```bash
 $ npm install vue-awesome
@@ -20,7 +22,7 @@ $ npm install vue-awesome
 $ bower install vue-awesome
 ```
 
-### manual
+### Manual
 
 Just download `dist/vue-awesome.js` and include it in your HTML file:
 

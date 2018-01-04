@@ -1,6 +1,6 @@
 # Vue-Awesome
 
-> 基于 Vue.js 的强大 SVG 图表组件。已内置 Font Awesome 图标。
+> 基于 Vue.js 的强大 SVG 图标组件。已内置 Font Awesome 图标。
 
 Vue-Awesome 基于 [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` 构建，依赖 [Vue.js](https://vuejs.org/) `v2.0.1`+。
 
@@ -8,7 +8,7 @@ Vue-Awesome 基于 [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `
 
 ## 安装
 
-### NPM (Recommended)
+### npm（推荐方式）
 
 ```bash
 $ npm install vue-awesome
@@ -192,13 +192,11 @@ module.exports = {
 
 如果你正在使用 `vue-awesome/components/Icon`（而非整体打包的版本），Vue-Awesome 默认是不会引入任何图标的。别忘了自行引入你想使用的图标。
 
-如果这些信息仍然无法帮助你解决问题，且[之前的 issue](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) 中也没有合适的解决方案，请尽管[创建新 issue]((https://github.com/Justineo/vue-awesome/issues/new)。
+如果这些信息仍然无法帮助你解决问题，且[之前的 issue](https://github.com/Justineo/vue-awesome/issues?utf8=%E2%9C%93&q=is%3Aissue) 中也没有合适的解决方案，请尽管[创建新 issue](https://github.com/Justineo/vue-awesome/issues/new)。
 
 ## 设定样式
 
 ### 动态尺寸
-
-You can make the icons scale dynamically according to your `font-size` by adding the following CSS:
 
 可以添加以下 CSS 代码来让图标根据当前的 `font-size` 动态调整尺寸：
 
@@ -300,7 +298,7 @@ Icon.register({
 
 #### 原始 SVG
 
-**在使用此功能钱，你需要引入 [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml)。**
+**在使用此功能前，你需要引入 [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml)。**
 
 ```js
 import Icon from 'vue-awesome/components/Icon'
