@@ -1,4 +1,6 @@
 # Vue-Awesome
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJustineo%2Fvue-awesome.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FJustineo%2Fvue-awesome?ref=badge_shield)
+
 
 > Awesome SVG icon component for Vue.js, built-in with Font Awesome icons.
 
@@ -312,3 +314,7 @@ Icon.register({
   }
 })
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJustineo%2Fvue-awesome.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FJustineo%2Fvue-awesome?ref=badge_large)
