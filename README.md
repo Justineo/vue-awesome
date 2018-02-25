@@ -36,6 +36,8 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 <!-- basic -->
 <icon name="beer"></icon>
 
+Tip: The property `name` can get from this folder `src/icons`, such as beer,file,camera...
+
 <!-- with options -->
 <icon name="refresh" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
