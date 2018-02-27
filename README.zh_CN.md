@@ -34,8 +34,6 @@ $ bower install vue-awesome
 <!-- 基础用法 -->
 <icon name="beer"></icon>
 
-提示：这里的 name 属性，如beer，file，camera等都可以从`src/icons`文件夹下获取
-
 <!-- 添加选项 -->
 <icon name="refresh" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
@@ -47,6 +45,9 @@ $ bower install vue-awesome
   <icon name="ban" scale="2" class="alert"></icon>
 </icon>
 ```
+
+提示：这里的属性 `name` ，如 `beer`，`file`，`camera` 等都可以从 [https://fontawesome.com/v4.7.0/icons/](https://fontawesome.com/v4.7.0/icons/) 来获取。
+
 
 ### 用 npm 与 vue-loader 基于 ES Module 引入（推荐用法）
 
