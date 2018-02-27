@@ -46,8 +46,7 @@ $ bower install vue-awesome
 </icon>
 ```
 
-提示：这里的属性 `name` ，如 `beer`，`file`，`camera` 等都可以从 [https://fontawesome.com/v4.7.0/icons/](https://fontawesome.com/v4.7.0/icons/) 来获取。
-
+请访问[FontAwesome 官网](https://fontawesome.com/v4.7.0/icons/)以查询可以使用的 `name` 值，如 `beer`、`file`、`camera` 等。
 
 ### 用 npm 与 vue-loader 基于 ES Module 引入（推荐用法）
 

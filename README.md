@@ -48,8 +48,7 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 </icon>
 ```
 
-Tip: The property `name` can get from this link [https://fontawesome.com/v4.7.0/icons/](https://fontawesome.com/v4.7.0/icons/), such as `beer`, `file`, `camera` ...
-
+You can find all available `name` values from [FontAwesome's website](https://fontawesome.com/v4.7.0/icons/), such as `beer`, `file`, `camera`, etc.
 
 ### ES Modules with NPM & vue-loader (Recommended)
 
