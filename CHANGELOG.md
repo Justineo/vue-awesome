@@ -1,3 +1,6 @@
+2.3.5
+* Fix `id` replacement.
+
 2.3.4
 * `id`s are now unique under `raw` mode.
 

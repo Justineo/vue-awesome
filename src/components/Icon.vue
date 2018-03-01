@@ -15,7 +15,7 @@
       </template>
       <template v-if="icon && icon.polygons">
         <polygon v-for="(polygon, i) in icon.polygons" :key="`polygon-${i}`" v-bind="polygon"/>
-      </template>
+      </template>
       <template v-if="icon && icon.raw"><g v-html="raw"></g></template>
     </slot>
   </svg>
@@ -158,7 +158,7 @@ export default {
       }
       let raw = this.icon.raw
       let ids = {}
-      raw = raw.replace(/\s(?:xml:)?id=["']?([^"')\s]+)/g, (match, id) => {
+      raw = raw.replace(/\s(?:xml:)?id=(["']?)([^"')\s]+)\1/g, (match, quote, id) => {
         let uniqueId = getId()
         ids[id] = uniqueId
         return ` id="${uniqueId}"`
