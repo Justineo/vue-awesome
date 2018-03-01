@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 
-var fa2svg = require('font-awesome-svg');
+var fa2svg = require('fa2svg').default;
 var svgDir = path.resolve(__dirname, '../assets/svg');
 fa2svg(svgDir);
 

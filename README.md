@@ -4,7 +4,7 @@
 
 > [🇨🇳 中文版](./README.zh_CN.md)
 
-Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
+Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.7.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
 
 Check out the demo [here](https://justineo.github.io/vue-awesome/demo/).
 

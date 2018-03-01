@@ -2,7 +2,7 @@
 
 > 基于 Vue.js 的强大 SVG 图标组件。已内置 Font Awesome 图标。
 
-Vue-Awesome 基于 [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.5.0` 构建，依赖 [Vue.js](https://vuejs.org/) `v2.0.1`+。
+Vue-Awesome 基于 [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.7.0` 构建，依赖 [Vue.js](https://vuejs.org/) `v2.0.1`+。
 
 查看[此处](https://justineo.github.io/vue-awesome/demo/)的 demo 一睹为快。
 
