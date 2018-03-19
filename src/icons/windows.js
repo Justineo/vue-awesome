@@ -1,3 +1,3 @@
 import Icon from '../components/Icon.vue'
 
-Icon.register({"windows":{"width":1664,"height":1792,"paths":[{"d":"M682 1006v651l-682-94v-557h682zM682 263v659h-682v-565zM1664 1006v786l-907-125v-661h907zM1664 128v794h-907v-669z"}]}})
+Icon.register({"windows":{"width":448,"height":512,"paths":[{"d":"M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"}]}})

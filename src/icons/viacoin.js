@@ -1,3 +1,3 @@
 import Icon from '../components/Icon.vue'
 
-Icon.register({"viacoin":{"width":1536,"height":1792,"paths":[{"d":"M1536 0l-192 448h192v192h-274l-55 128h329v192h-411l-357 832-357-832h-411v-192h329l-55-128h-274v-192h192l-192-448h256l323 768h378l323-768h256zM768 1216l108-256h-216z"}]}})
+Icon.register({"viacoin":{"width":384,"height":512,"paths":[{"d":"M384 32h-64l-80.7 192h-94.5L64 32H0l48 112H0v48h68.5l13.8 32H0v48h102.8L192 480l89.2-208H384v-48h-82.3l13.8-32H384v-48h-48l48-112zM192 336l-27-64h54l-27 64z"}]}})

@@ -1,3 +1,3 @@
 import Icon from '../components/Icon.vue'
 
-Icon.register({"modx":{"width":1792,"height":1792,"paths":[{"d":"M1427 709l-614-386 92-151h855zM405 974l-184-116v-858l1183 743zM1424 839l147 95v858l-532-335zM1387 818l-500 802h-855l356-571z"}]}})
+Icon.register({"modx":{"width":448,"height":512,"paths":[{"d":"M356 241.8l36.7 23.7V480l-133-83.8L356 241.8zM440 75H226.3l-23 37.8 153.5 96.5L440 75zm-89 142.8L55.2 32v214.5l46 29L351 217.8zM97 294.2L8 437h213.7l125-200.5L97 294.2z"}]}})
