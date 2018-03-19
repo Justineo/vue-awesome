@@ -1,5 +1,5 @@
 {
-  "name": "@kelin2025/vue-awesome",
+  "name": "vue-awesome",
   "version": "2.4.1",
   "description": "Font Awesome component for Vue.js, using inline SVG.",
   "main": "dist/vue-awesome.js",
