@@ -1,7 +1,7 @@
-npm run icons
-npm run build
+yarn icons
+yarn build
 cp -r ./src/* .
 rm index.js
-npm publish
+yarn publish
 rm -rf ./components
 rm -rf ./icons

@@ -1,3 +1,3 @@
 import Icon from '../components/Icon.vue'
 
-Icon.register({"houzz":{"width":1024,"height":1792,"paths":[{"d":"M512 1191l512-295v591l-512 296v-592zM0 896v591l512-296zM512 9v591l-512 296v-591zM512 600l512-295v591z"}]}})
+Icon.register({"houzz":{"width":320,"height":512,"paths":[{"d":"M12.2 256L160 341.1 12.2 426.6V256M160 512l147.8-85.4V256L160 341.1V512zm0-512L12.2 85.4V256L160 170.6V0zm0 170.6L307.8 256V85.4L160 170.6z"}]}})
