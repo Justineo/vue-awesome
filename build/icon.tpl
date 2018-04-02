@@ -1,3 +1,3 @@
-import Icon from '../components/Icon.vue'
+import Icon from '../${namespace}components/Icon.vue'
 
 Icon.register(${icon})

@@ -2,7 +2,7 @@
 
 > 基于 Vue.js 的强大 SVG 图标组件。已内置 Font Awesome 图标。
 
-Vue-Awesome 基于 [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.7.0` 构建，依赖 [Vue.js](https://vuejs.org/) `v2.0.1`+。
+Vue-Awesome 是基于 [Vue.js](https://vuejs.org/) 的 SVG 图标组件，内置图标来自 [Font Awesome](https://fontawesome.com/)。
 
 查看[此处](https://justineo.github.io/vue-awesome/demo/)的 demo 一睹为快。
 
@@ -35,9 +35,9 @@ $ bower install vue-awesome
 <icon name="beer"></icon>
 
 <!-- 添加选项 -->
-<icon name="refresh" scale="2" spin></icon>
+<icon name="sync" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
-<icon name="code-fork" label="Forked Repository"></icon>
+<icon name="code-branch" label="Forked Repository"></icon>
 
 <!-- 堆叠图标 -->
 <icon label="No Photos">
@@ -46,7 +46,13 @@ $ bower install vue-awesome
 </icon>
 ```
 
-请访问[FontAwesome 官网](https://fontawesome.com/v4.7.0/icons/)以查询可以使用的 `name` 值，如 `beer`、`file`、`camera` 等。
+Font Awesome 5 开始把所有图标分成了多个包。Vue-Awesome 的图标都来自其中的免费图标，而免费图标分别来自 3 个不同的图标包：`regular`、`solid` 和 `brands`。因为 `solid` 下的免费图标数量最多，所以我们选择按如下方式来组织图标：
+
+* 所有来自 `solid` 包的图标位于 `vue-awesome/icons` 目录下，且 `name` prop 的值不带前缀。
+
+* 来自 `regular` 和 `brands` 的图标位于 `vue-awesome/icons/regular` 和 `vue-awesome/icons/brands` 目录下，且 `name` prop 的值需要添加前缀，例如 `regular/flag` 或者 `brands/reddit`。
+
+请访问 [Font Awesome 官网](https://fontawesome.com/)以查询可以使用的 `name` 值，如 `beer`、`file`、`camera` 等。
 
 ### 用 npm 与 vue-loader 基于 ES Module 引入（推荐用法）
 
@@ -80,25 +86,7 @@ export default {
 
 ##### 引入源码版本
 
-如果你正在使用 vue-cli 来创建项目并且希望使用未经转译的组件（引入 `vue-awesome/components/Icon` 而非直接引入 `vue-awesome`）来减小打包尺寸（是推荐用法），那么 Vue 的 `webpack` 模板可能会把 `node_modules` 中的文件排除在 Babel 转译范围以外。要解决此问题，需要按下述的方式修改 `build/webpack.base.conf.js`：
-
-对于 webpack 1.x：
-
-```diff
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        include: [
--          path.join(projectRoot, 'src')
-+          path.join(projectRoot, 'src'),
-+          path.join(projectRoot, 'node_modules/vue-awesome')
-        ],
--        exclude: /node_modules/
-+        exclude: /node_modules(?![\\/]vue-awesome[\\/])/
-      },
-```
-
-For webpack 2+:
+如果你正在使用 vue-cli 来创建项目并且希望使用未经转译的组件（引入 `vue-awesome/components/Icon` 而非直接引入 `vue-awesome`）来减小打包尺寸（是推荐用法），那么 Vue 的 `webpack` 模板可能会把 `node_modules` 中的文件排除在 `babel-loader` 转译范围以外。要解决此问题，需要按下述的方式修改 `build/webpack.base.conf.js`：
 
 ```diff
       {
@@ -121,7 +109,7 @@ For webpack 2+:
 + ],
 ```
 
-*如果不想让单元测试变得很慢，那么请不要引入所有图标。因为每个图标都会从 ES module 格式进行转译，从而使整个测试过程变得缓慢。*
+*如果不想让单元测试变得很慢，那么请不要引入所有图标。因为每个图标都会从 ES module 格式进行转译，从而使整个测试过程变得非常缓慢。*
 
 ### 在没有 ES Next 支持环境下用 npm 以 CommonJS 方式引入
 

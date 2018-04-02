@@ -1,10 +1,10 @@
 # Vue-Awesome
 
-> Awesome SVG icon component for Vue.js, built-in with Font Awesome icons.
+> Awesome SVG icon component for Vue.js, with built-in Font Awesome icons.
 
 > [🇨🇳 中文版](./README.zh_CN.md)
 
-Vue-Awesome is built upon [Font Awesome](https://github.com/FortAwesome/Font-Awesome) `v4.7.0` and depends on [Vue.js](https://vuejs.org/) `v2.0.1`+.
+Vue-Awesome an SVG icon component for [Vue.js](https://vuejs.org/), with built-in icons courtesy of [Font Awesome](https://fontawesome.com/).
 
 Check out the demo [here](https://justineo.github.io/vue-awesome/demo/).
 
@@ -37,9 +37,9 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 <icon name="beer"></icon>
 
 <!-- with options -->
-<icon name="refresh" scale="2" spin></icon>
+<icon name="sync" scale="2" spin></icon>
 <icon name="comment" flip="horizontal"></icon>
-<icon name="code-fork" label="Forked Repository"></icon>
+<icon name="code-branch" label="Forked Repository"></icon>
 
 <!-- stacked icons -->
 <icon label="No Photos">
@@ -48,7 +48,13 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 </icon>
 ```
 
-You can find all available `name` values from [FontAwesome's website](https://fontawesome.com/v4.7.0/icons/), such as `beer`, `file`, `camera`, etc.
+Font Awesome 5 has separated all icons into several packs. Vue-Awesome is built upon its all free icons, which includes all free icons from 3 icon packs: `regular`, `solid` and `brands`. Since the `solid` pack has the most number of icons, we organize all Vue-Awesome icons as follows:
+
+* All icons from `solid` pack are located in `vue-awesome/icons` directory and have unprefixed `name` prop values.
+
+* Icons from `regular` and `brands` are located in `vue-awesome/icons/regular` and `vue-awesome/icons/brands`, which have prefixed `name` prop values like `regular/flag` or `brands/reddit`.
+
+You can find all available `name` values from [Font Awesome's website](https://fontawesome.com/icons) like `beer`, `file` and `camera`.
 
 ### ES Modules with NPM & vue-loader (Recommended)
 
@@ -82,25 +88,7 @@ export default {
 
 ##### Importing the souce version
 
-If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size, which is recommended), the `webpack` template may exclude `node_modules` from files to be transpiled by Babel (see [#7](https://github.com/Justineo/vue-awesome/issues/7), [#13](https://github.com/Justineo/vue-awesome/issues/13)). To fix this problem, try change `build/webpack.base.conf.js` like this:
-
-For webpack 1.x:
-
-```diff
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        include: [
--          path.join(projectRoot, 'src')
-+          path.join(projectRoot, 'src'),
-+          path.join(projectRoot, 'node_modules/vue-awesome')
-        ],
--        exclude: /node_modules/
-+        exclude: /node_modules(?![\\/]vue-awesome[\\/])/
-      },
-```
-
-For webpack 2+:
+If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size, which is recommended), the `webpack` template is not including files in `node_modules` for `babel-loader`. To fix this problem, try change `build/webpack.base.conf.js` like this:
 
 ```diff
       {

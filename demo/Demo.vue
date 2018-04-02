@@ -1,40 +1,40 @@
 <template>
   <main>
-    <figure id="logo" @mouseenter="toggle" @mouseleave="toggle" @click="change" :title="logo"><icon :name="logo" scale="4"></icon></figure>
+    <figure id="logo" @mouseenter="toggle" @mouseleave="toggle" @click="change" :title="logo"><icon :name="logo" scale="4"/></figure>
     <h1><a href="https://github.com/Justineo/vue-awesome">Vue-Awesome</a></h1>
     <p class="desc">Font Awesome component for Vue.js, using inline SVG.</p>
 
     <h2>Basic</h2>
-    <p><icon name="flag"></icon></p>
+    <p><icon name="flag"/></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"flag"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <h2>Scale</h2>
-    <p><icon name="language" scale="3"></icon></p>
+    <p><icon name="language" scale="3"/></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"language"</span> <span class="attr">scale</span>=<span class="val">"3"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <h2>Spin</h2>
-    <p><icon name="refresh" spin></icon></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"refresh"</span> <span class="attr">spin</span>&gt;&lt;/icon&gt;</code></pre></figure>
+    <p><icon name="sync" spin/></p>
+    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"sync"</span> <span class="attr">spin</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <h2>Pulse</h2>
-    <p><icon name="spinner" pulse></icon></p>
+    <p><icon name="spinner" pulse/></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"spinner"</span> <span class="attr">pulse</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <h2>Flip</h2>
-    <p><icon name="signal" flip="horizontal"></icon></p>
+    <p><icon name="signal" flip="horizontal"/></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"signal"</span> <span class="attr">flip</span>=<span class="val">"horizontal"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <h2>Label</h2>
     <p><small>Accessible for screen readers, etc.</small></p>
-    <p><icon name="code" label="Source Code"></icon></p>
+    <p><icon name="code" label="Source Code"/></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"code"</span> <span class="attr">label</span>=<span class="val">"Source Code"</span>&gt;&lt;/icon&gt;</code></pre></figure>
 
     <h2>Stacked icons</h2>
     <p><small>Use stacked icons like in FontAwesome. Even more powerful.</small></p>
     <p>
       <icon label="No Photo">
-        <icon name="camera"></icon>
-        <icon name="ban" scale="2" class="alert"></icon>
+        <icon name="camera"/>
+        <icon name="ban" scale="2" class="alert"/>
       </icon>
     </p>
     <figure><pre><code>&lt;icon <span class="attr">label</span>=<span class="val">"No Photos"</span>&gt;
@@ -44,12 +44,12 @@
 
     <h2>Custom icons</h2>
     <p><small>You can register your own icons.</small></p>
-    <p><icon name="baidu"></icon></p>
+    <p><icon name="baidu"/></p>
     <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"baidu"</span>&gt;&lt;/icon&gt;</code></pre></figure>
     
     <h2>Multi-color icons</h2>
     <p><small>Register icons in more advanced ways to unleash the full power of SVG.</small></p>
-    <p><icon name="webpack"></icon> <icon name="vue"></icon> <icon name="html5-c"></icon></p>
+    <p><icon name="webpack"/> <icon name="vue"/> <icon name="html5-c"/></p>
     <p>See <a href="https://github.com/Justineo/vue-awesome#more-advanced-cases">readme</a> for further instructions.</p>
 
     <footer>
