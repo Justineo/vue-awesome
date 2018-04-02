@@ -1,3 +1,3 @@
 import Icon from '../components/Icon.vue'
 
-Icon.register({"caret-down":{"width":1024,"height":1792,"paths":[{"d":"M1024 704q0 26-19 45l-448 448q-19 19-45 19t-45-19l-448-448q-19-19-19-45t19-45 45-19h896q26 0 45 19t19 45z"}]}})
+Icon.register({"caret-down":{"width":320,"height":512,"paths":[{"d":"M31.3 192H288.6C306.4 192 315.3 213.5 302.7 226.1L174.1 354.8C166.3 362.6 153.6 362.6 145.8 354.8L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"}]}})
