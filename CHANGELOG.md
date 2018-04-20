@@ -1,3 +1,6 @@
+3.0.0
+* Updated all icons to Font Awesome 5, see [README](./README.md) for updated usages.
+
 2.3.5
 * Fix `id` replacement.
 
