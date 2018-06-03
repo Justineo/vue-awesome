@@ -1,3 +1,6 @@
+2.3.7
+* Fix package publish.
+
 2.3.6
 * Fix `name` prop check for icon wrappers.
 
