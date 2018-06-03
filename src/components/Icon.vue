@@ -66,16 +66,12 @@ export default {
     name: {
       type: String,
       validator (val) {
-        if (val) {
-          if (!(val in icons)) {
-            console.warn(`Invalid prop: prop "name" is referring to an unregistered icon "${val}".` +
-              `\nPlease make sure you have imported this icon before using it.`)
-            return false
-          }
-          return true
+        if (val && !(val in icons)) {
+          console.warn(`Invalid prop: prop "name" is referring to an unregistered icon "${val}".` +
+            `\nPlease make sure you have imported this icon before using it.`)
+          return false
         }
-        console.warn(`Invalid prop: prop "name" is required.`)
-        return false
+        return true
       }
     },
     scale: [Number, String],
@@ -176,15 +172,20 @@ export default {
     }
   },
   mounted () {
+    if (!this.name && this.$children.length === 0) {
+      console.warn(`Invalid prop: prop "name" is required.`)
+      return
+    }
+
     if (this.icon) {
       return
     }
-    this.$children.forEach(child => {
-      child.outerScale = this.normalizedScale
-    })
+
     let width = 0
     let height = 0
     this.$children.forEach(child => {
+      child.outerScale = this.normalizedScale
+
       width = Math.max(width, child.width)
       height = Math.max(height, child.height)
     })
