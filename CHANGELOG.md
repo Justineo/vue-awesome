@@ -1,3 +1,6 @@
+3.0.1
+* Update `@fortawesome/fontawesome-free-webfonts` to `1.0.9`.
+
 3.0.0
 * Updated all icons to Font Awesome 5, see [README](./README.md) for updated usages.
 
