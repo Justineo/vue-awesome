@@ -3,16 +3,18 @@ const buble = require('rollup-plugin-buble')
 const uglify = require('rollup-plugin-uglify')
 
 export default {
-  entry: 'src/index.js',
+  input: 'src/index.js',
   external: [
     'vue'
   ],
-  globals: {
-    vue: 'Vue'
+  output: {
+    name: 'VueAwesome',
+    file: 'dist/vue-awesome.js',
+    format: 'umd',
+    globals: {
+      vue: 'Vue'
+    }
   },
-  format: 'umd',
-  moduleName: 'VueAwesome',
-  dest: 'dist/vue-awesome.js',
   plugins: [
     vue({
       compileTemplate: true,

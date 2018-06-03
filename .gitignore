@@ -34,3 +34,6 @@ node_modules
 
 # Others
 .DS_Store
+
+# Assets
+assets
