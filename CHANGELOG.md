@@ -1,3 +1,6 @@
+3.0.2
+* Fix package publish.
+
 3.0.1
 * Update `@fortawesome/fontawesome-free-webfonts` to `1.0.9`.
 
