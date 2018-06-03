@@ -1,3 +1,6 @@
+2.3.6
+* Fix `name` prop check for icon wrappers.
+
 2.3.5
 * Fix `id` replacement.
 
