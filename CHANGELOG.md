@@ -1,3 +1,6 @@
+3.0.3
+* Update `rollup-plugin-vue` to `4.2.0`.
+
 3.0.2
 * Fix package publish.
 
