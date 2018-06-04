@@ -1,6 +1,6 @@
-const vue = require('rollup-plugin-vue')
-const buble = require('rollup-plugin-buble')
-const uglify = require('rollup-plugin-uglify')
+import vue from 'rollup-plugin-vue'
+import buble from 'rollup-plugin-buble'
+import uglify from 'rollup-plugin-uglify'
 
 export default {
   input: 'src/index.js',
