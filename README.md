@@ -101,6 +101,34 @@ If you are using `vue-cli` to create your project and you want to use the untran
 
 If you are using bare webpack config, just do similar modifications make it work.
 
+#### Using with Nuxt.js
+
+When using Vue-Awesome on the server side with Nuxt.js, it may prompt `Unexpected token import` because Nuxt.js has configured an `external` option by default, which prevent files under `node_modules` from being bundled into the server bundle with only a few exceptions. We need to add `vue-awesome` into the `whitelist` as follows:
+
+```js
+// Don't forget to
+// npm i --save-dev webpack-node-externals
+const nodeExternals = require('webpack-node-externals')
+
+module.exports = {
+  // ...
+  build: {
+    extend (config, { isServer }) {
+      // ...
+      if (isServer) {
+        config.externals = [
+          nodeExternals({
+            // default value for `whitelist` is
+            // [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
+            whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
+          })
+        ]
+      }
+    }
+  }
+}
+```
+
 ##### Unit Testing with Jest
 
 Make sure to whitelist `vue-awesome` from the `transformIgnorePattern`. Add following configuation in `test/unit/jest.conf.js`:
@@ -149,34 +177,6 @@ The component class is exposed as `window.VueAwesome`.
 ```js
 // register component to use
 Vue.component('icon', VueAwesome)
-```
-
-### Using with Nuxt.js
-
-When using Vue-Awesome on the server side with Nuxt.js, it may prompt `Unexpected token import` because Nuxt.js has configured an `external` option by default, which prevent files under `node_modules` from being bundled into the server bundle with only a few exceptions. We need to add `vue-awesome` into the `whitelist` as follows:
-
-```js
-// Don't forget to
-// npm i --save-dev webpack-node-externals
-const nodeExternals = require('webpack-node-externals')
-
-module.exports = {
-  // ...
-  build: {
-    extend (config, { isServer }) {
-      // ...
-      if (isServer) {
-        config.externals = [
-          nodeExternals({
-            // default value for `whitelist` is
-            // [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
-            whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
-          })
-        ]
-      }
-    }
-  }
-}
 ```
 
 ### Misc
