@@ -1,3 +1,6 @@
+3.0.5
+* Fix build.
+
 3.0.4
 * Add `name` option to root classes.
 

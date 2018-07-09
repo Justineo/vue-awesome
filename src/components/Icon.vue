@@ -106,13 +106,13 @@ export default {
     },
     klass () {
       return {
-        [this.$options.name]: true,
         'fa-icon': true,
         'fa-spin': this.spin,
         'fa-flip-horizontal': this.flip === 'horizontal',
         'fa-flip-vertical': this.flip === 'vertical',
         'fa-inverse': this.inverse,
-        'fa-pulse': this.pulse
+        'fa-pulse': this.pulse,
+        [this.$options.name]: true
       }
     },
     icon () {
