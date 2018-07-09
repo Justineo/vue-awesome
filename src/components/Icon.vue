@@ -61,7 +61,7 @@
 let icons = {}
 
 export default {
-  name: 'icon',
+  name: 'fa-icon',
   props: {
     name: {
       type: String,
@@ -111,7 +111,8 @@ export default {
         'fa-flip-horizontal': this.flip === 'horizontal',
         'fa-flip-vertical': this.flip === 'vertical',
         'fa-inverse': this.inverse,
-        'fa-pulse': this.pulse
+        'fa-pulse': this.pulse,
+        [this.$options.name]: true
       }
     },
     icon () {

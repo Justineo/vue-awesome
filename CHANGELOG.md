@@ -1,3 +1,6 @@
+2.3.8
+* Add `name` option to root classes.
+
 2.3.7
 * Fix package publish.
 
