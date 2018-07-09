@@ -1,3 +1,6 @@
+3.0.4
+* Add `name` option to root classes.
+
 3.0.3
 * Update `rollup-plugin-vue` to `4.2.0`.
 

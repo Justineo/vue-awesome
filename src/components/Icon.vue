@@ -61,7 +61,7 @@
 let icons = {}
 
 export default {
-  name: 'icon',
+  name: 'fa-icon',
   props: {
     name: {
       type: String,
@@ -106,6 +106,7 @@ export default {
     },
     klass () {
       return {
+        [this.$options.name]: true,
         'fa-icon': true,
         'fa-spin': this.spin,
         'fa-flip-horizontal': this.flip === 'horizontal',
