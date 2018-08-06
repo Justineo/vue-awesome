@@ -1,3 +1,6 @@
+3.1.0
+* Switch to `@fortawesome/fontawesome-free@5.2.0`.
+
 3.0.5
 * Fix build.
 
