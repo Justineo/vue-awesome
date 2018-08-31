@@ -196,6 +196,38 @@ The component class is exposed as `window.VueAwesome`.
 Vue.component('v-icon', VueAwesome)
 ```
 
+### Props
+
+* `name: string`
+
+  The name of the icon. It's necessary if the component isn't used as the wrapper of an icon stack. All valid names correspond to the file path relative to the `icons` directory. Notice that you may have to check the name of the icon pack after you search on FontAwesome's website. For example, you'll see a URL argument of `style=brands` on the [detail page for `500px`](https://fontawesome.com/icons/500px?style=brands) and the icon name will be `brands/500px`.
+
+  We only support free icons for FontAwesome and because the `solid` style has the most icons, we've made it the default pack so the path prefixes can be omitted.
+
+* `scale: number|string`
+
+  Used to adjust the size of the icon. Default to `1`.
+
+* `spin: boolean`
+
+  Used to specify whether the icon is spining. Default to `false`.
+
+* `inverse: boolean`
+
+  If set to `true`, the color of the icon will become `#fff`. Default to `false`.
+
+* `pulse: boolean`
+
+  Set the pulse effect to the icon. Default to `false`.
+
+* `flip: 'vertical'|'horizontal'|null`
+
+  Used to flip the icon.
+
+* `label: string`
+
+  Set the `aria-label` for the icon if provided. Otherwise the icon will have `role="presentation"` thus not accessible.
+
 ### Misc
 
 If you are using `vue-awesome/components/Icon` (instead of the whole bundled version), Vue-Awesome won't import a single icon by default. Do not forget to import icons you want to use.
