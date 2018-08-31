@@ -1,3 +1,6 @@
+3.1.1
+* Get rid of unnecessary `<g>` wrapper for `raw` mode.
+
 3.1.0
 * Switch to `@fortawesome/fontawesome-free@5.2.0`.
 

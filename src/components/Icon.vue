@@ -1,67 +1,43 @@
-<template>
-  <svg version="1.1"
-    :class="klass"
-    :role="label ? 'img' : 'presentation'"
-    :aria-label="label"
-    :x="x"
-    :y="y"
-    :width="width"
-    :height="height"
-    :viewBox="box"
-    :style="style">
-    <slot>
-      <template v-if="icon && icon.paths">
-        <path v-for="(path, i) in icon.paths" :key="`path-${i}`" v-bind="path"/>
-      </template>
-      <template v-if="icon && icon.polygons">
-        <polygon v-for="(polygon, i) in icon.polygons" :key="`polygon-${i}`" v-bind="polygon"/>
-      </template>
-      <template v-if="icon && icon.raw"><g v-html="raw"></g></template>
-    </slot>
-  </svg>
-</template>
-
-<style>
-.fa-icon {
-  display: inline-block;
-  fill: currentColor;
-}
-
-.fa-flip-horizontal {
-  transform: scale(-1, 1);
-}
-
-.fa-flip-vertical {
-  transform: scale(1, -1);
-}
-
-.fa-spin {
-  animation: fa-spin 1s 0s infinite linear;
-}
-
-.fa-inverse {
-  color: #fff;
-}
-
-.fa-pulse {
-  animation: fa-spin 1s infinite steps(8);
-}
-
-@keyframes fa-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-</style>
-
 <script>
 let icons = {}
 
 export default {
   name: 'fa-icon',
+  render (h) {
+    let options = {
+      class: this.klass,
+      style: this.style,
+      attrs: {
+        role: this.label ? 'img' : 'presentation',
+        'aria-label': this.label || null,
+        x: this.x,
+        y: this.y,
+        width: this.width,
+        height: this.height,
+        viewBox: this.box
+      }
+    }
+
+    if (this.raw) {
+      options.domProps = {
+        innerHTML: this.raw
+      }
+    }
+
+    return h(
+      'svg',
+      options,
+      this.raw && this.icon ? null : (this.$slots.default || [
+        ...this.icon.paths.map((path, i) => h('path', {
+          attrs: path,
+          key: `path-${i}`
+        })),
+        ...this.icon.polygons.map((polygon, i) => h('polygon', {
+          attrs: polygon,
+          key: `polygon-${i}`
+        }))
+      ]))
+  },
   props: {
     name: {
       type: String,
@@ -200,22 +176,27 @@ export default {
   register (data) {
     for (let name in data) {
       let icon = data[name]
+      let {
+        paths = [],
+        d,
+        polygons = [],
+        points
+      } = icon
 
-      if (!icon.paths) {
-        icon.paths = []
-      }
-      if (icon.d) {
-        icon.paths.push({ d: icon.d })
-      }
-
-      if (!icon.polygons) {
-        icon.polygons = []
-      }
-      if (icon.points) {
-        icon.polygons.push({ points: icon.points })
+      if (d) {
+        paths.push({ d })
       }
 
-      icons[name] = icon
+      if (points) {
+        polygons.push({ points })
+      }
+
+      icons[name] = {
+        paths,
+        d,
+        polygons,
+        points
+      }
     }
   },
   icons
@@ -226,3 +207,39 @@ function getId () {
   return `fa-${(cursor++).toString(16)}`
 }
 </script>
+
+<style>
+.fa-icon {
+  display: inline-block;
+  fill: currentColor;
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-spin {
+  animation: fa-spin 1s 0s infinite linear;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.fa-pulse {
+  animation: fa-spin 1s infinite steps(8);
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
