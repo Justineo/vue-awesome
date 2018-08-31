@@ -34,18 +34,18 @@ Just download `dist/vue-awesome.js` and include it in your HTML file:
 
 ```html
 <!-- basic -->
-<icon name="beer"></icon>
+<v-icon name="beer"/>
 
 <!-- with options -->
-<icon name="sync" scale="2" spin></icon>
-<icon name="comment" flip="horizontal"></icon>
-<icon name="code-branch" label="Forked Repository"></icon>
+<v-icon name="sync" scale="2" spin/>
+<v-icon name="comment" flip="horizontal"/>
+<v-icon name="code-branch" label="Forked Repository"/>
 
 <!-- stacked icons -->
-<icon label="No Photos">
-  <icon name="camera"></icon>
-  <icon name="ban" scale="2" class="alert"></icon>
-</icon>
+<v-icon label="No Photos">
+  <v-icon name="camera"/>
+  <v-icon name="ban" scale="2" class="alert"/>
+</v-icon>
 ```
 
 Font Awesome 5 has separated all icons into several packs. Vue-Awesome is built upon its all free icons, which includes all free icons from 3 icon packs: `regular`, `solid` and `brands`. Since the `solid` pack has the most number of icons, we organize all Vue-Awesome icons as follows:
@@ -74,12 +74,12 @@ import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
 
 // globally (in your main .js file)
-Vue.component('icon', Icon)
+Vue.component('v-icon', Icon)
 
 // or locally (in your component file)
 export default {
   components: {
-    Icon
+    'v-icon': Icon
   }
 }
 ```
@@ -88,14 +88,31 @@ export default {
 
 ##### Importing the souce version
 
-If you are using `vue-cli` to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size, which is recommended), the `webpack` template is not including files in `node_modules` for `babel-loader`. To fix this problem, try change `build/webpack.base.conf.js` like this:
+If you are using official Vue CLI to create your project and you want to use the untranspiled component (import `vue-awesome/components/Icon` rather than import `vue-awesome` directly, to optimize bundle size, which is recommended), you'll encounter the problem that the default configuration will exclude `node_modules` from files to be transpiled by Babel.
+
+For **Vue CLI 3+**, add `vue-awesome` into `transpileDependencies` in `vue.config.js` like this:
+
+```js
+// vue.config.js
+module.exports = {
+  transpileDependencies: [
+    /\bvue-awesome\b/
+  ]
+}
+```
+
+For **Vue CLI 2** with the `webpack` template, modify `build/webpack.base.conf.js` like this:
 
 ```diff
       {
         test: /\.js$/,
         loader: 'babel-loader',
 -       include: [resolve('src'), resolve('test')]
-+       include: [resolve('src'), resolve('test'), resolve('node_modules/vue-awesome')]
++       include: [
++         resolve('src'),
++         resolve('test'),
++         resolve('node_modules/vue-awesome')
++       ]
       }
 ```
 
@@ -166,7 +183,7 @@ require.config({
 
 require(['vue-awesome'], function (Icon) {
   // register component to use
-  Vue.component('icon', Icon)
+  Vue.component('v-icon', Icon)
 })
 ```
 
@@ -176,7 +193,7 @@ The component class is exposed as `window.VueAwesome`.
 
 ```js
 // register component to use
-Vue.component('icon', VueAwesome)
+Vue.component('v-icon', VueAwesome)
 ```
 
 ### Misc

@@ -32,18 +32,18 @@ $ bower install vue-awesome
 
 ```html
 <!-- 基础用法 -->
-<icon name="beer"></icon>
+<v-icon name="beer"/>
 
 <!-- 添加选项 -->
-<icon name="sync" scale="2" spin></icon>
-<icon name="comment" flip="horizontal"></icon>
-<icon name="code-branch" label="Forked Repository"></icon>
+<v-icon name="sync" scale="2" spin/>
+<v-icon name="comment" flip="horizontal"/>
+<v-icon name="code-branch" label="Forked Repository"/>
 
 <!-- 堆叠图标 -->
-<icon label="No Photos">
-  <icon name="camera"></icon>
-  <icon name="ban" scale="2" class="alert"></icon>
-</icon>
+<v-icon label="No Photos">
+  <v-icon name="camera"/>
+  <v-icon name="ban" scale="2" class="alert"/>
+</v-icon>
 ```
 
 Font Awesome 5 开始把所有图标分成了多个包。Vue-Awesome 的图标都来自其中的免费图标，而免费图标分别来自 3 个不同的图标包：`regular`、`solid` 和 `brands`。因为 `solid` 下的免费图标数量最多，所以我们选择按如下方式来组织图标：
@@ -72,12 +72,12 @@ import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
 
 // 全局注册（在 `main .js` 文件中）
-Vue.component('icon', Icon)
+Vue.component('v-icon', Icon)
 
 // 或局部注册（在组件文件中）
 export default {
   components: {
-    Icon
+    'v-icon': Icon
   }
 }
 ```
@@ -86,14 +86,31 @@ export default {
 
 ##### 引入源码版本
 
-如果你正在使用 vue-cli 来创建项目并且希望使用未经转译的组件（引入 `vue-awesome/components/Icon` 而非直接引入 `vue-awesome`）来减小打包尺寸（是推荐用法），那么 Vue 的 `webpack` 模板可能会把 `node_modules` 中的文件排除在 `babel-loader` 转译范围以外。要解决此问题，需要按下述的方式修改 `build/webpack.base.conf.js`：
+如果你正在使用官方的 Vue CLI 来创建项目并且希望使用未经转译的组件（引入 `vue-awesome/components/Icon` 而非直接引入 `vue-awesome`）来减小打包尺寸（是推荐用法），会遇到默认配置把 `node_modules` 中的文件排除在 Babel 转译范围以外的问题。
+
+当使用 **Vue CLI 3+** 时，需要在 `vue.config.js` 中的 `transpileDependencies` 增加 `vue-awesome`，如下：
+
+```js
+// vue.config.js
+module.exports = {
+  transpileDependencies: [
+    /\bvue-awesome\b/
+  ]
+}
+```
+
+当使用 **Vue CLI 2** 的 `webpack` 模板时，需要按下述的方式修改 `build/webpack.base.conf.js`：
 
 ```diff
       {
         test: /\.js$/,
         loader: 'babel-loader',
 -       include: [resolve('src'), resolve('test')]
-+       include: [resolve('src'), resolve('test'), resolve('node_modules/vue-awesome')]
++       include: [
++         resolve('src'),
++         resolve('test'),
++         resolve('node_modules/vue-awesome')
++       ]
       }
 ```
 
@@ -165,7 +182,7 @@ require.config({
 
 require(['vue-awesome'], function (Icon) {
   // 注册组件后即可使用
-  Vue.component('icon', Icon)
+  Vue.component('v-icon', Icon)
 })
 ```
 
@@ -175,7 +192,7 @@ require(['vue-awesome'], function (Icon) {
 
 ```js
 // 注册组件后即可使用
-Vue.component('icon', VueAwesome)
+Vue.component('v-icon', VueAwesome)
 ```
 
 ### 其它
