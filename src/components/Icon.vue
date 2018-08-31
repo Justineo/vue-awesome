@@ -1,4 +1,16 @@
 <script>
+function assign (obj, ...sources) {
+  sources.forEach(source => {
+    for (let key in source) {
+      if (source.hasOwnProperty(key)) {
+        obj[key] = source[key]
+      }
+    }
+  })
+
+  return obj
+}
+
 let icons = {}
 
 export default {
@@ -191,12 +203,10 @@ export default {
         polygons.push({ points })
       }
 
-      icons[name] = {
+      icons[name] = assign({}, icon, {
         paths,
-        d,
-        polygons,
-        points
-      }
+        polygons
+      })
     }
   },
   icons

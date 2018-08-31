@@ -1,3 +1,6 @@
+3.1.2
+* Fix missing width and height.
+
 3.1.1
 * Get rid of unnecessary `<g>` wrapper for `raw` mode.
 
