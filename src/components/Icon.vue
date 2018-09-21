@@ -16,6 +16,10 @@ let icons = {}
 export default {
   name: 'fa-icon',
   render (h) {
+    if (this.name === null) {
+      return h()
+    }
+
     let options = {
       class: this.klass,
       style: this.style,
@@ -161,7 +165,7 @@ export default {
     }
   },
   mounted () {
-    if (!this.name && this.$children.length === 0) {
+    if (!this.name && this.name !== null && this.$children.length === 0) {
       console.warn(`Invalid prop: prop "name" is required.`)
       return
     }

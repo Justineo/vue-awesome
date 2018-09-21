@@ -202,7 +202,9 @@ Vue.component('v-icon', VueAwesome)
 
   The name of the icon. It's necessary if the component isn't used as the wrapper of an icon stack. All valid names correspond to the file path relative to the `icons` directory. Notice that you may have to check the name of the icon pack after you search on FontAwesome's website. For example, you'll see a URL argument of `style=brands` on the [detail page for `500px`](https://fontawesome.com/icons/500px?style=brands) and the icon name will be `brands/500px`.
 
-  We only support free icons for FontAwesome and because the `solid` style has the most icons, we've made it the default pack so the path prefixes can be omitted.
+  Only free icons for FontAwesome are available by default and because the `solid` style has the most icons, we've made it the default pack so the path prefixes can be omitted.
+
+  If you pass `null` to this prop, the whole component will not be rendered.
 
 * `scale: number|string`
 

@@ -201,7 +201,9 @@ Vue.component('v-icon', VueAwesome)
 
   图标名称。如果本组件没有用作图标堆栈的容器，那么这个字段是必须的。所有合法的值都对应于图标文件相对于 `icons` 目录的路径。请注意当你在 FontAwesome 官网查找到图标名词后，需要确认一下图标集的名称。比如，在 [`500px` 这个图标的详情页](https://fontawesome.com/icons/500px?style=brands)会有一个 URL 参数 `style=brands`，故图标名称就是 `brands/500px`。
 
-  我们仅支持 FontAwesome 的免费图标，另外由于 `solid` 样式中的图标最多，我们将其设为了默认图标集，所以路径前缀可以省略。
+  默认情况下，只能使用 FontAwesome 的免费图标，另外由于 `solid` 样式中的图标最多，我们将其设为了默认图标集，所以路径前缀可以省略。
+
+  当传入 `null` 时，整个组件将不会渲染。
 
 * `scale: number|string`
 

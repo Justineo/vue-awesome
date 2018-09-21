@@ -1,3 +1,6 @@
+3.1.3
+* Supported not rendering anything when explicitly set `name` to `null`.
+
 3.1.2
 * Fix missing width and height.
 
