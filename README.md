@@ -120,7 +120,7 @@ If you are using bare webpack config, just do similar modifications make it work
 
 #### Using with Nuxt.js
 
-When using Vue-Awesome on the server side with Nuxt.js, it may prompt `Unexpected token import` because Nuxt.js has configured an `external` option by default, which prevent files under `node_modules` from being bundled into the server bundle with only a few exceptions. We need to add `vue-awesome` into the `whitelist` as follows:
+When using Vue-Awesome on the server side with Nuxt.js, it may prompt `Unexpected token import` because Nuxt.js has configured an `external` option by default, which prevent files under `node_modules` from being bundled into the server bundle with only a few exceptions. We need to whitelist `vue-awesome` in `nuxt.config.js` as follows:
 
 For **Nuxt.js 2**:
 

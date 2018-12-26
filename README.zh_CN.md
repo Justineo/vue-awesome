@@ -118,7 +118,21 @@ module.exports = {
 
 #### 在 Nuxt.js 中使用
 
-在 Nuxt.js 的服务端中使用 Vue-Awesome 时，可能会报 `Unexpected token import` 的错误。这是因为 Nuxt.js 默认配置了 `externals` 选项，会使得 `node_modules` 目录下的绝大多数文件被排除在服务端打包代码以外。需要按如下方式将 `vue-awesome` 加入 `whitelist` 选项：
+在 Nuxt.js 的服务端中使用 Vue-Awesome 时，可能会报 `Unexpected token import` 的错误。这是因为 Nuxt.js 默认配置了 `externals` 选项，会使得 `node_modules` 目录下的绝大多数文件被排除在服务端打包代码以外。需要按如下方式将 `vue-awesome` 在 `nuxt.config.js` 中加入白名单：
+
+对于 **Nuxt.js 2** 项目:
+
+```js
+
+module.exports = {
+  // ...
+  build: {
+    transpile: [/^vue-awesome/]
+  }
+}
+```
+
+对于 **Nuxt.js 1** 项目:
 
 ```js
 // 别忘了运行
