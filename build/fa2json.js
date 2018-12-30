@@ -1,20 +1,19 @@
-const fs = require('fs')
-const path = require('path')
-const rimraf = require('rimraf')
-const mkdirp = require('mkdirp')
+import fs from 'fs'
+import path from 'path'
+import rimraf from 'rimraf'
+import mkdirp from 'mkdirp'
+import fa2svg from './fa2svg'
 
 const SVG_DIR = path.resolve(__dirname, '../assets/svg')
 rimraf.sync(SVG_DIR)
 
-const fa2svg = require('fa2svg').default
 fa2svg(SVG_DIR)
 
 let icons = {}
 
 function extractIcons (namespace = '', toNamespace = namespace) {
   let prefix = toNamespace ? `${toNamespace}/` : ''
-  fs
-    .readdirSync(path.join(SVG_DIR, namespace), 'utf8')
+  fs.readdirSync(path.join(SVG_DIR, namespace), 'utf8')
     .filter(file => {
       return !fs.statSync(path.resolve(SVG_DIR, namespace, file)).isDirectory()
     })
@@ -27,7 +26,9 @@ function extractIcons (namespace = '', toNamespace = namespace) {
       }
 
       let svg = fs.readFileSync(filePath, 'utf8')
-      let sizeMatch = svg.match(/ viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"/)
+      let sizeMatch = svg.match(
+        / viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"/
+      )
       let dMatch = svg.match(/ d="([^"]+)"/)
       if (!sizeMatch || !dMatch) {
         return

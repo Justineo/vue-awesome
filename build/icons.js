@@ -1,8 +1,9 @@
-const fs = require('fs')
-const path = require('path')
-const mkdirp = require('mkdirp')
-const rimraf = require('rimraf')
-const icons = require('../assets/icons.json')
+import fs from 'fs'
+import path from 'path'
+import mkdirp from 'mkdirp'
+import rimraf from 'rimraf'
+import stringify from 'stringify-object'
+import icons from '../assets/icons.json'
 
 const MODULE_TPL = fs.readFileSync(
   path.resolve(__dirname, './icon.tpl'),
@@ -24,9 +25,10 @@ names.forEach(function (name) {
   }
   fs.writeFileSync(
     filePath,
-    MODULE_TPL
-        .replace('${namespace}', name.indexOf('/') === -1 ? '' : '../')
-        .replace('${icon}', JSON.stringify(icon))
+    MODULE_TPL.replace(
+      '${namespace}',
+      name.indexOf('/') === -1 ? '' : '../'
+    ).replace('${icon}', stringify(icon, { indent: '  ' }))
   )
   indexModule += `import './${name}'\n`
 })
