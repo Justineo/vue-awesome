@@ -26,11 +26,13 @@ export default {
       attrs: {
         role: this.label ? 'img' : 'presentation',
         'aria-label': this.label || null,
+        tabindex: this.tabindex,
         x: this.x,
         y: this.y,
         width: this.width,
         height: this.height,
-        viewBox: this.box
+        viewBox: this.box,
+        focusable: this.focusable
       }
     }
 
@@ -75,7 +77,8 @@ export default {
         return val === 'horizontal' || val === 'vertical'
       }
     },
-    label: String
+    label: String,
+    tabindex: [Number, String]
   },
   data () {
     return {
@@ -162,6 +165,17 @@ export default {
       })
 
       return raw
+    },
+    focusable () {
+      let { tabindex } = this
+      if (tabindex == null) {
+        return 'false'
+      }
+      let index = typeof tabindex === 'string' ? parseInt(tabindex, 10) : tabindex
+      if (index >= 0) {
+        return null
+      }
+      return 'false'
     }
   },
   mounted () {
