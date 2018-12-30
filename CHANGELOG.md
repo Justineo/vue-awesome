@@ -1,3 +1,6 @@
+3.3.1
+* Fix npm package.
+
 3.3.0
 * Fix unexpected focus for IE.
 * Updated to `@fortawesome/fontawesome-free@5.6.3`.
