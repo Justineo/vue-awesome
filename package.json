@@ -1,6 +1,6 @@
 {
   "name": "vue-awesome",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "description": "Font Awesome component for Vue.js, using inline SVG.",
   "main": "dist/vue-awesome.js",
   "module": "index.js",
@@ -23,7 +23,7 @@
     "vue": "^2.2.6"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.6.3",
+    "@fortawesome/fontawesome-free": "^5.7.2",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",

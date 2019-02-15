@@ -1,3 +1,6 @@
+3.4.0
+* Update to `@fortawesome/fontawesome-free@5.7.2`.
+
 3.3.1
 * Fix npm package.
 

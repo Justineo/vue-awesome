@@ -354,7 +354,7 @@ Icon.register({
 
 #### Raw SVG
 
-**You need to include [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml) before you use this feature.**
+**If you are using Vue.js version prior to `2.6.0`, you need to include [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml) before you use this feature.**
 
 ```js
 import Icon from 'vue-awesome/components/Icon'

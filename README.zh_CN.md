@@ -353,7 +353,7 @@ Icon.register({
 
 #### 原始 SVG
 
-**在使用此功能前，你需要引入 [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml)。**
+**当你使用的 Vue.js 版本低于 `2.6.0` 时，在使用此功能前，需要引入 [innersvg-polyfill](https://www.npmjs.com/package/svg-innerhtml)。**
 
 ```js
 import Icon from 'vue-awesome/components/Icon'

@@ -6,7 +6,7 @@ Icon.register({
     height: 512,
     paths: [
       {
-        d: 'M512 512H0V0H512V512z'
+        d: 'M512 512h-512v-512h512v512z'
       }
     ]
   }
