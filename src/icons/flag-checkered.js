@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'flag-checkered': {
-    width: 519,
+    width: 512,
     height: 512,
     paths: [
       {

@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'caret-left': {
-    width: 215,
+    width: 192,
     height: 512,
     paths: [
       {

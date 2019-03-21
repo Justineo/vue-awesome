@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'sign-out-alt': {
-    width: 503,
+    width: 512,
     height: 512,
     paths: [
       {

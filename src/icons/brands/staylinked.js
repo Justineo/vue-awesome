@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/staylinked': {
-    width: 439,
+    width: 440,
     height: 512,
     paths: [
       {

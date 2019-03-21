@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'regular/thumbs-up': {
-    width: 480,
+    width: 512,
     height: 512,
     paths: [
       {

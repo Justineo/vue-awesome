@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/d-and-d': {
-    width: 575,
+    width: 576,
     height: 512,
     paths: [
       {

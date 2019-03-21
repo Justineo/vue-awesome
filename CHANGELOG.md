@@ -1,3 +1,7 @@
+3.5.0
+* Add `title` prop support.
+* Update to `@fortawesome/fontawesome-free@5.8.0`.
+
 3.4.0
 * Update to `@fortawesome/fontawesome-free@5.7.2`.
 

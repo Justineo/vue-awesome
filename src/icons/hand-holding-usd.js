@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'hand-holding-usd': {
-    width: 543,
+    width: 544,
     height: 512,
     paths: [
       {

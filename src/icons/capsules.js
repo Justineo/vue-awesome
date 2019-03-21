@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   capsules: {
-    width: 575,
+    width: 576,
     height: 512,
     paths: [
       {

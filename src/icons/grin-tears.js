@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'grin-tears': {
-    width: 639,
+    width: 640,
     height: 512,
     paths: [
       {

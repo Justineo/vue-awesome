@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/cloudsmith': {
-    width: 333,
+    width: 332,
     height: 512,
     paths: [
       {

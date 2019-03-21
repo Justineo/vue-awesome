@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/internet-explorer': {
-    width: 511,
+    width: 512,
     height: 512,
     paths: [
       {

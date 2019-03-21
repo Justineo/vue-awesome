@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'pen-fancy': {
-    width: 511,
+    width: 512,
     height: 512,
     paths: [
       {

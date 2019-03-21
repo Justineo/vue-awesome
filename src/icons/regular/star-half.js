@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'regular/star-half': {
-    width: 308,
+    width: 576,
     height: 512,
     paths: [
       {

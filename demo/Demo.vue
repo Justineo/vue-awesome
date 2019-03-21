@@ -1,68 +1,122 @@
 <template>
-  <main>
-    <figure id="logo" @mouseenter="toggle" @mouseleave="toggle" @click="change" :title="logo"><icon :name="logo" scale="4"/></figure>
-    <h1><a href="https://github.com/Justineo/vue-awesome">Vue-Awesome</a></h1>
-    <p class="desc">Font Awesome component for Vue.js, using inline SVG.</p>
+<main>
+  <figure
+    id="logo"
+    :title="logo"
+    @mouseenter="toggle"
+    @mouseleave="toggle"
+    @click="change"
+  >
+    <v-icon
+      :name="logo"
+      scale="4"
+    />
+  </figure>
+  <h1><a href="https://github.com/Justineo/vue-awesome">Vue-Awesome</a></h1>
+  <p class="desc">
+    Font Awesome component for Vue.js, using inline SVG.
+  </p>
 
-    <h2>Basic</h2>
-    <p><icon name="flag"/></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"flag"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+  <h2>Basic</h2>
+  <p><v-icon name="flag"/></p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"flag"</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
 
-    <h2>Scale</h2>
-    <p><icon name="language" scale="3"/></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"language"</span> <span class="attr">scale</span>=<span class="val">"3"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+  <h2>Scale</h2>
+  <p>
+    <v-icon
+      name="language"
+      scale="3"
+    />
+  </p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"language"</span> <span class="attr">scale</span>=<span class="val">"3"</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
 
-    <h2>Spin</h2>
-    <p><icon name="sync" spin/></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"sync"</span> <span class="attr">spin</span>&gt;&lt;/icon&gt;</code></pre></figure>
+  <h2>Spin</h2>
+  <p>
+    <v-icon
+      name="sync"
+      spin
+    />
+  </p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"sync"</span> <span class="attr">spin</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
 
-    <h2>Pulse</h2>
-    <p><icon name="spinner" pulse/></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"spinner"</span> <span class="attr">pulse</span>&gt;&lt;/icon&gt;</code></pre></figure>
+  <h2>Pulse</h2>
+  <p>
+    <v-icon
+      name="spinner"
+      pulse
+    />
+  </p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"spinner"</span> <span class="attr">pulse</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
 
-    <h2>Flip</h2>
-    <p><icon name="signal" flip="horizontal"/></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"signal"</span> <span class="attr">flip</span>=<span class="val">"horizontal"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+  <h2>Flip</h2>
+  <p>
+    <v-icon
+      name="signal"
+      flip="horizontal"
+    />
+  </p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"signal"</span> <span class="attr">flip</span>=<span class="val">"horizontal"</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
 
-    <h2>Label</h2>
-    <p><small>Accessible for screen readers, etc.</small></p>
-    <p><icon name="code" label="Source Code"/></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"code"</span> <span class="attr">label</span>=<span class="val">"Source Code"</span>&gt;&lt;/icon&gt;</code></pre></figure>
+  <h2>Label</h2>
+  <p><small>Accessible for screen readers, etc.</small></p>
+  <p>
+    <v-icon
+      name="code"
+      label="Source Code"
+    />
+  </p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"code"</span> <span class="attr">label</span>=<span class="val">"Source Code"</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
 
-    <h2>Stacked icons</h2>
-    <p><small>Use stacked icons like in FontAwesome. Even more powerful.</small></p>
-    <p>
-      <icon label="No Photo">
-        <icon name="camera"/>
-        <icon name="ban" scale="2" class="alert"/>
-      </icon>
-    </p>
-    <figure><pre><code>&lt;icon <span class="attr">label</span>=<span class="val">"No Photos"</span>&gt;
-  &lt;icon <span class="attr">name</span>=<span class="val">"camera"</span>&gt;&lt;/icon&gt;
-  &lt;icon <span class="attr">name</span>=<span class="val">"ban"</span> <span class="attr">scale</span>=<span class="val">"2"</span> <span class="attr">class</span>=<span class="val">"alert"</span>&gt;&lt;/icon&gt;
-&lt;/icon&gt;</code></pre></figure>
+  <h2>Title</h2>
+  <p><small>Descriptive title support.</small></p>
+  <p>
+    <v-icon
+      name="brands/vuejs"
+      title="Vue.js"
+    />
+  </p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"brands/vuejs"</span> <span class="attr">title</span>=<span class="val">"Vue.js"</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
 
-    <h2>Custom icons</h2>
-    <p><small>You can register your own icons.</small></p>
-    <p><icon name="baidu"/></p>
-    <figure><pre><code>&lt;icon <span class="attr">name</span>=<span class="val">"baidu"</span>&gt;&lt;/icon&gt;</code></pre></figure>
-    
-    <h2>Multi-color icons</h2>
-    <p><small>Register icons in more advanced ways to unleash the full power of SVG.</small></p>
-    <p><icon name="webpack"/> <icon name="vue"/> <icon name="html5-c"/></p>
-    <p>See <a href="https://github.com/Justineo/vue-awesome#more-advanced-cases">readme</a> for further instructions.</p>
+  <h2>Stacked icons</h2>
+  <p><small>Use stacked icons like in FontAwesome. Even more powerful.</small></p>
+  <p>
+    <v-icon label="No Photo">
+      <v-icon name="camera"/>
+      <v-icon
+        name="ban"
+        scale="2"
+        class="alert"
+      />
+    </v-icon>
+  </p>
+  <figure>
+    <pre><code>&lt;v-icon <span class="attr">label</span>=<span class="val">"No Photos"</span>&gt;
+  &lt;v-icon <span class="attr">name</span>=<span class="val">"camera"</span>&gt;&lt;/v-icon&gt;
+  &lt;v-icon <span class="attr">name</span>=<span class="val">"ban"</span> <span class="attr">scale</span>=<span class="val">"2"</span> <span class="attr">class</span>=<span class="val">"alert"</span>&gt;&lt;/v-icon&gt;
+&lt;/v-icon&gt;</code></pre>
+  </figure>
 
-    <footer>
-      <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
-    </footer>
-  </main>
+  <h2>Custom icons</h2>
+  <p><small>You can register your own icons.</small></p>
+  <p><v-icon name="baidu"/></p>
+  <figure><pre><code>&lt;v-icon <span class="attr">name</span>=<span class="val">"baidu"</span>&gt;&lt;/v-icon&gt;</code></pre></figure>
+
+  <h2>Multi-color icons</h2>
+  <p><small>Register icons in more advanced ways to unleash the full power of SVG.</small></p>
+  <p><v-icon name="webpack"/> <v-icon name="vue"/> <v-icon name="html5-c"/></p>
+  <p>See <a href="https://github.com/Justineo/vue-awesome#more-advanced-cases">readme</a> for further instructions.</p>
+
+  <footer>
+    <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
+  </footer>
+</main>
 </template>
 
 <style>
 body {
   margin: 0;
   padding: 4em 0 0;
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   color: #666;
   text-align: center;
 }
@@ -89,7 +143,7 @@ p a {
   color: #41b883;
   cursor: pointer;
   user-select: none;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 #logo:hover {
@@ -111,7 +165,8 @@ h1 {
   font-family: Dosis, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #2c3e50;
   font-weight: 300;
 }
@@ -140,13 +195,14 @@ pre {
   margin: 0;
   padding: 0.8em;
   background-color: #f9f9f9;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.125);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.125);
   text-align: left;
   line-height: 1.1;
   color: #2973b7;
 }
 
-pre, code {
+pre,
+code {
   font-family: "Roboto Mono", Monaco, courier, monospace;
 }
 
@@ -184,7 +240,7 @@ footer a:hover {
 
 .alert {
   color: #c33;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 @media (max-width: 640px) {
@@ -195,7 +251,7 @@ footer a:hover {
 
   #logo {
     margin: 0 auto;
-    transform: scale(.6);
+    transform: scale(0.6);
   }
 
   #logo:hover {
@@ -230,27 +286,22 @@ footer a:hover {
 </style>
 
 <script>
-import Icon from '../src/components/Icon.vue'
+import VIcon from '../src/components/Icon.vue'
 import '../src/icons'
-const keys = Object.keys(Icon.icons)
+const keys = Object.keys(VIcon.icons)
 
 function randomIcon () {
   return keys[Math.floor(Math.random() * keys.length)]
 }
 
 export default {
+  components: {
+    VIcon
+  },
   data () {
     return {
       logo: randomIcon(),
       running: true
-    }
-  },
-  methods: {
-    change () {
-      this.logo = randomIcon()
-    },
-    toggle: function () {
-      this.running = !this.running
     }
   },
   mounted () {
@@ -259,6 +310,14 @@ export default {
         this.change()
       }
     }, 200)
+  },
+  methods: {
+    change () {
+      this.logo = randomIcon()
+    },
+    toggle: function () {
+      this.running = !this.running
+    }
   }
 }
 </script>

@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/goodreads-g': {
-    width: 383,
+    width: 384,
     height: 512,
     paths: [
       {

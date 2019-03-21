@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   question: {
-    width: 403,
+    width: 384,
     height: 512,
     paths: [
       {

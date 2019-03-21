@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'regular/folder-open': {
-    width: 575,
+    width: 576,
     height: 512,
     paths: [
       {

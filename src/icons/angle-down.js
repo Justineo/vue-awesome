@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'angle-down': {
-    width: 319,
+    width: 320,
     height: 512,
     paths: [
       {

@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'regular/kiss-wink-heart': {
-    width: 503,
+    width: 504,
     height: 512,
     paths: [
       {

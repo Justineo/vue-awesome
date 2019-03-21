@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'mars-stroke-h': {
-    width: 479,
+    width: 480,
     height: 512,
     paths: [
       {

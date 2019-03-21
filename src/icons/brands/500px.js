@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/500px': {
-    width: 447,
+    width: 448,
     height: 512,
     paths: [
       {

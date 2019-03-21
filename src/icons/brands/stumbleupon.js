@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/stumbleupon': {
-    width: 502,
+    width: 512,
     height: 512,
     paths: [
       {

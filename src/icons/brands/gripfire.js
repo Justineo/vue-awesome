@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/gripfire': {
-    width: 352,
+    width: 384,
     height: 512,
     paths: [
       {

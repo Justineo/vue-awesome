@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/searchengin': {
-    width: 459,
+    width: 460,
     height: 512,
     paths: [
       {

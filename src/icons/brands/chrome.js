@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/chrome': {
-    width: 495,
+    width: 496,
     height: 512,
     paths: [
       {

@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   cut: {
-    width: 447,
+    width: 448,
     height: 512,
     paths: [
       {

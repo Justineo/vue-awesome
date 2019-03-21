@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/gg-circle': {
-    width: 514,
+    width: 512,
     height: 512,
     paths: [
       {

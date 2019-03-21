@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/glide-g': {
-    width: 480,
+    width: 448,
     height: 512,
     paths: [
       {

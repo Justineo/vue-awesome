@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'cloud-moon-rain': {
-    width: 575,
+    width: 576,
     height: 512,
     paths: [
       {

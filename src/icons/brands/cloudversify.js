@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/cloudversify': {
-    width: 615,
+    width: 616,
     height: 512,
     paths: [
       {

@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/usb': {
-    width: 641,
+    width: 640,
     height: 512,
     paths: [
       {

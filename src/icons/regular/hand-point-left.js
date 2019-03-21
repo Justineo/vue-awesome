@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'regular/hand-point-left': {
-    width: 511,
+    width: 512,
     height: 512,
     paths: [
       {

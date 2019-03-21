@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   water: {
-    width: 575,
+    width: 576,
     height: 512,
     paths: [
       {

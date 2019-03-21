@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'sort-numeric-up': {
-    width: 425,
+    width: 448,
     height: 512,
     paths: [
       {

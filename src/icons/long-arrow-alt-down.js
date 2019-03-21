@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'long-arrow-alt-down': {
-    width: 255,
+    width: 256,
     height: 512,
     paths: [
       {

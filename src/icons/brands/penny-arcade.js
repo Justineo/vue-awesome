@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/penny-arcade': {
-    width: 639,
+    width: 640,
     height: 512,
     paths: [
       {

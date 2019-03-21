@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/reddit-alien': {
-    width: 511,
+    width: 512,
     height: 512,
     paths: [
       {

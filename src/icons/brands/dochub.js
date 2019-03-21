@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/dochub': {
-    width: 400,
+    width: 416,
     height: 512,
     paths: [
       {

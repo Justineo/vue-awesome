@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'cart-arrow-down': {
-    width: 575,
+    width: 576,
     height: 512,
     paths: [
       {

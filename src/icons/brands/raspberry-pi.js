@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/raspberry-pi': {
-    width: 406,
+    width: 407,
     height: 512,
     paths: [
       {

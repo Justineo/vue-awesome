@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'list-ol': {
-    width: 514,
+    width: 512,
     height: 512,
     paths: [
       {

@@ -2,7 +2,7 @@ import Icon from '../../components/Icon.vue'
 
 Icon.register({
   'brands/cuttlefish': {
-    width: 431,
+    width: 440,
     height: 512,
     paths: [
       {

@@ -2,7 +2,7 @@ import Icon from '../components/Icon.vue'
 
 Icon.register({
   'user-edit': {
-    width: 639,
+    width: 640,
     height: 512,
     paths: [
       {
