@@ -181,8 +181,9 @@ export default {
       class: this.klass,
       style: this.style,
       attrs: {
-        role: this.role || (this.label || this.title ? 'img' : 'presentation'),
+        role: this.$attrs.role || (this.label || this.title ? 'img' : null),
         'aria-label': this.label || null,
+        'aria-hidden': String(!(this.label || this.title)),
         tabindex: this.tabindex,
         x: this.x,
         y: this.y,
@@ -210,38 +211,31 @@ export default {
       }
     }
 
+    let content = this.title
+      ? [h('title', { attrs: { id: titleId } }, this.title)]
+      : []
+
     return h(
       'svg',
       options,
-      this.raw && this.icon
+      this.raw
         ? null
-        : this.$slots.default || [
-          ...(this.title
-            ? [
-              h(
-                'title',
-                {
-                  attrs: {
-                    id: titleId
-                  }
-                },
-                this.title
-              )
-            ]
-            : []),
-          ...this.icon.paths.map((path, i) =>
-            h('path', {
-              attrs: path,
-              key: `path-${i}`
-            })
-          ),
-          ...this.icon.polygons.map((polygon, i) =>
-            h('polygon', {
-              attrs: polygon,
-              key: `polygon-${i}`
-            })
-          )
-        ]
+        : content.concat(
+          this.$slots.default || [
+            ...this.icon.paths.map((path, i) =>
+              h('path', {
+                attrs: path,
+                key: `path-${i}`
+              })
+            ),
+            ...this.icon.polygons.map((polygon, i) =>
+              h('polygon', {
+                attrs: polygon,
+                key: `polygon-${i}`
+              })
+            )
+          ]
+        )
     )
   },
   register (data) {

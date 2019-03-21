@@ -1,3 +1,6 @@
+3.5.1
+* Fix `role` generation.
+
 3.5.0
 * Add `title` prop support.
 * Update to `@fortawesome/fontawesome-free@5.8.0`.

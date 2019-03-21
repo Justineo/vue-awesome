@@ -242,7 +242,13 @@ Vue.component('v-icon', VueAwesome)
 
 * `label: string`
 
-  Set the `aria-label` for the icon if provided. Otherwise the icon will have `role="presentation"` thus not accessible.
+  Set the `aria-label` for the icon if provided.
+
+* `title: string`
+
+  Set the title for the icon.
+
+>  The icon will have `role="presentation"` thus not accessible when neither `label` nor `title` exists.
 
 ### Misc
 

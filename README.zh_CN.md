@@ -241,7 +241,13 @@ Vue.component('v-icon', VueAwesome)
 
 * `label: string`
 
-  当指定时会设置图标的 `aria-label`。否则图标将会包含 `role="presentation"` 声明，无法从辅助设备访问。
+  当指定时会设置图标的 `aria-label`。
+
+* `title: string`
+
+  为图标设置标题。
+
+>  当 `label` 与 `title` 均不存在时，图标将会包含 `role="presentation"` 声明，无法从辅助设备访问。
 
 ### 其它
 
@@ -285,7 +291,7 @@ $ npm run dev
 
 ## 注册自定义图标
 
-### 简单情况
+### 简单场景
 
 可以用如下方式注册自定义图标：
 
@@ -301,7 +307,7 @@ Icon.register({
 })
 ```
 
-### 复杂一些的情况
+### 复杂一些的场景
 
 如果你的 SVG 文件有多个路径或多边形，以及/或者你想预定义一些样式，可以用如下方式进行注册：
 

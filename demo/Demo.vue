@@ -80,7 +80,9 @@
   <h2>Stacked icons</h2>
   <p><small>Use stacked icons like in FontAwesome. Even more powerful.</small></p>
   <p>
-    <v-icon label="No Photo">
+    <v-icon
+      label="No Photo"
+    >
       <v-icon name="camera"/>
       <v-icon
         name="ban"
@@ -111,6 +113,43 @@
   </footer>
 </main>
 </template>
+
+<script>
+import VIcon from '../src/components/Icon.vue'
+import '../src/icons'
+const keys = Object.keys(VIcon.icons)
+
+function randomIcon () {
+  return keys[Math.floor(Math.random() * keys.length)]
+}
+
+export default {
+  components: {
+    VIcon
+  },
+  data () {
+    return {
+      logo: randomIcon(),
+      running: true
+    }
+  },
+  mounted () {
+    setInterval(() => {
+      if (this.running) {
+        this.change()
+      }
+    }, 200)
+  },
+  methods: {
+    change () {
+      this.logo = randomIcon()
+    },
+    toggle: function () {
+      this.running = !this.running
+    }
+  }
+}
+</script>
 
 <style>
 body {
@@ -284,40 +323,3 @@ footer a:hover {
   }
 }
 </style>
-
-<script>
-import VIcon from '../src/components/Icon.vue'
-import '../src/icons'
-const keys = Object.keys(VIcon.icons)
-
-function randomIcon () {
-  return keys[Math.floor(Math.random() * keys.length)]
-}
-
-export default {
-  components: {
-    VIcon
-  },
-  data () {
-    return {
-      logo: randomIcon(),
-      running: true
-    }
-  },
-  mounted () {
-    setInterval(() => {
-      if (this.running) {
-        this.change()
-      }
-    }, 200)
-  },
-  methods: {
-    change () {
-      this.logo = randomIcon()
-    },
-    toggle: function () {
-      this.running = !this.running
-    }
-  }
-}
-</script>
