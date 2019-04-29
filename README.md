@@ -129,7 +129,7 @@ For **Nuxt.js 2**:
 module.exports = {
   // ...
   build: {
-    transpile: [/^vue-awesome/]
+    transpile: [/^vue-awesome\//]
   }
 }
 ```
