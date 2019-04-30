@@ -1,3 +1,6 @@
+3.5.2
+* Fix stacked icons layout after content is updated.
+
 3.5.1
 * Fix `role` generation.
 

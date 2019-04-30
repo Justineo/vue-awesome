@@ -148,29 +148,37 @@ export default {
     }
   },
   mounted () {
-    if (!this.name && this.name !== null && this.$children.length === 0) {
-      console.warn(`Invalid prop: prop "name" is required.`)
-      return
+    this.updateStack()
+  },
+  updated () {
+    this.updateStack()
+  },
+  methods: {
+    updateStack () {
+      if (!this.name && this.name !== null && this.$children.length === 0) {
+        console.warn(`Invalid prop: prop "name" is required.`)
+        return
+      }
+
+      if (this.icon) {
+        return
+      }
+
+      let width = 0
+      let height = 0
+      this.$children.forEach(child => {
+        child.outerScale = this.normalizedScale
+
+        width = Math.max(width, child.width)
+        height = Math.max(height, child.height)
+      })
+      this.childrenWidth = width
+      this.childrenHeight = height
+      this.$children.forEach(child => {
+        child.x = (width - child.width) / 2
+        child.y = (height - child.height) / 2
+      })
     }
-
-    if (this.icon) {
-      return
-    }
-
-    let width = 0
-    let height = 0
-    this.$children.forEach(child => {
-      child.outerScale = this.normalizedScale
-
-      width = Math.max(width, child.width)
-      height = Math.max(height, child.height)
-    })
-    this.childrenWidth = width
-    this.childrenHeight = height
-    this.$children.forEach(child => {
-      child.x = (width - child.width) / 2
-      child.y = (height - child.height) / 2
-    })
   },
   render (h) {
     if (this.name === null) {
@@ -274,7 +282,7 @@ function assign (obj, ...sources) {
 
 let cursor = 0xd4937
 function getId () {
-  return `fa-${(cursor++).toString(16)}`
+  return `va-${(cursor++).toString(16)}`
 }
 
 const ESCAPE_MAP = {
