@@ -204,7 +204,7 @@ export default {
 
     let titleId = `vat-${this.id}`
     if (this.title) {
-      options.attrs['aria-labelled-by'] = titleId
+      options.attrs['aria-labelledby'] = titleId
     }
 
     if (this.raw) {
