@@ -1,3 +1,7 @@
+3.5.3
+* Fix spelling of `aria-labelledby`.
+* Update to `@fortawesome/fontawesome-free@5.8.2`.
+
 3.5.2
 * Fix stacked icons layout after content is updated.
 
