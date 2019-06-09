@@ -1,3 +1,6 @@
+3.5.4
+* Update to `@fortawesome/fontawesome-free@5.9.0`.
+
 3.5.3
 * Fix spelling of `aria-labelledby`.
 * Update to `@fortawesome/fontawesome-free@5.8.2`.
