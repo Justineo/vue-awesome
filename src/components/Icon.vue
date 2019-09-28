@@ -181,7 +181,7 @@ export default {
     }
   },
   render (h) {
-    if (this.name === null) {
+    if (!this.icon) {
       return h()
     }
 
