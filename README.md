@@ -356,6 +356,35 @@ Icon.register({
     ]
   }
 })
+
+```
+
+#### Polygons
+   
+```js
+import Icon from 'vue-awesome/components/Icon'
+ 
+Icon.register({
+  vue: {
+    width: 256,
+    height: 221,
+    circles: [
+      {
+        style: 'fill:#41B883',
+        cx: 75,
+        cy: 50,
+        r: 20
+      },
+      {
+        style: 'fill:#35495E',
+        cx: 50,
+        cy: 30,
+        r: 10
+      }
+    ]
+  }
+})
+
 ```
 
 #### Raw SVG
