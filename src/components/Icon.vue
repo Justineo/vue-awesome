@@ -65,7 +65,7 @@ export default {
       return scale * this.outerScale
     },
     klass () {
-      return {
+      let classes = {
         'fa-icon': true,
         'fa-spin': this.spin,
         'fa-flip-horizontal': this.flip === 'horizontal',
@@ -73,9 +73,18 @@ export default {
         'fa-flip-both': this.flip === 'both',
         'fa-inverse': this.inverse,
         'fa-pulse': this.pulse,
-        [this.$options.name]: true,
-        [this.$options.className]: !!this.$options.className
+        [this.$options.name]: true
       }
+
+      if (this.classes) {
+        Object.keys(this.classes).forEach(c => {
+          if (this.classes[c]) {
+            classes[c] = true
+          }
+        })
+      }
+
+      return classes
     },
     icon () {
       if (this.name) {

@@ -1,9 +1,12 @@
+4.0.1
+* Use `this.classes` instead of `$options.className` for wrapper usage.
+
 4.0.0
 * Use Vue's warn util directly and offer better debugging experience.
 * Support `className` on component options to make wrapper components easier.
 * Fix the problem that icons with undefined `name`s were throwing uncaught exceptions.
 * Update to `@fortawesome/fontawesome-free@5.11.2`.
-* Update  required version of peer dependency `vue` to `^2.4.0` (to support transparent event passing through).
+* [Breaking] Update  required version of peer dependency `vue` to `^2.4.0` (to support transparent event passing through).
 
 3.5.4
 * Update to `@fortawesome/fontawesome-free@5.9.0`.
