@@ -58,8 +58,8 @@ VIcon.register({
 
 /* eslint-disable no-new */
 new Vue({
-  name: 'app',
   el: '#app',
+  name: 'app',
   components: {
     demo: Demo
   },

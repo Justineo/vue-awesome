@@ -2,19 +2,25 @@
 <main>
   <figure
     id="logo"
-    :title="logo"
     @mouseenter="toggle"
     @mouseleave="toggle"
     @click="change"
   >
-    <v-icon
-      :name="logo"
-      scale="4"
+    <random-icon
+      ref="logo"
+      :playing="playing"
     />
   </figure>
   <h1><a href="https://github.com/Justineo/vue-awesome">Vue-Awesome</a></h1>
   <p class="desc">
-    Font Awesome component for Vue.js, using inline SVG.
+    Awesome SVG icon component for Vue.js, with built-in Font Awesome icons.
+  </p>
+  <p class="links">
+    <a href="https://www.npmjs.com/package/vue-awesome">npm</a>
+    ·
+    <a href="https://github.com/Justineo/vue-awesome#vue-awesome">docs</a>
+    ·
+    <a href="https://fontawesome.com/icons?m=free">search</a>
   </p>
 
   <h2>Basic</h2>
@@ -106,46 +112,40 @@
   <h2>Multi-color icons</h2>
   <p><small>Register icons in more advanced ways to unleash the full power of SVG.</small></p>
   <p><v-icon name="webpack"/> <v-icon name="vue"/> <v-icon name="html5-c"/></p>
-  <p>See <a href="https://github.com/Justineo/vue-awesome#more-advanced-cases">readme</a> for further instructions.</p>
+  <p>See <a href="https://github.com/Justineo/vue-awesome#more-advanced-cases">readme</a> for more advanced usage.</p>
 
   <footer>
-    <a href="//github.com/Justineo">@Justineo</a>|<a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>|<a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
+    <a href="//github.com/Justineo">@Justineo</a>
+    ·
+    <a href="//github.com/Justineo/vue-awesome/blob/master/LICENSE">MIT License</a>
+    ·
+    <a href="//github.com/Justineo/vue-awesome">View on GitHub</a>
   </footer>
 </main>
 </template>
 
 <script>
 import VIcon from '../src/components/Icon.vue'
+import RandomIcon from './RandomIcon'
 import '../src/icons'
-const keys = Object.keys(VIcon.icons)
-
-function randomIcon () {
-  return keys[Math.floor(Math.random() * keys.length)]
-}
 
 export default {
+  name: 'demo',
   components: {
-    VIcon
+    VIcon,
+    RandomIcon
   },
   data () {
     return {
-      logo: randomIcon(),
-      running: true
+      playing: true
     }
   },
-  mounted () {
-    setInterval(() => {
-      if (this.running) {
-        this.change()
-      }
-    }, 200)
-  },
   methods: {
-    change () {
-      this.logo = randomIcon()
+    toggle () {
+      this.playing = !this.playing
     },
-    toggle: function () {
-      this.running = !this.running
+    change () {
+      this.$refs.logo.change()
     }
   }
 }
@@ -216,8 +216,11 @@ h2 {
 }
 
 .desc {
-  margin-bottom: 4em;
   color: #7f8c8d;
+}
+
+.links {
+  margin-bottom: 4em;
 }
 
 figure .fa-icon {
@@ -274,7 +277,7 @@ footer a {
 
 footer a:hover {
   padding-bottom: 3px;
-  border-bottom: 3px solid #42b983;
+  border-bottom: 2px solid #42b983;
 }
 
 .alert {
