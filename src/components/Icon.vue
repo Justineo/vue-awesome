@@ -72,8 +72,7 @@ export default {
         'fa-flip-vertical': this.flip === 'vertical',
         'fa-flip-both': this.flip === 'both',
         'fa-inverse': this.inverse,
-        'fa-pulse': this.pulse,
-        [this.$options.name]: true
+        'fa-pulse': this.pulse
       }
 
       if (this.classes) {

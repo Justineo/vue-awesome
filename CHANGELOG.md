@@ -1,3 +1,6 @@
+4.0.2
+* Decouple component `name` and class output.
+
 4.0.1
 * Use `this.classes` instead of `$options.className` for wrapper usage.
 
