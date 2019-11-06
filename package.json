@@ -9,7 +9,7 @@
     "dev": "node build/dev-server.js",
     "demo": "node build/build.js",
     "build": "cross-env NODE_ENV=production rollup -c",
-    "icons": "node -r esm build/fa2json.js && node -r esm build/icons.js",
+    "icons": "npm run fa2json && node -r esm build/icons.js",
     "fa2json": "node -r esm build/fa2json.js",
     "pub": "sh ./publish.sh"
   },

@@ -1,5 +1,5 @@
 <script>
-import nanoid from 'nanoid'
+import nanoid from 'nanoid/non-secure'
 
 let icons = {}
 
@@ -43,7 +43,7 @@ export default {
   },
   data () {
     return {
-      id: getId(),
+      id: getId('va-'),
       x: false,
       y: false,
       childrenWidth: 0,
@@ -128,7 +128,7 @@ export default {
       raw = raw.replace(
         /\s(?:xml:)?id=(["']?)([^"')\s]+)\1/g,
         (match, quote, id) => {
-          let uniqueId = getId()
+          let uniqueId = getId('vat-')
           ids[id] = uniqueId
           return ` id="${uniqueId}"`
         }
@@ -216,7 +216,7 @@ export default {
       on: this.$listeners
     }
 
-    let titleId = `vat-${this.id}`
+    let titleId = this.id
     if (this.title) {
       options.attrs['aria-labelledby'] = titleId
     }
@@ -296,8 +296,8 @@ function assign (obj, ...sources) {
   return obj
 }
 
-function getId () {
-  return `va-${nanoid()}`
+function getId (prefix = '') {
+  return prefix + nanoid(7)
 }
 
 const ESCAPE_MAP = {
