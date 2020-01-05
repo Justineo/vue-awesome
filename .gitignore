@@ -37,3 +37,6 @@ node_modules
 
 # Assets
 assets
+
+# Editors
+.idea/
