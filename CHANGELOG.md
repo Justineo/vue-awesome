@@ -1,75 +1,11 @@
-4.0.2
-* Decouple component `name` and class output.
-
-4.0.1
-* Use `this.classes` instead of `$options.className` for wrapper usage.
-
-4.0.0
-* Use Vue's warn util directly and offer better debugging experience.
-* Support `className` on component options to make wrapper components easier.
-* Fix the problem that icons with undefined `name`s were throwing uncaught exceptions.
-* Update to `@fortawesome/fontawesome-free@5.11.2`.
-* [Breaking] Update  required version of peer dependency `vue` to `^2.4.0` (to support transparent event passing through).
-
-3.5.4
-* Update to `@fortawesome/fontawesome-free@5.9.0`.
-
-3.5.3
-* Fix spelling of `aria-labelledby`.
-* Update to `@fortawesome/fontawesome-free@5.8.2`.
-
-3.5.2
-* Fix stacked icons layout after content is updated.
-
-3.5.1
-* Fix `role` generation.
-
-3.5.0
-* Add `title` prop support.
-* Update to `@fortawesome/fontawesome-free@5.8.0`.
-
-3.4.0
-* Update to `@fortawesome/fontawesome-free@5.7.2`.
-
-3.3.1
-* Fix npm package.
-
-3.3.0
-* Fix unexpected focus for IE.
-* Updated to `@fortawesome/fontawesome-free@5.6.3`.
-
-3.2.0
-* Updated `fa2svg` to `1.2.0`.
-
-3.1.3
-* Supported not rendering anything when explicitly set `name` to `null`.
-
-3.1.2
-* Fix missing width and height.
-
-3.1.1
-* Get rid of unnecessary `<g>` wrapper for `raw` mode.
-
-3.1.0
-* Switch to `@fortawesome/fontawesome-free@5.2.0`.
-
-3.0.5
-* Fix build.
-
-3.0.4
+2.3.8
 * Add `name` option to root classes.
 
-3.0.3
-* Update `rollup-plugin-vue` to `4.2.0`.
-
-3.0.2
+2.3.7
 * Fix package publish.
 
-3.0.1
-* Update `@fortawesome/fontawesome-free-webfonts` to `1.0.9`.
-
-3.0.0
-* Updated all icons to Font Awesome 5, see [README](./README.md) for updated usages.
+2.3.6
+* Fix `name` prop check for icon wrappers.
 
 2.3.5
 * Fix `id` replacement.
@@ -86,10 +22,10 @@
 
 2.3.0
 * Added new ways to register icon.
-* Clarify custom icon registration in documentation.
+* Clearify custom icon registration in documentation.
 
 2.2.8
-* Switch build tool to rollup.
+* Swith build tool to rollup.
 * Provide `module` in `package.json`.
 
 2.2.7

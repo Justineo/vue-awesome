@@ -1,30 +1,26 @@
 import vue from 'rollup-plugin-vue'
 import buble from 'rollup-plugin-buble'
-import { terser } from 'rollup-plugin-terser'
-import commonjs from 'rollup-plugin-commonjs'
-import resolve from 'rollup-plugin-node-resolve'
+import uglify from 'rollup-plugin-uglify'
 
 export default {
   input: 'src/index.js',
+  external: [
+    'vue'
+  ],
   output: {
-    file: 'dist/vue-awesome.js',
     name: 'VueAwesome',
+    file: 'dist/vue-awesome.js',
     format: 'umd',
     globals: {
       vue: 'Vue'
     }
   },
-  external: [
-    'vue'
-  ],
   plugins: [
-    resolve(),
-    commonjs(),
     vue({
       compileTemplate: true,
       css: true
     }),
     buble(),
-    terser()
+    uglify()
   ]
 }

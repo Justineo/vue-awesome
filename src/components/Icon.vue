@@ -1,15 +1,64 @@
-<script>
-import nanoid from 'nanoid/non-secure'
+<template>
+  <svg version="1.1"
+    :class="klass"
+    :role="label ? 'img' : 'presentation'"
+    :aria-label="label"
+    :x="x"
+    :y="y"
+    :width="width"
+    :height="height"
+    :viewBox="box"
+    :style="style">
+    <slot>
+      <template v-if="icon && icon.paths">
+        <path v-for="(path, i) in icon.paths" :key="`path-${i}`" v-bind="path"/>
+      </template>
+      <template v-if="icon && icon.polygons">
+        <polygon v-for="(polygon, i) in icon.polygons" :key="`polygon-${i}`" v-bind="polygon"/>
+      </template>
+      <template v-if="icon && icon.raw"><g v-html="raw"></g></template>
+    </slot>
+  </svg>
+</template>
 
-let icons = {}
-
-function warn (msg, vm) {
-  if (!vm) {
-    console.error(msg)
-    return
-  }
-  vm.constructor.super.util.warn(msg, vm)
+<style>
+.fa-icon {
+  display: inline-block;
+  fill: currentColor;
 }
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-spin {
+  animation: fa-spin 1s 0s infinite linear;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.fa-pulse {
+  animation: fa-spin 1s infinite steps(8);
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+
+<script>
+let icons = {}
 
 export default {
   name: 'fa-icon',
@@ -18,32 +67,26 @@ export default {
       type: String,
       validator (val) {
         if (val && !(val in icons)) {
-          warn(
-            `Invalid prop: prop "name" is referring to an unregistered icon "${val}".\n` +
-              `Please make sure you have imported this icon before using it.`,
-            this
-          )
+          console.warn(`Invalid prop: prop "name" is referring to an unregistered icon "${val}".` +
+            `\nPlease make sure you have imported this icon before using it.`)
           return false
         }
         return true
       }
     },
-    title: String,
     scale: [Number, String],
     spin: Boolean,
     inverse: Boolean,
     pulse: Boolean,
     flip: {
       validator (val) {
-        return val === 'horizontal' || val === 'vertical' || val === 'both'
+        return val === 'horizontal' || val === 'vertical'
       }
     },
-    label: String,
-    tabindex: [Number, String]
+    label: String
   },
   data () {
     return {
-      id: getId('va-'),
       x: false,
       y: false,
       childrenWidth: 0,
@@ -56,34 +99,21 @@ export default {
       let scale = this.scale
       scale = typeof scale === 'undefined' ? 1 : Number(scale)
       if (isNaN(scale) || scale <= 0) {
-        warn(
-          `Invalid prop: prop "scale" should be a number over 0.`,
-          this
-        )
+        console.warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
         return this.outerScale
       }
       return scale * this.outerScale
     },
     klass () {
-      let classes = {
+      return {
         'fa-icon': true,
         'fa-spin': this.spin,
         'fa-flip-horizontal': this.flip === 'horizontal',
         'fa-flip-vertical': this.flip === 'vertical',
-        'fa-flip-both': this.flip === 'both',
         'fa-inverse': this.inverse,
-        'fa-pulse': this.pulse
+        'fa-pulse': this.pulse,
+        [this.$options.name]: true
       }
-
-      if (this.classes) {
-        Object.keys(this.classes).forEach(c => {
-          if (this.classes[c]) {
-            classes[c] = true
-          }
-        })
-      }
-
-      return classes
     },
     icon () {
       if (this.name) {
@@ -105,18 +135,10 @@ export default {
       return Math.max(width, height) / 16
     },
     width () {
-      return (
-        this.childrenWidth ||
-        (this.icon && (this.icon.width / this.ratio) * this.normalizedScale) ||
-        0
-      )
+      return this.childrenWidth || this.icon && this.icon.width / this.ratio * this.normalizedScale || 0
     },
     height () {
-      return (
-        this.childrenHeight ||
-        (this.icon && (this.icon.height / this.ratio) * this.normalizedScale) ||
-        0
-      )
+      return this.childrenHeight || this.icon && this.icon.height / this.ratio * this.normalizedScale || 0
     },
     style () {
       if (this.normalizedScale === 1) {
@@ -133,234 +155,74 @@ export default {
       }
       let raw = this.icon.raw
       let ids = {}
-      raw = raw.replace(
-        /\s(?:xml:)?id=(["']?)([^"')\s]+)\1/g,
-        (match, quote, id) => {
-          let uniqueId = getId('vat-')
-          ids[id] = uniqueId
-          return ` id="${uniqueId}"`
+      raw = raw.replace(/\s(?:xml:)?id=(["']?)([^"')\s]+)\1/g, (match, quote, id) => {
+        let uniqueId = getId()
+        ids[id] = uniqueId
+        return ` id="${uniqueId}"`
+      })
+      raw = raw.replace(/#(?:([^'")\s]+)|xpointer\(id\((['"]?)([^')]+)\2\)\))/g, (match, rawId, _, pointerId) => {
+        let id = rawId || pointerId
+        if (!id || !ids[id]) {
+          return match
         }
-      )
-      raw = raw.replace(
-        /#(?:([^'")\s]+)|xpointer\(id\((['"]?)([^')]+)\2\)\))/g,
-        (match, rawId, _, pointerId) => {
-          let id = rawId || pointerId
-          if (!id || !ids[id]) {
-            return match
-          }
 
-          return `#${ids[id]}`
-        }
-      )
+        return `#${ids[id]}`
+      })
 
       return raw
-    },
-    focusable () {
-      let { tabindex } = this
-      if (tabindex == null) {
-        return 'false'
-      }
-      let index =
-        typeof tabindex === 'string' ? parseInt(tabindex, 10) : tabindex
-      if (index >= 0) {
-        return null
-      }
-      return 'false'
     }
   },
   mounted () {
-    this.updateStack()
-  },
-  updated () {
-    this.updateStack()
-  },
-  methods: {
-    updateStack () {
-      if (!this.name && this.name !== null && this.$children.length === 0) {
-        warn(`Invalid prop: prop "name" is required.`, this)
-        return
-      }
-
-      if (this.icon) {
-        return
-      }
-
-      let width = 0
-      let height = 0
-      this.$children.forEach(child => {
-        child.outerScale = this.normalizedScale
-
-        width = Math.max(width, child.width)
-        height = Math.max(height, child.height)
-      })
-      this.childrenWidth = width
-      this.childrenHeight = height
-      this.$children.forEach(child => {
-        child.x = (width - child.width) / 2
-        child.y = (height - child.height) / 2
-      })
-    }
-  },
-  render (h) {
-    if (this.name === null) {
-      return h()
+    if (!this.name && this.$children.length === 0) {
+      console.warn(`Invalid prop: prop "name" is required.`)
+      return
     }
 
-    let options = {
-      class: this.klass,
-      style: this.style,
-      attrs: {
-        role: this.$attrs.role || (this.label || this.title ? 'img' : null),
-        'aria-label': this.label || null,
-        'aria-hidden': !(this.label || this.title),
-        tabindex: this.tabindex,
-        x: this.x,
-        y: this.y,
-        width: this.width,
-        height: this.height,
-        viewBox: this.box,
-        focusable: this.focusable
-      },
-      on: this.$listeners
+    if (this.icon) {
+      return
     }
 
-    let titleId = this.id
-    if (this.title) {
-      options.attrs['aria-labelledby'] = titleId
-    }
+    let width = 0
+    let height = 0
+    this.$children.forEach(child => {
+      child.outerScale = this.normalizedScale
 
-    if (this.raw) {
-      let html = `<g>${this.raw}</g>`
-
-      if (this.title) {
-        html = `<title id="${titleId}">${escapeHTML(this.title)}</title>${html}`
-      }
-
-      options.domProps = { innerHTML: html }
-    }
-
-    let content = this.title
-      ? [h('title', { attrs: { id: titleId } }, this.title)]
-      : []
-
-    return h(
-      'svg',
-      options,
-      this.raw
-        ? null
-        : content.concat(
-          [
-            h(
-              'g',
-              this.$slots.default || (this.icon ? [
-                ...this.icon.paths.map((path, i) =>
-                  h('path', {
-                    attrs: path,
-                    key: `path-${i}`
-                  })
-                ),
-                ...this.icon.polygons.map((polygon, i) =>
-                  h('polygon', {
-                    attrs: polygon,
-                    key: `polygon-${i}`
-                  })
-                )
-              ] : [])
-            )]
-        )
-    )
+      width = Math.max(width, child.width)
+      height = Math.max(height, child.height)
+    })
+    this.childrenWidth = width
+    this.childrenHeight = height
+    this.$children.forEach(child => {
+      child.x = (width - child.width) / 2
+      child.y = (height - child.height) / 2
+    })
   },
   register (data) {
     for (let name in data) {
       let icon = data[name]
-      let { paths = [], d, polygons = [], points } = icon
 
-      if (d) {
-        paths.push({ d })
+      if (!icon.paths) {
+        icon.paths = []
+      }
+      if (icon.d) {
+        icon.paths.push({ d: icon.d })
       }
 
-      if (points) {
-        polygons.push({ points })
+      if (!icon.polygons) {
+        icon.polygons = []
+      }
+      if (icon.points) {
+        icon.polygons.push({ points: icon.points })
       }
 
-      icons[name] = assign({}, icon, {
-        paths,
-        polygons
-      })
+      icons[name] = icon
     }
   },
   icons
 }
 
-function assign (obj, ...sources) {
-  sources.forEach(source => {
-    for (let key in source) {
-      if (source.hasOwnProperty(key)) {
-        obj[key] = source[key]
-      }
-    }
-  })
-
-  return obj
-}
-
-function getId (prefix = '') {
-  return prefix + nanoid(7)
-}
-
-const ESCAPE_MAP = {
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  '&': '&amp;'
-}
-
-function escapeHTML (html) {
-  return html.replace(/[<>"&]/g, c => ESCAPE_MAP[c] || c)
+let cursor = 0xd4937
+function getId () {
+  return `fa-${(cursor++).toString(16)}`
 }
 </script>
-
-<style>
-.fa-icon {
-  display: inline-block;
-  fill: currentColor;
-  overflow: visible;
-}
-
-.fa-icon > g {
-  transform-origin: 50% 50%;
-}
-
-.fa-flip-horizontal {
-  transform: scale(-1, 1);
-}
-
-.fa-flip-vertical {
-  transform: scale(1, -1);
-}
-
-.fa-flip-both {
-  transform: scale(-1, -1);
-}
-
-.fa-spin > g {
-  animation: fa-spin 1s 0s infinite linear;
-}
-
-.fa-pulse > g {
-  animation: fa-spin 1s infinite steps(8);
-}
-
-.fa-inverse {
-  color: #fff;
-}
-
-@keyframes fa-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-</style>
