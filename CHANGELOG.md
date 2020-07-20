@@ -1,3 +1,7 @@
+4.1.0
+* Update to `@fortawesome/fontawesome-free@5.14.0`.
+* Removed `nanoid` dependency.
+
 4.0.2
 * Decouple component `name` and class output.
 

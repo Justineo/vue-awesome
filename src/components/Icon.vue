@@ -1,33 +1,31 @@
 <script>
-import nanoid from "nanoid/non-secure";
+let icons = {}
 
-let icons = {};
-
-function warn(msg, vm) {
+function warn (msg, vm) {
   if (!vm) {
     /* eslint-disable no-console */
-    console.error(msg);
+    console.error(msg)
     /* eslint-enable no-console */
-    return;
+    return
   }
-  vm.constructor.super.util.warn(msg, vm);
+  vm.constructor.super.util.warn(msg, vm)
 }
 
 export default {
-  name: "fa-icon",
+  name: 'fa-icon',
   props: {
     name: {
       type: String,
-      validator(val) {
+      validator (val) {
         if (val && !(val in icons)) {
           warn(
             `Invalid prop: prop "name" is referring to an unregistered icon "${val}".\n` +
               `Please make sure you have imported this icon before using it.`,
             this
-          );
-          return false;
+          )
+          return false
         }
-        return true;
+        return true
       }
     },
     title: String,
@@ -36,182 +34,181 @@ export default {
     inverse: Boolean,
     pulse: Boolean,
     flip: {
-      validator(val) {
-        return val === "horizontal" || val === "vertical" || val === "both";
+      validator (val) {
+        return val === 'horizontal' || val === 'vertical' || val === 'both'
       }
     },
     label: String,
     tabindex: [Number, String]
   },
-  data() {
+  data () {
     return {
-      id: getId("va-"),
       x: false,
       y: false,
       childrenWidth: 0,
       childrenHeight: 0,
       outerScale: 1
-    };
+    }
   },
   computed: {
-    normalizedScale() {
-      let scale = this.scale;
-      scale = typeof scale === "undefined" ? 1 : Number(scale);
+    normalizedScale () {
+      let scale = this.scale
+      scale = typeof scale === 'undefined' ? 1 : Number(scale)
       if (isNaN(scale) || scale <= 0) {
-        warn(`Invalid prop: prop "scale" should be a number over 0.`, this);
-        return this.outerScale;
+        warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
+        return this.outerScale
       }
-      return scale * this.outerScale;
+      return scale * this.outerScale
     },
-    klass() {
+    klass () {
       let classes = {
-        "fa-icon": true,
-        "fa-spin": this.spin,
-        "fa-flip-horizontal": this.flip === "horizontal",
-        "fa-flip-vertical": this.flip === "vertical",
-        "fa-flip-both": this.flip === "both",
-        "fa-inverse": this.inverse,
-        "fa-pulse": this.pulse
-      };
+        'fa-icon': true,
+        'fa-spin': this.spin,
+        'fa-flip-horizontal': this.flip === 'horizontal',
+        'fa-flip-vertical': this.flip === 'vertical',
+        'fa-flip-both': this.flip === 'both',
+        'fa-inverse': this.inverse,
+        'fa-pulse': this.pulse
+      }
 
       if (this.classes) {
         Object.keys(this.classes).forEach(c => {
           if (this.classes[c]) {
-            classes[c] = true;
+            classes[c] = true
           }
-        });
+        })
       }
 
-      return classes;
+      return classes
     },
-    icon() {
+    icon () {
       if (this.name) {
-        return icons[this.name];
+        return icons[this.name]
       }
-      return null;
+      return null
     },
-    box() {
+    box () {
       if (this.icon) {
-        return `0 0 ${this.icon.width} ${this.icon.height}`;
+        return `0 0 ${this.icon.width} ${this.icon.height}`
       }
-      return `0 0 ${this.width} ${this.height}`;
+      return `0 0 ${this.width} ${this.height}`
     },
-    ratio() {
+    ratio () {
       if (!this.icon) {
-        return 1;
+        return 1
       }
-      let { width, height } = this.icon;
-      return Math.max(width, height) / 16;
+      let { width, height } = this.icon
+      return Math.max(width, height) / 16
     },
-    width() {
+    width () {
       return (
         this.childrenWidth ||
         (this.icon && (this.icon.width / this.ratio) * this.normalizedScale) ||
         0
-      );
+      )
     },
-    height() {
+    height () {
       return (
         this.childrenHeight ||
         (this.icon && (this.icon.height / this.ratio) * this.normalizedScale) ||
         0
-      );
+      )
     },
-    style() {
+    style () {
       if (this.normalizedScale === 1) {
-        return false;
+        return false
       }
       return {
-        fontSize: this.normalizedScale + "em"
-      };
+        fontSize: this.normalizedScale + 'em'
+      }
     },
-    raw() {
+    raw () {
       // generate unique id for each icon's SVG element with ID
       if (!this.icon || !this.icon.raw) {
-        return null;
+        return null
       }
-      let raw = this.icon.raw;
-      let ids = {};
+      let raw = this.icon.raw
+      let ids = {}
       raw = raw.replace(
         /\s(?:xml:)?id=(["']?)([^"')\s]+)\1/g,
         (match, quote, id) => {
-          let uniqueId = getId("vat-");
-          ids[id] = uniqueId;
-          return ` id="${uniqueId}"`;
+          let uniqueId = getId('vat-')
+          ids[id] = uniqueId
+          return ` id="${uniqueId}"`
         }
-      );
+      )
       raw = raw.replace(
         /#(?:([^'")\s]+)|xpointer\(id\((['"]?)([^')]+)\2\)\))/g,
         (match, rawId, _, pointerId) => {
-          let id = rawId || pointerId;
+          let id = rawId || pointerId
           if (!id || !ids[id]) {
-            return match;
+            return match
           }
 
-          return `#${ids[id]}`;
+          return `#${ids[id]}`
         }
-      );
+      )
 
-      return raw;
+      return raw
     },
-    focusable() {
-      let { tabindex } = this;
+    focusable () {
+      let { tabindex } = this
       if (tabindex == null) {
-        return "false";
+        return 'false'
       }
       let index =
-        typeof tabindex === "string" ? parseInt(tabindex, 10) : tabindex;
+        typeof tabindex === 'string' ? parseInt(tabindex, 10) : tabindex
       if (index >= 0) {
-        return null;
+        return null
       }
-      return "false";
+      return 'false'
     }
   },
-  mounted() {
-    this.updateStack();
+  mounted () {
+    this.updateStack()
   },
-  updated() {
-    this.updateStack();
+  updated () {
+    this.updateStack()
   },
   methods: {
-    updateStack() {
+    updateStack () {
       if (!this.name && this.name !== null && this.$children.length === 0) {
-        warn(`Invalid prop: prop "name" is required.`, this);
-        return;
+        warn(`Invalid prop: prop "name" is required.`, this)
+        return
       }
 
       if (this.icon) {
-        return;
+        return
       }
 
-      let width = 0;
-      let height = 0;
+      let width = 0
+      let height = 0
       this.$children.forEach(child => {
-        child.outerScale = this.normalizedScale;
+        child.outerScale = this.normalizedScale
 
-        width = Math.max(width, child.width);
-        height = Math.max(height, child.height);
-      });
-      this.childrenWidth = width;
-      this.childrenHeight = height;
+        width = Math.max(width, child.width)
+        height = Math.max(height, child.height)
+      })
+      this.childrenWidth = width
+      this.childrenHeight = height
       this.$children.forEach(child => {
-        child.x = (width - child.width) / 2;
-        child.y = (height - child.height) / 2;
-      });
+        child.x = (width - child.width) / 2
+        child.y = (height - child.height) / 2
+      })
     }
   },
-  render(h) {
+  render (h) {
     if (this.name === null) {
-      return h();
+      return h()
     }
 
     let options = {
       class: this.klass,
       style: this.style,
       attrs: {
-        role: this.$attrs.role || (this.label || this.title ? "img" : null),
-        "aria-label": this.label || null,
-        "aria-hidden": !(this.label || this.title),
+        role: this.$attrs.role || (this.label || this.title ? 'img' : null),
+        'aria-label': this.label || null,
+        'aria-hidden': !(this.label || this.title),
         tabindex: this.tabindex,
         x: this.x,
         y: this.y,
@@ -221,105 +218,101 @@ export default {
         focusable: this.focusable
       },
       on: this.$listeners
-    };
-
-    let titleId = this.id;
-    if (this.title) {
-      options.attrs["aria-labelledby"] = titleId;
     }
 
     if (this.raw) {
-      let html = `<g>${this.raw}</g>`;
+      let html = `<g>${this.raw}</g>`
 
       if (this.title) {
-        html = `<title id="${titleId}">${escapeHTML(
-          this.title
-        )}</title>${html}`;
+        html = `<title>${escapeHTML(this.title)}</title>${html}`
       }
 
-      options.domProps = { innerHTML: html };
+      options.domProps = { innerHTML: html }
     }
 
-    let content = this.title
-      ? [h("title", { attrs: { id: titleId } }, this.title)]
-      : [];
+    let content = this.title ? [h('title', this.title)] : []
 
     return h(
-      "svg",
+      'svg',
       options,
       this.raw
         ? null
         : content.concat([
-            h(
-              "g",
-              this.$slots.default ||
+          h(
+            'g',
+            this.$slots.default ||
                 (this.icon
                   ? [
-                      ...this.icon.paths.map((path, i) =>
-                        h("path", {
-                          attrs: path,
-                          key: `path-${i}`
-                        })
-                      ),
-                      ...this.icon.polygons.map((polygon, i) =>
-                        h("polygon", {
-                          attrs: polygon,
-                          key: `polygon-${i}`
-                        })
-                      )
-                    ]
+                    ...this.icon.paths.map((path, i) =>
+                      h('path', {
+                        attrs: path,
+                        key: `path-${i}`
+                      })
+                    ),
+                    ...this.icon.polygons.map((polygon, i) =>
+                      h('polygon', {
+                        attrs: polygon,
+                        key: `polygon-${i}`
+                      })
+                    )
+                  ]
                   : [])
-            )
-          ])
-    );
+          )
+        ])
+    )
   },
-  register(data) {
+  register (data) {
     for (let name in data) {
-      let icon = data[name];
-      let { paths = [], d, polygons = [], points } = icon;
+      let icon = data[name]
+      let { paths = [], d, polygons = [], points } = icon
 
       if (d) {
-        paths.push({ d });
+        paths.push({ d })
       }
 
       if (points) {
-        polygons.push({ points });
+        polygons.push({ points })
       }
 
       icons[name] = assign({}, icon, {
         paths,
         polygons
-      });
+      })
     }
   },
   icons
-};
-
-function assign(obj, ...sources) {
-  sources.forEach(source => {
-    for (let key in source) {
-      if (source.hasOwnProperty(key)) {
-        obj[key] = source[key];
-      }
-    }
-  });
-
-  return obj;
 }
 
-function getId(prefix = "") {
-  return prefix + nanoid(7);
+function hasOwn (obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key)
+}
+
+function assign (obj, ...sources) {
+  sources.forEach(source => {
+    for (let key in source) {
+      if (hasOwn(source, key)) {
+        obj[key] = source[key]
+      }
+    }
+  })
+
+  return obj
+}
+
+let count = 0
+function getId (prefix = '') {
+  return prefix + count++
 }
 
 const ESCAPE_MAP = {
-  "<": "&lt;",
-  ">": "&gt;",
-  '"': "&quot;",
-  "&": "&amp;"
-};
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  '&': '&amp;'
+}
 
-function escapeHTML(html) {
-  return html.replace(/[<>"&]/g, c => ESCAPE_MAP[c] || c);
+function escapeHTML (html) {
+  return html.replace(/[<>"&]/g, c => ESCAPE_MAP[c] || c)
 }
 </script>
 
@@ -328,6 +321,7 @@ function escapeHTML(html) {
   display: inline-block;
   fill: currentColor;
   overflow: visible;
+  vertical-align: -0.125em;
 }
 
 .fa-icon > g {
