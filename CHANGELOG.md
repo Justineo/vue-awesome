@@ -1,3 +1,6 @@
+4.3.0
+* Remove `core-js` as dependency.
+
 4.2.0
 * Add an ESM dist file.
 * Update to `@fortawesome/fontawesome-free@5.15.3`.
