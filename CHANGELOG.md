@@ -1,3 +1,7 @@
+4.2.0
+* Add an ESM dist file.
+* Update to `@fortawesome/fontawesome-free@5.15.3`.
+
 4.1.0
 * Update to `@fortawesome/fontawesome-free@5.14.0`.
 * Removed `nanoid` dependency.

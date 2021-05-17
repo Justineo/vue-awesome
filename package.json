@@ -1,6 +1,6 @@
 {
   "name": "vue-awesome",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Font Awesome component for Vue.js, using inline SVG.",
   "author": "Justineo (justice360@gmail.com)",
   "scripts": {
@@ -18,13 +18,13 @@
     "core-js": "^3.4.4"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@vue/cli-plugin-babel": "^4.4.6",
     "@vue/cli-plugin-eslint": "^4.4.6",
-    "@vue/cli-service": "^4.4.6",
+    "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-prettier": "^5.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^5.2.1",
