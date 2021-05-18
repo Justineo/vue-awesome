@@ -6,14 +6,10 @@ import resolve from '@rollup/plugin-node-resolve'
 
 export default [
   {
-    input: 'src/index.js',
+    input: 'src/components/Icon.vue',
     output: {
-      file: 'dist/vue-awesome.js',
-      name: 'VueAwesome',
-      format: 'umd',
-      globals: {
-        vue: 'Vue'
-      }
+      file: 'src/components/Icon.js',
+      format: 'esm'
     },
     external: ['vue'],
     plugins: [
@@ -28,10 +24,14 @@ export default [
     ]
   },
   {
-    input: 'src/components/Icon.vue',
+    input: 'src/index.js',
     output: {
-      file: 'dist/Icon.js',
-      format: 'esm'
+      file: 'dist/vue-awesome.js',
+      name: 'VueAwesome',
+      format: 'umd',
+      globals: {
+        vue: 'Vue'
+      }
     },
     external: ['vue'],
     plugins: [

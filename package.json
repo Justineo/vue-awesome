@@ -5,7 +5,7 @@
   "author": "Justineo (justice360@gmail.com)",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "cross-env NODE_ENV=production rollup -c",
+    "build": "npm run icons && cross-env NODE_ENV=production rollup -c",
     "lint": "vue-cli-service lint",
     "demo": "vue-cli-service build",
     "fa2json": "node -r esm build/fa2json.js",
