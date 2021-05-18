@@ -1,3 +1,6 @@
+4.3.1
+* Fix that single icon imports wasn't working since 4.2.0.
+
 4.3.0
 * Remove `core-js` as dependency.
 
