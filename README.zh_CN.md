@@ -127,7 +127,7 @@ module.exports = {
 module.exports = {
   // ...
   build: {
-    transpile: [/^vue-awesome/]
+    transpile: [/^vue-awesome($|\/)]
   }
 }
 ```
