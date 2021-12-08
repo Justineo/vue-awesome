@@ -1,6 +1,16 @@
 <script>
 let icons = {}
 
+function warn (msg, vm) {
+  if (!vm) {
+    /* eslint-disable no-console */
+    console.error(msg)
+    /* eslint-enable no-console */
+    return
+  }
+  vm.constructor.super.util.warn(msg, vm)
+}
+
 export default {
   name: 'fa-icon',
   props: {
@@ -8,9 +18,10 @@ export default {
       type: String,
       validator (val) {
         if (val && !(val in icons)) {
-          console.warn(
-            `Invalid prop: prop "name" is referring to an unregistered icon "${val}".` +
-              `\nPlease make sure you have imported this icon before using it.`
+          warn(
+            `Invalid prop: prop "name" is referring to an unregistered icon "${val}".\n` +
+              `Please make sure you have imported this icon before using it.`,
+            this
           )
           return false
         }
@@ -24,7 +35,7 @@ export default {
     pulse: Boolean,
     flip: {
       validator (val) {
-        return val === 'horizontal' || val === 'vertical'
+        return val === 'horizontal' || val === 'vertical' || val === 'both'
       }
     },
     label: String,
@@ -32,7 +43,6 @@ export default {
   },
   data () {
     return {
-      id: getId(),
       x: false,
       y: false,
       childrenWidth: 0,
@@ -45,24 +55,31 @@ export default {
       let scale = this.scale
       scale = typeof scale === 'undefined' ? 1 : Number(scale)
       if (isNaN(scale) || scale <= 0) {
-        console.warn(
-          `Invalid prop: prop "scale" should be a number over 0.`,
-          this
-        )
+        warn(`Invalid prop: prop "scale" should be a number over 0.`, this)
         return this.outerScale
       }
       return scale * this.outerScale
     },
     klass () {
-      return {
+      let classes = {
         'fa-icon': true,
         'fa-spin': this.spin,
         'fa-flip-horizontal': this.flip === 'horizontal',
         'fa-flip-vertical': this.flip === 'vertical',
+        'fa-flip-both': this.flip === 'both',
         'fa-inverse': this.inverse,
-        'fa-pulse': this.pulse,
-        [this.$options.name]: true
+        'fa-pulse': this.pulse
       }
+
+      if (this.classes) {
+        Object.keys(this.classes).forEach(c => {
+          if (this.classes[c]) {
+            classes[c] = true
+          }
+        })
+      }
+
+      return classes
     },
     icon () {
       if (this.name) {
@@ -115,7 +132,7 @@ export default {
       raw = raw.replace(
         /\s(?:xml:)?id=(["']?)([^"')\s]+)\1/g,
         (match, quote, id) => {
-          let uniqueId = getId()
+          let uniqueId = getId('vat-')
           ids[id] = uniqueId
           return ` id="${uniqueId}"`
         }
@@ -156,7 +173,7 @@ export default {
   methods: {
     updateStack () {
       if (!this.name && this.name !== null && this.$children.length === 0) {
-        console.warn(`Invalid prop: prop "name" is required.`)
+        warn(`Invalid prop: prop "name" is required.`, this)
         return
       }
 
@@ -191,7 +208,7 @@ export default {
       attrs: {
         role: this.$attrs.role || (this.label || this.title ? 'img' : null),
         'aria-label': this.label || null,
-        'aria-hidden': String(!(this.label || this.title)),
+        'aria-hidden': !(this.label || this.title),
         tabindex: this.tabindex,
         x: this.x,
         y: this.y,
@@ -199,63 +216,61 @@ export default {
         height: this.height,
         viewBox: this.box,
         focusable: this.focusable
-      }
-    }
-
-    let titleId = `vat-${this.id}`
-    if (this.title) {
-      options.attrs['aria-labelledby'] = titleId
+      },
+      on: this.$listeners
     }
 
     if (this.raw) {
-      let html = this.raw
+      let html = `<g>${this.raw}</g>`
 
       if (this.title) {
-        html = `<title id="${titleId}">${escapeHTML(this.title)}</title>${html}`
+        html = `<title>${escapeHTML(this.title)}</title>${html}`
       }
 
-      options.domProps = {
-        innerHTML: html
-      }
+      options.domProps = { innerHTML: html }
     }
 
-    let content = this.title
-      ? [h('title', { attrs: { id: titleId } }, this.title)]
-      : []
+    let content = this.title ? [h('title', this.title)] : []
 
     return h(
       'svg',
       options,
       this.raw
         ? null
-        : content.concat(
-          this.$slots.default || [
-            ...this.icon.paths.map((path, i) =>
-              h('path', {
-                attrs: path,
-                key: `path-${i}`
-              })
-            ),
-            ...this.icon.polygons.map((polygon, i) =>
-              h('polygon', {
-                attrs: polygon,
-                key: `polygon-${i}`
-              })
-            ),
-            ...this.icon.circles.map((circle, i) =>
-              h('circle', {
-                attrs: circle,
-                key: `polygon-${i}`
-              })
-            )
-          ]
-        )
+        : content.concat([
+          h(
+            'g',
+            this.$slots.default ||
+                (this.icon
+                  ? [
+                    ...this.icon.paths.map((path, i) =>
+                      h('path', {
+                        attrs: path,
+                        key: `path-${i}`
+                      })
+                    ),
+                    ...this.icon.polygons.map((polygon, i) =>
+                      h('polygon', {
+                        attrs: polygon,
+                        key: `polygon-${i}`
+                      })
+                    ),
+                    ...this.icon.circles.map((circle, i) =>
+                      h('circle', {
+                        attrs: circle,
+                        key: `circle-${i}`
+                      })
+                    )
+                  ]
+                  : [])
+          )
+        ])
     )
   },
   register (data) {
     for (let name in data) {
       let icon = data[name]
-      let { paths = [], d, polygons = [], points , circles } = icon
+      let { paths = [], d, polygons = [], points, circles } = icon
 
       if (d) {
         paths.push({ d })
@@ -275,10 +290,14 @@ export default {
   icons
 }
 
+function hasOwn (obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key)
+}
+
 function assign (obj, ...sources) {
   sources.forEach(source => {
     for (let key in source) {
-      if (source.hasOwnProperty(key)) {
+      if (hasOwn(source, key)) {
         obj[key] = source[key]
       }
     }
@@ -287,9 +306,9 @@ function assign (obj, ...sources) {
   return obj
 }
 
-let cursor = 0xd4937
-function getId () {
-  return `va-${(cursor++).toString(16)}`
+let count = 0
+function getId (prefix = '') {
+  return prefix + count++
 }
 
 const ESCAPE_MAP = {
@@ -308,6 +327,12 @@ function escapeHTML (html) {
 .fa-icon {
   display: inline-block;
   fill: currentColor;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+
+.fa-icon > g {
+  transform-origin: 50% 50%;
 }
 
 .fa-flip-horizontal {
@@ -318,16 +343,20 @@ function escapeHTML (html) {
   transform: scale(1, -1);
 }
 
-.fa-spin {
+.fa-flip-both {
+  transform: scale(-1, -1);
+}
+
+.fa-spin > g {
   animation: fa-spin 1s 0s infinite linear;
+}
+
+.fa-pulse > g {
+  animation: fa-spin 1s infinite steps(8);
 }
 
 .fa-inverse {
   color: #fff;
-}
-
-.fa-pulse {
-  animation: fa-spin 1s infinite steps(8);
 }
 
 @keyframes fa-spin {

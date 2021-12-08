@@ -37,3 +37,7 @@ node_modules
 
 # Assets
 assets
+
+dist
+icons
+src/components/Icon.js

@@ -225,17 +225,17 @@ Vue.component('v-icon', VueAwesome)
 
 * `spin: boolean`
 
-  用来指定图标是否需要旋转。默认值为 `false`。
+  用来指定图标是否需要旋转。默认值为 `false`。（不能与 `pulse` 一同使用。）
+
+* `pulse: boolean`
+
+  用来指定图标是否有脉冲旋转的效果。默认值为 `false`。（不能与 `spin` 一同使用。）
 
 * `inverse: boolean`
 
   为 `true` 时图标颜色将被设置为 `#fff`。默认值为 `false`。
 
-* `pulse: boolean`
-
-  用来指定图标是否有脉冲旋转的效果。默认值为 `false`。
-
-* `flip: 'vertical'|'horizontal'|null`
+* `flip: 'vertical'|'horizontal'|'both'`
 
   用来指定图标是否需要翻转。
 

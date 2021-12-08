@@ -1,40 +1,40 @@
-import fs from 'fs'
-import path from 'path'
-import rimraf from 'rimraf'
-import mkdirp from 'mkdirp'
-import fa2svg from './fa2svg'
+import fs from "fs";
+import path from "path";
+import rimraf from "rimraf";
+import mkdirp from "mkdirp";
+import fa2svg from "./fa2svg";
 
-const SVG_DIR = path.resolve(__dirname, '../assets/svg')
-rimraf.sync(SVG_DIR)
+const SVG_DIR = path.resolve(__dirname, "../assets/svg");
+rimraf.sync(SVG_DIR);
 
-fa2svg(SVG_DIR)
+fa2svg(SVG_DIR);
 
-let icons = {}
+let icons = {};
 
-function extractIcons (namespace = '', toNamespace = namespace) {
-  let prefix = toNamespace ? `${toNamespace}/` : ''
-  fs.readdirSync(path.join(SVG_DIR, namespace), 'utf8')
+function extractIcons(namespace = "", toNamespace = namespace) {
+  let prefix = toNamespace ? `${toNamespace}/` : "";
+  fs.readdirSync(path.join(SVG_DIR, namespace), "utf8")
     .filter(file => {
-      return !fs.statSync(path.resolve(SVG_DIR, namespace, file)).isDirectory()
+      return !fs.statSync(path.resolve(SVG_DIR, namespace, file)).isDirectory();
     })
-    .forEach(function (file) {
-      let filePath = path.resolve(SVG_DIR, namespace, file)
+    .forEach(function(file) {
+      let filePath = path.resolve(SVG_DIR, namespace, file);
 
-      let dirname = path.dirname(filePath)
+      let dirname = path.dirname(filePath);
       if (!fs.existsSync(dirname)) {
-        mkdirp.sync(dirname)
+        mkdirp.sync(dirname);
       }
 
-      let svg = fs.readFileSync(filePath, 'utf8')
+      let svg = fs.readFileSync(filePath, "utf8");
       let sizeMatch = svg.match(
         / viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"/
-      )
-      let dMatch = svg.match(/ d="([^"]+)"/)
+      );
+      let dMatch = svg.match(/ d="([^"]+)"/);
       if (!sizeMatch || !dMatch) {
-        return
+        return;
       }
-      let icon = {}
-      let name = file.replace(/^fa-/, '').replace(/\.svg$/, '')
+      let icon = {};
+      let name = file.replace(/^fa-/, "").replace(/\.svg$/, "");
       icons[prefix + name] = {
         width: parseInt(sizeMatch[1], 10),
         height: parseInt(sizeMatch[2], 10),
@@ -43,15 +43,15 @@ function extractIcons (namespace = '', toNamespace = namespace) {
             d: dMatch[1]
           }
         ]
-      }
-    })
+      };
+    });
 }
 
-extractIcons('', 'regular')
-extractIcons('brands')
-extractIcons('solid', '')
+extractIcons("", "regular");
+extractIcons("brands");
+extractIcons("solid", "");
 fs.writeFileSync(
-  path.resolve(__dirname, '../assets/icons.json'),
-  JSON.stringify(icons, null, '  '),
-  'utf8'
-)
+  path.resolve(__dirname, "../assets/icons.json"),
+  JSON.stringify(icons, null, "  "),
+  "utf8"
+);

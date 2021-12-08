@@ -1,3 +1,30 @@
+4.3.1
+* Fix that single icon imports wasn't working since 4.2.0.
+
+4.3.0
+* Remove `core-js` as dependency.
+
+4.2.0
+* Add an ESM dist file.
+* Update to `@fortawesome/fontawesome-free@5.15.3`.
+
+4.1.0
+* Update to `@fortawesome/fontawesome-free@5.14.0`.
+* Removed `nanoid` dependency.
+
+4.0.2
+* Decouple component `name` and class output.
+
+4.0.1
+* Use `this.classes` instead of `$options.className` for wrapper usage.
+
+4.0.0
+* Use Vue's warn util directly and offer better debugging experience.
+* Support `className` on component options to make wrapper components easier.
+* Fix the problem that icons with undefined `name`s were throwing uncaught exceptions.
+* Update to `@fortawesome/fontawesome-free@5.11.2`.
+* [Breaking] Update  required version of peer dependency `vue` to `^2.4.0` (to support transparent event passing through).
+
 3.5.4
 * Update to `@fortawesome/fontawesome-free@5.9.0`.
 
@@ -73,10 +100,10 @@
 
 2.3.0
 * Added new ways to register icon.
-* Clearify custom icon registration in documentation.
+* Clarify custom icon registration in documentation.
 
 2.2.8
-* Swith build tool to rollup.
+* Switch build tool to rollup.
 * Provide `module` in `package.json`.
 
 2.2.7

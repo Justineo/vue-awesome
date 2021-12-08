@@ -226,17 +226,17 @@ Vue.component('v-icon', VueAwesome)
 
 * `spin: boolean`
 
-  Used to specify whether the icon is spining. Default to `false`.
+  Used to specify whether the icon is spining. Default to `false`. (Can't use together with `pulse`.)
+
+* `pulse: boolean`
+
+  Set the pulse effect to the icon. Default to `false`. (Can't use together with `spin`.)
 
 * `inverse: boolean`
 
   If set to `true`, the color of the icon will become `#fff`. Default to `false`.
 
-* `pulse: boolean`
-
-  Set the pulse effect to the icon. Default to `false`.
-
-* `flip: 'vertical'|'horizontal'|null`
+* `flip: 'vertical'|'horizontal'|'both'`
 
   Used to flip the icon.
 
