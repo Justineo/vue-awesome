@@ -254,6 +254,12 @@ export default {
                         attrs: polygon,
                         key: `polygon-${i}`
                       })
+                    ),
+                    ...this.icon.circles.map((circle, i) =>
+                      h('circle', {
+                        attrs: circle,
+                        key: `circle-${i}`
+                      })
                     )
                   ]
                   : [])
@@ -264,7 +270,7 @@ export default {
   register (data) {
     for (let name in data) {
       let icon = data[name]
-      let { paths = [], d, polygons = [], points } = icon
+      let { paths = [], d, polygons = [], points, circles } = icon
 
       if (d) {
         paths.push({ d })
@@ -276,7 +282,8 @@ export default {
 
       icons[name] = assign({}, icon, {
         paths,
-        polygons
+        polygons,
+        circles
       })
     }
   },
