@@ -1,3 +1,6 @@
+4.5.0
+* Adjust npm output.
+
 4.4.0
 * Fix SSR option.
 * Update to `@fortawesome/fontawesome-free@5.15.4`.
