@@ -1,3 +1,7 @@
+4.4.0
+* Fix SSR option.
+* Update to `@fortawesome/fontawesome-free@5.15.4`.
+
 4.3.1
 * Fix that single icon imports wasn't working since 4.2.0.
 
@@ -23,7 +27,7 @@
 * Support `className` on component options to make wrapper components easier.
 * Fix the problem that icons with undefined `name`s were throwing uncaught exceptions.
 * Update to `@fortawesome/fontawesome-free@5.11.2`.
-* [Breaking] Update  required version of peer dependency `vue` to `^2.4.0` (to support transparent event passing through).
+* [Breaking] Update required version of peer dependency `vue` to `^2.4.0` (to support transparent event passing through).
 
 3.5.4
 * Update to `@fortawesome/fontawesome-free@5.9.0`.
