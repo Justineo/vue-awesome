@@ -16,6 +16,9 @@ export default [
       resolve(),
       commonjs(),
       vue({
+        template: {
+          optimizeSSR: true
+        },
         compileTemplate: true,
         css: true
       }),
