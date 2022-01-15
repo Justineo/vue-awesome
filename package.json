@@ -10,7 +10,7 @@
     "demo": "vue-cli-service build",
     "fa2json": "node -r esm build/fa2json.js",
     "icons": "npm run fa2json && node -r esm build/icons.js",
-    "prepublishOnly": "npm run build && mkdir components && cp src/components/Icon.js components/ && cp src/index.js index.js",
+    "prepublishOnly": "npm run build && mkdir components && cp src/components/Icon.js components/ && cp src/components/Icon.vue components/ && cp src/index.js index.js",
     "postpublish": "rm -rf ./components ./icons index.js"
   },
   "main": "dist/vue-awesome.js",
